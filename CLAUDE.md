@@ -4,7 +4,9 @@ CV / portafolio personal de Ernesto Valdez. Sitio estático en Astro, desplegado
 en GitHub Pages bajo `https://ernest0vm.github.io/resume/`.
 
 **Idioma**: el texto visible al usuario va en español; el código, los comentarios
-y los mensajes de commit en inglés.
+y los mensajes de commit en inglés. En el texto visible, preferir el término en
+español antes que el anglicismo cuando exista uno de uso corriente: «marca
+blanca», no «white label».
 
 ## Comandos
 
