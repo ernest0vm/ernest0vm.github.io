@@ -47,13 +47,15 @@
         "school": "Universidad Tecnológica Fidel Velázquez",
         "degree": "T.S.U. Mecatronica",
         "graduated": "Agosto 2009",
-        "description": "Aprendí la capacidad de aplicar tecnologías especializadas (robots, tornos de control numérico, controladores lógicos programables, computadoras industriales) para la implementación de soluciones de automatización parcial o total en sistemas de manufactura, garantizando su operación segura, así como la  eficacia de sus procesos industriales."
+        "description": "Aprendí la capacidad de aplicar tecnologías especializadas (robots, tornos de control numérico, controladores lógicos programables, computadoras industriales) para la implementación de soluciones de automatización parcial o total en sistemas de manufactura, garantizando su operación segura, así como la  eficacia de sus procesos industriales.",
+        "logo": "https://www.google.com/s2/favicons?domain=utfv.edomex.gob.mx&sz=128"
       },
       {
         "school": "Colegio de Estudios Cientificos y Tecnologicos del Estado de México",
         "degree": "Tecnico en Informatica Administrativa",
         "graduated": "Julio 2006",
-        "description": "Aprendí a proponer soluciones de sistemas de información y bases de datos, así como asimilar la aplicación de nuevos desarrollos tecnológicos en las áreas administrativas, evaluar su implementación en la organización donde se desempeñen, apoyando a la toma de desiciones de los ejecutivos y al desarrollo del sector productivo y social del país."
+        "description": "Aprendí a proponer soluciones de sistemas de información y bases de datos, así como asimilar la aplicación de nuevos desarrollos tecnológicos en las áreas administrativas, evaluar su implementación en la organización donde se desempeñen, apoyando a la toma de desiciones de los ejecutivos y al desarrollo del sector productivo y social del país.",
+        "logo": "https://www.google.com/s2/favicons?domain=cecytem.edomex.gob.mx&sz=128"
       }
     ],
     "work": [
@@ -61,7 +63,8 @@
         "company": "Reservamos",
         "title": "Lead Mobile Engineer",
         "years": "MAYO 2021 - ACTUAL",
-        "description": "Actualmente  lidero  el  área  móvil  de  la  vertical  B2C  dando  mantenimiento  a  la  app  de Reservamosla  cual  se encuentra en React Native con Expoe integraciones nativas de Adyen, también soy el responsable del desarrollo de la app de Vanda Pasajeroy Vanda Conductorcon Fluttery a través de estrategias de white labeltambién desarrollo  la  app  de Roll&Bits Pasajeroy Roll&Bits  Conductor,  adicional  desarrolle  un  package  llamado Flutter_Adyen_CSE, además de utilizar SDK de terceros como OneSignal, Mixpanel, Facebook App Events, Riskified entre otros."
+        "description": "Actualmente  lidero  el  área  móvil  de  la  vertical  B2C  dando  mantenimiento  a  la  app  de Reservamosla  cual  se encuentra en React Native con Expoe integraciones nativas de Adyen, también soy el responsable del desarrollo de la app de Vanda Pasajeroy Vanda Conductorcon Fluttery a través de estrategias de white labeltambién desarrollo  la  app  de Roll&Bits Pasajeroy Roll&Bits  Conductor,  adicional  desarrolle  un  package  llamado Flutter_Adyen_CSE, además de utilizar SDK de terceros como OneSignal, Mixpanel, Facebook App Events, Riskified entre otros.",
+        "logo": "https://www.google.com/s2/favicons?domain=reservamos.com&sz=128"
       },
       {
         "company": "Chib Mexico",
@@ -79,13 +82,15 @@
         "company": "Grupo CAN&T",
         "title": "Sr. Mobile App Developer",
         "years": "Enero 2019 - Octubre 2019",
-        "description": "Desarrollo de Aplicaciones Moviles en Cross Platform (Xamarin Forms & React Native), Soporte a las aplicaciones de FamilyCard, MediChat y Multidoctores, Diseño de interfaces UI/UX, Programación con leguajes .Net, JS, Java y Objetive-C, Cross Platform iOS, Android, UWP, Despliegue de aplicaciones en Google Play Store y Apple App Store, Manejo de Microsoft Azure para operacion de aplicaciones."
+        "description": "Desarrollo de Aplicaciones Moviles en Cross Platform (Xamarin Forms & React Native), Soporte a las aplicaciones de FamilyCard, MediChat y Multidoctores, Diseño de interfaces UI/UX, Programación con leguajes .Net, JS, Java y Objetive-C, Cross Platform iOS, Android, UWP, Despliegue de aplicaciones en Google Play Store y Apple App Store, Manejo de Microsoft Azure para operacion de aplicaciones.",
+        "logo": "https://www.google.com/s2/favicons?domain=grupocantec.com&sz=128"
       },
       {
         "company": "SkyAlert de Mexico",
         "title": "IoT Enginner / Production Lead",
         "years": "Julio 2017 - Enero 2019",
-        "description": "En SkyAlert trabajé como desarrollador de hardware y software utilizando las tecnologías más innovadoras, como el internet de las cosas (IoT), infraestructuras basadas en la nube, datos analíticos, así como el desarrollo de herramientas para el estudio sísmico, aplicadas en la red sísmica de SkyAlert (Red SkyAlert) y en la evolución de los dispositivos de prevención EPICENTER. Así mismo me encargo de los esfuerzos para lograr el abastecimiento de los dispositivos para clientes comerciales y corporativos, desarrollando herramientas para hacer más eficiente la producción y planificación de recursos de manufactura."
+        "description": "En SkyAlert trabajé como desarrollador de hardware y software utilizando las tecnologías más innovadoras, como el internet de las cosas (IoT), infraestructuras basadas en la nube, datos analíticos, así como el desarrollo de herramientas para el estudio sísmico, aplicadas en la red sísmica de SkyAlert (Red SkyAlert) y en la evolución de los dispositivos de prevención EPICENTER. Así mismo me encargo de los esfuerzos para lograr el abastecimiento de los dispositivos para clientes comerciales y corporativos, desarrollando herramientas para hacer más eficiente la producción y planificación de recursos de manufactura.",
+        "logo": "https://www.google.com/s2/favicons?domain=skyalert.mx&sz=128"
       },
       {
         "company": "Service Management Solutions",

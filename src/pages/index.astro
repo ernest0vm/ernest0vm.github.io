@@ -16,6 +16,7 @@ const education = (resume?.education ?? []).map((item) => ({
   subheading: item.degree,
   meta: item.graduated,
   description: item.description,
+  logo: item.logo,
 }));
 
 const work = (resume?.work ?? []).map((item) => ({
@@ -23,6 +24,7 @@ const work = (resume?.work ?? []).map((item) => ({
   subheading: item.title,
   meta: item.years,
   description: item.description,
+  logo: item.logo,
 }));
 ---
 

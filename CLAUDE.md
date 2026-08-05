@@ -42,6 +42,18 @@ Se edita en `src/data/resumeData.json`:
   veces. Colecciones instaladas: `simple-icons`, `fa6-brands`, `fa6-solid`.
 - El `bio` lleva el token `{{years}}`, que `About.astro` sustituye por los años
   de experiencia. No escribir el número a mano.
+- Los logos de empleos y educación (`logo`) **sí** son URLs remotas, por
+  decisión explícita del dueño del repo pese al riesgo de que caduquen. Usan
+  `https://www.google.com/s2/favicons?domain=X&sz=128`. Si el dominio no tiene
+  favicon propio, el servicio devuelve un globo genérico (mismo hash para
+  cualquier dominio inexistente): en ese caso **no** poner `logo` y dejar que
+  `Timeline.astro` muestre el monograma. Ese monograma va debajo de la imagen,
+  así que también cubre el día que una URL deje de responder.
+- No tomar logos de LinkedIn ni de redes sociales: sus CDN firman las URLs con
+  tokens que expiran en horas y bloquean el hotlinking.
+- Verificar que el dominio pertenezca de verdad a la empresa antes de usarlo;
+  ya hubo dos casos (`cant.mx`, `smsolutions.com.mx`) que resultaron ser
+  negocios ajenos con nombre parecido.
 
 ## Años de experiencia
 

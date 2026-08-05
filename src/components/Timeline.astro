@@ -2,6 +2,15 @@
 import Section from './Section.astro';
 
 const { id, eyebrow, title, items = [] } = Astro.props;
+
+/** "Bussi Mobility" -> "BM". Used as the logo tile's fallback. */
+const initials = (text = '') =>
+  text
+    .split(/\s+/)
+    .filter((word) => /[A-Za-zÁÉÍÓÚÑ]/.test(word))
+    .slice(0, 2)
+    .map((word) => word[0].toUpperCase())
+    .join('');
 ---
 
 <Section id={id} eyebrow={eyebrow} title={title}>
@@ -20,20 +29,49 @@ const { id, eyebrow, title, items = [] } = Astro.props;
           />
 
           <article class="glass rounded-glass p-6 transition hover:-translate-y-0.5 sm:p-7">
-            <div class="flex flex-wrap items-baseline justify-between gap-x-4 gap-y-1">
-              <h3 class="text-lg font-semibold text-white">{item.heading}</h3>
-              {item.meta && (
-                <p class="text-xs font-semibold tracking-wider text-accent-400 uppercase">
-                  {item.meta}
-                </p>
-              )}
-            </div>
+            <div class="flex items-start gap-4">
+              {/* The monogram sits underneath the logo rather than beside it,
+                  so a remote image that fails to load simply reveals it. */}
+              <span
+                class="relative flex size-12 shrink-0 items-center justify-center overflow-hidden rounded-xl bg-white/8 ring-1 ring-white/10"
+                aria-hidden="true"
+              >
+                <span class="text-sm font-bold tracking-tight text-white/45">
+                  {initials(item.heading)}
+                </span>
+                {/* Loaded eagerly: these are 128px favicons, and lazy-loading
+                    them inside the tile left them unfetched in some browsers. */}
+                {item.logo && (
+                  <img
+                    src={item.logo}
+                    alt=""
+                    width="36"
+                    height="36"
+                    class="absolute inset-1.5 size-9 object-contain"
+                    referrerpolicy="no-referrer"
+                  />
+                )}
+              </span>
 
-            {item.subheading && (
-              <p class="mt-1 text-sm font-semibold text-white/70">
-                {item.subheading}
-              </p>
-            )}
+              <div class="min-w-0 flex-1">
+                <div class="flex flex-wrap items-baseline justify-between gap-x-4 gap-y-1">
+                  <h3 class="text-lg font-semibold text-white">
+                    {item.heading}
+                  </h3>
+                  {item.meta && (
+                    <p class="text-xs font-semibold tracking-wider text-accent-400 uppercase">
+                      {item.meta}
+                    </p>
+                  )}
+                </div>
+
+                {item.subheading && (
+                  <p class="mt-1 text-sm font-semibold text-white/70">
+                    {item.subheading}
+                  </p>
+                )}
+              </div>
+            </div>
 
             {item.description && (
               <p class="mt-4 text-sm/7 text-white/60">{item.description}</p>
