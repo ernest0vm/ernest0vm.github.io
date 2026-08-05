@@ -1,6 +1,7 @@
 ---
 import { Icon } from 'astro-icon/components';
 import Section from './Section.astro';
+import { experienceInWordsCapitalized } from '../utils/experience.js';
 
 const { data } = Astro.props;
 const skills = data?.skills ?? [];
@@ -18,7 +19,7 @@ const groups = [
   id="skills"
   eyebrow="Habilidades"
   title="Con qué construyo"
-  lead="Quince años de experiencia repartidos entre móvil, backend, nube y electrónica."
+  lead={`${experienceInWordsCapitalized()} años de experiencia repartidos entre móvil, backend, nube y electrónica.`}
 >
   <div class="space-y-12">
     {

@@ -1,13 +1,16 @@
 ---
 import { Icon } from 'astro-icon/components';
 import Section from './Section.astro';
+import { experienceInWords } from '../utils/experience.js';
 
 const { data } = Astro.props;
 const base = import.meta.env.BASE_URL.replace(/\/+$/, '');
 
 const name = data?.name;
 const profilepic = `${base}/images/${data?.image}`;
-const bio = data?.bio;
+// The bio keeps a {{years}} token so the copy stays editable in the data file
+// while the count itself is derived from the start date.
+const bio = (data?.bio ?? '').replaceAll('{{years}}', experienceInWords());
 const city = data?.address?.city;
 const state = data?.address?.state;
 const phone = data?.phone;

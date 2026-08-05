@@ -3,6 +3,11 @@ name: Deploy to GitHub Pages
 on:
   push:
     branches: [main]
+  schedule:
+    # The years-of-experience figure is computed at build time, so rebuild on
+    # the 1st of every month: the work anniversary (1 September) then rolls
+    # over on its own, without waiting for the next push.
+    - cron: '17 6 1 * *'
   workflow_dispatch:
 
 permissions:

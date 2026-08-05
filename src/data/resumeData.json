@@ -3,7 +3,7 @@
     "name": "Ernesto Valdez",
     "description": "Tech Lead / Sr Mobile & Full Stack Developer",
     "image": "15321975906209479.jpg",
-    "bio": "Cuento con 15 años de experiencia en el diseño End-To-End de productos tecnológicos de alto impacto a través de la investigación e implementación de nuevas tecnologías como el internet de las cosas (IoT), aplicaciones moviles, cómputo en la nube, diseño de electrónica SMD, desarrollo de firmware embebido y software fullstack en tecnologías .net y open source.",
+    "bio": "Cuento con {{years}} años de experiencia en el diseño End-To-End de productos tecnológicos de alto impacto a través de la investigación e implementación de nuevas tecnologías como el internet de las cosas (IoT), aplicaciones moviles, cómputo en la nube, diseño de electrónica SMD, desarrollo de firmware embebido y software fullstack en tecnologías .net y open source.",
     "contactmessage": "Here is where you should write your message to readers to have them get in contact with you.",
     "email": "ernestovm07@gmail.com",
     "phone": "55 1682 3244",
