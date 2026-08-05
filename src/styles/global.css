@@ -95,11 +95,14 @@
    recipe: a translucent fill, a blurred backdrop, a hairline ring, and a
    top-edge highlight that fakes light catching the bevel.
 --------------------------------------------------------------------------- */
+/* Never put `backdrop-filter` and `-webkit-backdrop-filter` in the same rule:
+   the minifier treats them as one property and keeps only the last, which
+   silently killed the blur in production once already. The prefixed variant
+   lives in its own @supports block further down. */
 @utility glass {
   position: relative;
-  background-color: color-mix(in oklab, white 6%, transparent);
-  backdrop-filter: blur(16px) saturate(160%);
-  -webkit-backdrop-filter: blur(16px) saturate(160%);
+  background-color: color-mix(in oklab, white 8%, transparent);
+  backdrop-filter: blur(20px) saturate(160%);
   box-shadow:
     inset 0 1px 0 0 color-mix(in oklab, white 18%, transparent),
     inset 0 0 0 1px color-mix(in oklab, white 8%, transparent),
@@ -109,20 +112,35 @@
 /* Slightly denser variant for surfaces that sit over busy content. */
 @utility glass-strong {
   position: relative;
-  background-color: color-mix(in oklab, white 10%, transparent);
-  backdrop-filter: blur(24px) saturate(180%);
-  -webkit-backdrop-filter: blur(24px) saturate(180%);
+  background-color: color-mix(in oklab, white 12%, transparent);
+  backdrop-filter: blur(28px) saturate(180%);
   box-shadow:
     inset 0 1px 0 0 color-mix(in oklab, white 24%, transparent),
     inset 0 0 0 1px color-mix(in oklab, white 10%, transparent),
     0 12px 40px -8px oklch(0 0 0 / 0.7);
 }
 
-/* Browsers without backdrop-filter (older Firefox) get an opaque fill instead
-   of an unreadable transparent panel. */
-@supports not (backdrop-filter: blur(1px)) {
-  .glass,
+/* Safari below 18 only implements the prefixed property. Separate rule, so
+   the minifier cannot collapse it into the standard one above. */
+@supports (-webkit-backdrop-filter: blur(1px)) and
+  (not (backdrop-filter: blur(1px))) {
+  .glass {
+    -webkit-backdrop-filter: blur(20px) saturate(160%);
+  }
   .glass-strong {
-    background-color: var(--color-ink-900);
+    -webkit-backdrop-filter: blur(28px) saturate(180%);
+  }
+}
+
+/* Anything that supports neither (older Firefox) gets an opaque fill rather
+   than an unreadable transparent panel. Written as nested @supports because
+   the minifier rewrites `not (A or B)` into `not A`, which would wrongly hit
+   Safari 17 and cancel out the prefixed blur above. */
+@supports not (backdrop-filter: blur(1px)) {
+  @supports not (-webkit-backdrop-filter: blur(1px)) {
+    .glass,
+    .glass-strong {
+      background-color: var(--color-ink-900);
+    }
   }
 }
