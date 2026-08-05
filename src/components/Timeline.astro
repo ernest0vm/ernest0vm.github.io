@@ -40,14 +40,17 @@ const initials = (text = '') =>
                   {initials(item.heading)}
                 </span>
                 {/* Loaded eagerly: these are 128px favicons, and lazy-loading
-                    them inside the tile left them unfetched in some browsers. */}
+                    them inside the tile left them unfetched in some browsers.
+                    `object-cover` rather than `contain` so the radius clips the
+                    artwork itself — these logos are full-bleed squares with
+                    their own background. Feed it only square sources. */}
                 {item.logo && (
                   <img
                     src={item.logo}
                     alt=""
                     width="36"
                     height="36"
-                    class="absolute inset-1.5 size-9 object-contain"
+                    class="absolute inset-1.5 size-9 rounded-[calc(var(--radius-xl)-0.375rem)] object-cover"
                     referrerpolicy="no-referrer"
                   />
                 )}
