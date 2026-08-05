@@ -63,15 +63,15 @@
         "company": "Reserhub",
         "title": "Mobile Engineer Tech Lead",
         "years": "Abril 2025 - Actual",
-        "description": "Como líder del equipo Platform en Reserhub impulso la mejora continua a través de la estrategia One Platform. Junto con el equipo diseñamos y mantenemos infraestructuras escalables, seguras y eficientes que permiten a los squads entregar software de forma más rápida, confiable y autónoma. Promovemos la estandarización, reducimos el trabajo duplicado y facilitamos una experiencia de autoservicio que mejora la colaboración entre áreas, siendo el puente que conecta tecnología y procesos.",
+        "description": "Lidero el equipo dedicado a la plataforma de apps móviles en la vertical B2B. Diseñamos y mantenemos la base técnica compartida —monorepo con Turborepo, Expo y herramientas de entrega continua— para que los squads publiquen software móvil de forma más rápida, confiable y autónoma, promoviendo la estandarización, reduciendo el trabajo duplicado y facilitando una experiencia de autoservicio entre áreas.",
         "logo": "https://www.google.com/s2/favicons?domain=reserhub.com&sz=128"
       },
       {
-        "company": "Reserhub",
+        "company": "Reservamos",
         "title": "Lead Mobile Engineer",
         "years": "Mayo 2021 - Abril 2025",
-        "description": "Como líder de desarrollo de apps móviles me encargué de crear y mantener las apps de Reservamos: las apps de Pasajero para venta de boletos de vans y autobús para Vanda y Roll&Bits, así como apps de operación interna exclusivas para conductores. También implementé nuevas funcionalidades en la app de eCommerce de Reservamos, utilizando tecnologías híbridas de vanguardia como Flutter y React Native.",
-        "logo": "https://www.google.com/s2/favicons?domain=reserhub.com&sz=128"
+        "description": "Líder de desarrollo de apps móviles en la vertical B2C. Construí y mantuve las apps de Pasajero para venta de boletos de vans y autobús para Vanda y Roll&Bits, así como apps de operación interna exclusivas para conductores. También implementé nuevas funcionalidades en la app de eCommerce de Reservamos, con tecnologías híbridas como Flutter y React Native.",
+        "logo": "https://www.google.com/s2/favicons?domain=reservamos.com&sz=128"
       },
       {
         "company": "Chib",
@@ -187,6 +187,14 @@
       {
         "name": "ChatGPT",
         "icon": "simple-icons:openai"
+      },
+      {
+        "name": "Expo",
+        "icon": "simple-icons:expo"
+      },
+      {
+        "name": "Turborepo",
+        "icon": "simple-icons:turborepo"
       },
       {
         "name": "VS Code",
