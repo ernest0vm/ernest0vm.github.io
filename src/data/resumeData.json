@@ -286,13 +286,21 @@
       },
       {
         "title": "Conecta GFA",
-        "category": "App de Grupo Flecha Amarilla · Expo",
+        "category": "Transporte interurbano de Grupo Flecha Amarilla · Expo",
         "image": "https://play-lh.googleusercontent.com/I8wSLlWcGxj2LmEzbisgY7-4lJVHOEgBKajdY3OLMF3erk32X1uCxrvnjqOa98PZgPSxERzGoYVrrp99eYV-_Q",
         "url": "https://play.google.com/store/apps/details?id=com.web_view_conecta"
       },
       {
         "title": "Vanda",
-        "category": "Reserva de viajes en van · Flutter · Retirada de las tiendas"
+        "category": "Reserva de viajes en van, interurbano · Flutter · Retirada de las tiendas"
+      },
+      {
+        "title": "Bussi",
+        "category": "Vanpooling interurbano · Flutter · Retirada de las tiendas"
+      },
+      {
+        "title": "Chib",
+        "category": "Envío de remesas de EE. UU. a México · Flutter · Retirada de las tiendas"
       },
       {
         "title": "FamilyCard Health",
