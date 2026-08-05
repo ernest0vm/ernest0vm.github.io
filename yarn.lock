@@ -695,6 +695,24 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@iconify-json/logos@npm:^1.2.11":
+  version: 1.2.11
+  resolution: "@iconify-json/logos@npm:1.2.11"
+  dependencies:
+    "@iconify/types": "npm:*"
+  checksum: 10c0/bd08fe165846532017a19ec735c869ee4cb564ae615ea3ce54ec53e0bf3f1725148db1e570e9ef812b1c16b0eb40cc20fe4e1f6b35ffa49293b15c0890d174ed
+  languageName: node
+  linkType: hard
+
+"@iconify-json/simple-icons@npm:^1.2.92":
+  version: 1.2.92
+  resolution: "@iconify-json/simple-icons@npm:1.2.92"
+  dependencies:
+    "@iconify/types": "npm:*"
+  checksum: 10c0/0df6365ddcc6536e84bc32ba7ab0df13c9027e21bd45e159de84a657d0b3bf2881484deb2fd0d12a01327b90350deb4a1f2bb3b27cc5519dc6897a2f299a56f3
+  languageName: node
+  linkType: hard
+
 "@iconify/tools@npm:^4.0.5":
   version: 4.2.0
   resolution: "@iconify/tools@npm:4.2.0"
@@ -4298,6 +4316,8 @@ __metadata:
     "@eslint/js": "npm:^10.0.1"
     "@iconify-json/fa6-brands": "npm:^1.2.6"
     "@iconify-json/fa6-solid": "npm:^1.2.4"
+    "@iconify-json/logos": "npm:^1.2.11"
+    "@iconify-json/simple-icons": "npm:^1.2.92"
     "@tailwindcss/vite": "npm:^4.3.3"
     "@tsparticles/engine": "npm:^4.3.2"
     "@tsparticles/slim": "npm:^4.3.2"
