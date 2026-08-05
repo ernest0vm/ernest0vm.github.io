@@ -43,7 +43,7 @@ Se edita en `src/data/resumeData.json`:
 - El `bio` lleva el token `{{years}}`, que `About.astro` sustituye por los años
   de experiencia. No escribir el número a mano.
 - Los logos de empleos y educación (`logo`) **sí** son URLs remotas, por
-  decisión explícita del dueño del repo. Hay dos orígenes válidos:
+  decisión explícita del dueño del repo. Hay tres orígenes válidos:
   1. `https://www.google.com/s2/favicons?domain=X&sz=128`. Si el dominio no
      tiene favicon propio, el servicio devuelve un globo genérico (mismo hash
      para cualquier dominio inexistente); en ese caso no usarlo.
@@ -68,7 +68,8 @@ Se edita en `src/data/resumeData.json`:
   mismo esquema que la foto de perfil) para que las esquinas queden redondeadas.
   Con `object-contain` el radio recortaría una caja con márgenes transparentes y
   el redondeo no se vería; con `cover`, una fuente no cuadrada se recorta. Los
-  dos orígenes de arriba ya lo son (favicons 128×128, `company-logo_200_200`).
+  tres orígenes de arriba ya lo son (favicons 128×128, `company-logo_200_200`,
+  y la foto de página de Facebook).
 - Si no hay ninguno de los tres, no poner `logo`: `Timeline.astro` dibuja un
   monograma. Va debajo de la imagen, así que también cubre el día que una URL
   deje de responder.
