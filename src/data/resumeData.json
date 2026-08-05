@@ -249,40 +249,62 @@
   "portfolio": {
     "projects": [
       {
-        "title": "Bussi Mobility App (Flutter/Dart)",
-        "category": "Aplicacion movil para reservar asientos de transporte privado.",
-        "image": "https://mir-cdn.behance.net/v1/rendition/project_modules/max_1200/1bd5d397273273.5ec17c61f24a0.png",
-        "url": "https://www.behance.net/gallery/97273273/Bussi-Mobility-App"
+        "title": "Reservamos",
+        "category": "App de eCommerce de viajes · React Native",
+        "image": "https://play-lh.googleusercontent.com/BZ48Ayob4TFct1qiiyxSixE-7jCsIoZcOjYG_7o571BvCIe07OdINjExn1MAf8FwyYw-xuziQft0aeV0zwlnmg",
+        "url": "https://play.google.com/store/apps/details?id=com.reservamos.viajes"
       },
       {
-        "title": "Agencita Mobile UI/UX desing (Xamarin Forms)",
-        "category": "Aplicacion movil para agenda de citas medicas.",
-        "image": "https://mir-s3-cdn-cf.behance.net/project_modules/1400_opt_1/ba828781543235.5d02745ad937e.png",
-        "url": "https://www.behance.net/gallery/81543235/Agencita-Mobile-UIUX-Desing"
+        "title": "Roll&Bits",
+        "category": "App de pasajeros · Flutter",
+        "image": "https://play-lh.googleusercontent.com/bi4ldDvLNc9L42pny8-4wY2ccudW5qZnWxiPUyE6wzU1yKgbSmGs85JhFoBdvOQ-gEp0ZGWOP2fTF-ypjjXfSw",
+        "url": "https://play.google.com/store/apps/details?id=com.web_view_rnb"
       },
       {
-        "title": "FamilyCard Mobile (Xamarin Forms)",
-        "category": "Aplicacion de produccion de Familycard.",
-        "image": "https://mir-s3-cdn-cf.behance.net/project_modules/1400_opt_1/79da9981160171.5d029aa195d74.png",
-        "url": "https://www.behance.net/gallery/81160171/FamilyCard-Mobile-UIUX-Design"
+        "title": "Roll&Bits Conductor",
+        "category": "App de operación para conductores · Flutter",
+        "image": "https://play-lh.googleusercontent.com/cr02VB6g-6p7m3TK9tnswzwNYQ2Rkx2UFLQ9zCCpD55o6y5y9M2gHhIYKYqeekQUZ8cHGfo7Xi6B17LHS99I",
+        "url": "https://play.google.com/store/apps/details?id=com.gfa.rollandbits.driver"
       },
       {
-        "title": "FamilyCard Mobile Prototype (React Native)",
-        "category": "Prototipo funcional para migracion de Familycard de Xamarin Forms a React Native.",
-        "image": "https://mir-s3-cdn-cf.behance.net/project_modules/max_1200/e2670282129369.5d8be2fd01b69.png",
-        "url": "https://www.behance.net/gallery/82129369/FamilyCard-Mobile-UIUX-Design-in-React-Native"
+        "title": "Primera Plus",
+        "category": "Venta de boletos, white label · Flutter",
+        "image": "https://play-lh.googleusercontent.com/ojLPbmwLsU11NIbt51jYTDHGHL3DqDGITOzKK0zjUnqdFi7lHbndR_h9VoeSihkj3t7VvpXF_jWcSZFhflOz",
+        "url": "https://play.google.com/store/apps/details?id=com.gfa.PrimeraPlus"
       },
       {
-        "title": "Ecobici Technical Test (Kotlin)",
-        "category": "Examen tecnico; consume datos JSON, los enlista y muestra un filtro de acuerdo a tu ubicacion.",
-        "image": "https://mir-s3-cdn-cf.behance.net/project_modules/max_1200/0c585697271807.5ec173e17a120.png",
-        "url": "https://www.behance.net/gallery/97271807/Ecobici-Mobile-App-%28AndroidKotlin%29"
+        "title": "Expreso Brasilia",
+        "category": "Venta de pasajes en Colombia, white label · Flutter",
+        "image": "https://play-lh.googleusercontent.com/FiIj1N8IMS8R3uDmr3DbomYdDrGzEGzlsDyYmU8WIW9IzUVgI1wIuA7tvBOfRvRO1DmKgpmTBfsbpL1SLGS6Aw",
+        "url": "https://play.google.com/store/apps/details?id=com.expresobrasilia.viajes"
       },
       {
-        "title": "Ecobici Technical Test (Flutter/Dart)",
-        "category": "Examen tecnico; consume datos JSON, los enlista y muestra un filtro de acuerdo a tu ubicacion.",
-        "image": "https://mir-cdn.behance.net/v1/rendition/project_modules/max_1200/2bb78897272101.5ec1766ddbedd.png",
-        "url": "https://www.behance.net/gallery/97272101/Ecobici-Mobile-App-%28FlutterDart%29"
+        "title": "Smilebus",
+        "category": "Venta de boletos, white label · Flutter",
+        "image": "https://play-lh.googleusercontent.com/CoyjfrKZ6U6B5jf79IOFzBVmaq0EMWebuzXVtlrxJBlfQztsH-Un6Dp0i85Zsqv3Tf20KNghkGQ3LBZ-PahoSQ",
+        "url": "https://play.google.com/store/apps/details?id=com.smilebus.viajes"
+      },
+      {
+        "title": "Conecta GFA",
+        "category": "App de Grupo Flecha Amarilla · Flutter",
+        "image": "https://play-lh.googleusercontent.com/I8wSLlWcGxj2LmEzbisgY7-4lJVHOEgBKajdY3OLMF3erk32X1uCxrvnjqOa98PZgPSxERzGoYVrrp99eYV-_Q",
+        "url": "https://play.google.com/store/apps/details?id=com.web_view_conecta"
+      },
+      {
+        "title": "Vanda",
+        "category": "Reserva de viajes en van · Flutter · Retirada de las tiendas"
+      },
+      {
+        "title": "FamilyCard Health",
+        "category": "Telemedicina · Xamarin Forms",
+        "image": "https://play-lh.googleusercontent.com/uF_IByFrXp6EVIxqsKdxfG3DDKIjcgVeuu7c29NxK34k391SxKtsFAiFc74dqVU6u4p8dGcncJ022vEeFA6w0g",
+        "url": "https://play.google.com/store/apps/details?id=familycard.familycard"
+      },
+      {
+        "title": "SkyAlert",
+        "category": "Alerta sísmica",
+        "image": "https://play-lh.googleusercontent.com/jrwYlicGyj5N28m-6AGqw95qvLYQ7uzEGSHUa5huKiwQ5jmLquU-eBMD3N458yC_TK7OyuwFGifP7OVXV9Vvxw",
+        "url": "https://play.google.com/store/apps/details?id=com.disappster.skyalert"
       }
     ]
   }
