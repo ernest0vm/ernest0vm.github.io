@@ -4,14 +4,15 @@
   "private": true,
   "type": "module",
   "scripts": {
+    "prepare": "husky",
+    "postinstall": "husky",
     "dev": "astro dev",
     "start": "astro dev",
     "build": "astro build",
     "preview": "astro preview",
     "lint": "eslint .",
     "format": "prettier --write .",
-    "format:check": "prettier --check .",
-    "prepare": "husky"
+    "format:check": "prettier --check ."
   },
   "dependencies": {
     "@tailwindcss/vite": "^4.3.3",
@@ -24,15 +25,16 @@
     "@eslint/js": "^10.0.1",
     "@iconify-json/fa6-brands": "^1.2.6",
     "@iconify-json/fa6-solid": "^1.2.4",
-    "@iconify-json/logos": "^1.2.11",
     "@iconify-json/simple-icons": "^1.2.92",
     "astro-icon": "^1.1.5",
     "eslint": "^10.8.0",
     "eslint-plugin-astro": "^3.0.1",
+    "eslint-plugin-better-tailwindcss": "^4.7.0",
     "husky": "^9.1.7",
     "lint-staged": "^17.2.0",
     "prettier": "^3.9.6",
-    "prettier-plugin-astro": "^0.14.1"
+    "prettier-plugin-astro": "^0.14.1",
+    "prettier-plugin-tailwindcss": "^0.8.1"
   },
   "lint-staged": {
     "*.{js,mjs,cjs,astro}": [

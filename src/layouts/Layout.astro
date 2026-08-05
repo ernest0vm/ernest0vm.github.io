@@ -25,7 +25,67 @@ const { title = 'Ernesto Valdez', description = '' } = Astro.props;
       Saltar al contenido
     </a>
 
+    <!-- Site-wide backdrop. Fixed, so it stays put while the page scrolls and
+         every `glass` surface has something moving to reveal through it.
+         Must live outside any isolated stacking context: an ancestor with
+         `isolation: isolate` would become the backdrop root and clip what
+         backdrop-filter is allowed to sample. -->
+    <div
+      id="site-backdrop"
+      class="pointer-events-none fixed inset-0 -z-10"
+      aria-hidden="true"
+    >
+      <div
+        class="absolute -top-40 left-1/4 h-[38rem] w-[38rem] rounded-full bg-accent-500/20 blur-[100px]"
+      >
+      </div>
+      <div
+        class="absolute right-0 bottom-1/4 h-[32rem] w-[32rem] rounded-full bg-violet-400/25 blur-[110px]"
+      >
+      </div>
+      <div id="particles-bg" class="absolute inset-0"></div>
+    </div>
+
     <slot />
+
+    <script>
+      import { tsParticles } from '@tsparticles/engine';
+      import { loadSlim } from '@tsparticles/slim';
+
+      const still = window.matchMedia(
+        '(prefers-reduced-motion: reduce)',
+      ).matches;
+
+      async function initParticles() {
+        await loadSlim(tsParticles);
+        await tsParticles.load({
+          id: 'particles-bg',
+          options: {
+            fullScreen: { enable: false },
+            background: { color: 'transparent' },
+            fpsLimit: 60,
+            detectRetina: true,
+            particles: {
+              number: { value: 70, density: { enable: true } },
+              color: { value: '#7fe9f5' },
+              links: {
+                enable: true,
+                color: '#7fe9f5',
+                distance: 130,
+                opacity: 0.35,
+                width: 1,
+              },
+              // Honour the OS setting: keep the constellation, drop the drift.
+              move: { enable: !still, speed: 0.8 },
+              opacity: { value: 0.5 },
+              size: { value: { min: 1, max: 3 } },
+            },
+          },
+        });
+      }
+
+      initParticles();
+    </script>
 
     <script is:inline>
       // Unregister the service worker left behind by the old CRA build so

@@ -38,6 +38,11 @@ Si una actualización es urgente y confías en ella, agrégala a `npmPreapproved
 - **Prettier** formatea y **ESLint** valida (`yarn format` / `yarn lint`).
 - **husky + lint-staged** corren ambos automáticamente sobre los archivos staged en cada commit.
 
+Ambos entienden Tailwind, con los roles separados para que no se peleen por las mismas líneas:
+
+- `prettier-plugin-tailwindcss` ordena las clases. Lee el tema desde `tailwindStylesheet`, apuntado a `src/styles/global.css`.
+- `eslint-plugin-better-tailwindcss` aporta solo las reglas de corrección — clases en conflicto (`flex` + `block`), desconocidas y concatenadas — vía su `entryPoint`, que en Tailwind v4 es esa misma hoja. Las utilidades propias (`glass`, `glass-strong`) se reconocen sin configuración extra.
+
 ## Build y deploy
 
 ```bash

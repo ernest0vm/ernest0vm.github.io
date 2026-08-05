@@ -17,54 +17,43 @@ const iconFor = (className = '') =>
   brandIcons[className.replace(/^fab fa-/, '')] ?? 'fa6-solid:link';
 ---
 
-<section id="home" class="relative isolate min-h-svh overflow-hidden">
-  <div id="particles-bg" class="absolute inset-0 -z-10" aria-hidden="true">
-  </div>
-
-  <div class="absolute inset-0 flex flex-col items-center justify-center px-6">
-    <div
-      class="absolute -top-32 left-1/4 h-[38rem] w-[38rem] rounded-full bg-accent-500/20 blur-[100px]"
-      aria-hidden="true"
+<!-- No `isolate` here: it would make this section the backdrop root and stop
+     the glass surfaces inside from sampling the fixed particle layer. -->
+<section
+  id="home"
+  class="relative flex min-h-svh flex-col items-center justify-center px-6"
+>
+  <div class="flex flex-col items-center text-center">
+    <h1
+      class="bg-gradient-to-b from-white to-white/45 bg-clip-text text-[clamp(2.75rem,10vw,7rem)] leading-[0.95] font-bold tracking-tight text-transparent"
     >
-    </div>
-    <div
-      class="absolute -right-20 bottom-0 h-[32rem] w-[32rem] rounded-full bg-violet-400/25 blur-[110px]"
-      aria-hidden="true"
-    >
-    </div>
+      {name}
+    </h1>
 
-    <div class="relative flex flex-col items-center text-center">
-      <h1
-        class="bg-gradient-to-b from-white to-white/45 bg-clip-text text-[clamp(2.75rem,10vw,7rem)] leading-[0.95] font-bold tracking-tight text-transparent"
-      >
-        {name}
-      </h1>
+    <p class="mt-6 max-w-xl text-lg text-balance text-white/70 sm:text-xl">
+      {description}
+    </p>
 
-      <p class="mt-6 max-w-xl text-lg text-balance text-white/70 sm:text-xl">
-        {description}
-      </p>
-
-      <ul class="mt-10 flex items-center justify-center gap-2 sm:gap-3">
-        {
-          networks.map((network) => (
-            <li>
-              <a
-                href={network.url}
-                target="_blank"
-                rel="noopener noreferrer"
-                aria-label={network.name}
-                class="glass group flex size-11 items-center justify-center rounded-full text-white/70 transition hover:-translate-y-0.5 hover:text-accent-300 sm:size-12"
-              >
-                <Icon
-                  name={iconFor(network.className)}
-                  class="size-4.5 sm:size-5"
-                />
-              </a>
-            </li>
-          ))
-        }
-      </ul>
-    </div>
+    <ul class="mt-10 flex items-center justify-center gap-2 sm:gap-3">
+      {
+        networks.map((network) => (
+          <li>
+            <a
+              href={network.url}
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label={network.name}
+              class="group glass flex size-11 items-center justify-center rounded-full text-white/70 transition hover:-translate-y-0.5 hover:text-accent-300 sm:size-12"
+            >
+              <Icon
+                name={iconFor(network.className)}
+                class="size-4.5 sm:size-5"
+              />
+            </a>
+          </li>
+        ))
+      }
+    </ul>
   </div>
 
   <a
@@ -75,37 +64,3 @@ const iconFor = (className = '') =>
     <Icon name="fa6-solid:chevron-down" class="size-4" />
   </a>
 </section>
-
-<script>
-  import { tsParticles } from '@tsparticles/engine';
-  import { loadSlim } from '@tsparticles/slim';
-
-  async function initParticles() {
-    await loadSlim(tsParticles);
-    await tsParticles.load({
-      id: 'particles-bg',
-      options: {
-        fullScreen: { enable: false },
-        background: { color: 'transparent' },
-        fpsLimit: 60,
-        detectRetina: true,
-        particles: {
-          number: { value: 60, density: { enable: true } },
-          color: { value: '#7fe9f5' },
-          links: {
-            enable: true,
-            color: '#7fe9f5',
-            distance: 130,
-            opacity: 0.35,
-            width: 1,
-          },
-          move: { enable: true, speed: 0.8 },
-          opacity: { value: 0.5 },
-          size: { value: { min: 1, max: 3 } },
-        },
-      },
-    });
-  }
-
-  initParticles();
-</script>
