@@ -51,8 +51,13 @@ Se edita en `src/data/resumeData.json`:
      (`mx.linkedin.com/company/<slug>`). Estas URLs de `media.licdn.com` se
      emiten con `e=2147483647`, el centinela de no-caducidad, y cargan sin
      cookies ni referer. **Conservar el query completo**: sin la firma dan 403.
-     Esto aplica solo a logos de empresa — las imágenes de perfil, publicaciones
-     e Instagram/Facebook sí llevan tokens que expiran en horas.
+     Esto aplica solo a logos de empresa — las imágenes de perfil y de
+     publicaciones sí llevan tokens que expiran en horas.
+  3. `https://graph.facebook.com/<slug>/picture?type=large` para páginas
+     públicas de Facebook. Devuelve 200 sin token y **no** es una URL firmada:
+     Graph resuelve el CDN en cada petición, así que no caduca. Raspar
+     `facebook.com/<slug>` directamente no sirve — responde 400 sin sesión y no
+     expone `og:image`.
 - **La fuente debe ser cuadrada.** `Timeline.astro` recorta el logo con
   `object-cover` y un radio interior (`calc(var(--radius-xl) - 0.375rem)`, el
   mismo esquema que la foto de perfil) para que las esquinas queden redondeadas.
