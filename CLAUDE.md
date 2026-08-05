@@ -53,6 +53,11 @@ Se edita en `src/data/resumeData.json`:
      cookies ni referer. **Conservar el query completo**: sin la firma dan 403.
      Esto aplica solo a logos de empresa — las imágenes de perfil y de
      publicaciones sí llevan tokens que expiran en horas.
+
+     **Ojo con el HTML pegado desde una sesión iniciada**: ahí LinkedIn sirve
+     la variante `company-logo_100_100` con un `e=` de pocas semanas. Hay que
+     volver a sacar la URL de la página pública, no reutilizar la pegada.
+
   3. `https://graph.facebook.com/<slug>/picture?type=large` para páginas
      públicas de Facebook. Devuelve 200 sin token y **no** es una URL firmada:
      Graph resuelve el CDN en cada petición, así que no caduca. Raspar
@@ -64,12 +69,24 @@ Se edita en `src/data/resumeData.json`:
   Con `object-contain` el radio recortaría una caja con márgenes transparentes y
   el redondeo no se vería; con `cover`, una fuente no cuadrada se recorta. Los
   dos orígenes de arriba ya lo son (favicons 128×128, `company-logo_200_200`).
-- Si no hay ninguno de los dos, no poner `logo`: `Timeline.astro` dibuja un
+- Si no hay ninguno de los tres, no poner `logo`: `Timeline.astro` dibuja un
   monograma. Va debajo de la imagen, así que también cubre el día que una URL
   deje de responder.
+- Una misma empresa puede aparecer en varias entradas de `work` cuando son
+  verticales de negocio distintas (hoy: Reserhub para B2B y Reservamos para
+  B2C, cada una con el logo de su propio dominio). No fusionarlas.
 - Verificar que el dominio o la página pertenezca de verdad a la empresa antes
   de usarlo; ya hubo dos casos (`cant.mx`, `smsolutions.com.mx`) que resultaron
   ser negocios ajenos con nombre parecido.
+
+## Datos de contacto
+
+`phone` y `email` **no deben aparecer en claro en el HTML**. `About.astro` los
+emite en base64 y los arma como enlaces `tel:`/`mailto:` al hacer clic en «Ver
+teléfono» / «Ver correo». No es cifrado —quien quiera puede decodificarlo—, pero
+mantiene los valores fuera del alcance de los recolectores de direcciones, que
+leen el HTML plano. Al tocar esa sección, verificar con
+`grep` sobre `dist/index.html` que los valores siguen sin aparecer.
 
 ## Años de experiencia
 
