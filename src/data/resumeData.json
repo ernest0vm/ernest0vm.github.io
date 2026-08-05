@@ -250,13 +250,13 @@
     "projects": [
       {
         "title": "Reservamos",
-        "category": "App de eCommerce de viajes · React Native",
+        "category": "App de eCommerce de viajes · Expo",
         "image": "https://play-lh.googleusercontent.com/BZ48Ayob4TFct1qiiyxSixE-7jCsIoZcOjYG_7o571BvCIe07OdINjExn1MAf8FwyYw-xuziQft0aeV0zwlnmg",
         "url": "https://play.google.com/store/apps/details?id=com.reservamos.viajes"
       },
       {
         "title": "Roll&Bits",
-        "category": "App de pasajeros · Flutter",
+        "category": "App de pasajeros · Expo",
         "image": "https://play-lh.googleusercontent.com/bi4ldDvLNc9L42pny8-4wY2ccudW5qZnWxiPUyE6wzU1yKgbSmGs85JhFoBdvOQ-gEp0ZGWOP2fTF-ypjjXfSw",
         "url": "https://play.google.com/store/apps/details?id=com.web_view_rnb"
       },
@@ -268,25 +268,25 @@
       },
       {
         "title": "Primera Plus",
-        "category": "Venta de boletos, white label · Flutter",
+        "category": "Venta de boletos, white label · Expo",
         "image": "https://play-lh.googleusercontent.com/ojLPbmwLsU11NIbt51jYTDHGHL3DqDGITOzKK0zjUnqdFi7lHbndR_h9VoeSihkj3t7VvpXF_jWcSZFhflOz",
         "url": "https://play.google.com/store/apps/details?id=com.gfa.PrimeraPlus"
       },
       {
         "title": "Expreso Brasilia",
-        "category": "Venta de pasajes en Colombia, white label · Flutter",
+        "category": "Venta de pasajes en Colombia, white label · Expo",
         "image": "https://play-lh.googleusercontent.com/FiIj1N8IMS8R3uDmr3DbomYdDrGzEGzlsDyYmU8WIW9IzUVgI1wIuA7tvBOfRvRO1DmKgpmTBfsbpL1SLGS6Aw",
         "url": "https://play.google.com/store/apps/details?id=com.expresobrasilia.viajes"
       },
       {
         "title": "Smilebus",
-        "category": "Venta de boletos, white label · Flutter",
+        "category": "Venta de boletos, white label · Expo",
         "image": "https://play-lh.googleusercontent.com/CoyjfrKZ6U6B5jf79IOFzBVmaq0EMWebuzXVtlrxJBlfQztsH-Un6Dp0i85Zsqv3Tf20KNghkGQ3LBZ-PahoSQ",
         "url": "https://play.google.com/store/apps/details?id=com.smilebus.viajes"
       },
       {
         "title": "Conecta GFA",
-        "category": "App de Grupo Flecha Amarilla · Flutter",
+        "category": "App de Grupo Flecha Amarilla · Expo",
         "image": "https://play-lh.googleusercontent.com/I8wSLlWcGxj2LmEzbisgY7-4lJVHOEgBKajdY3OLMF3erk32X1uCxrvnjqOa98PZgPSxERzGoYVrrp99eYV-_Q",
         "url": "https://play.google.com/store/apps/details?id=com.web_view_conecta"
       },
@@ -302,7 +302,7 @@
       },
       {
         "title": "SkyAlert",
-        "category": "Alerta sísmica",
+        "category": "Alerta sísmica · React Native",
         "image": "https://play-lh.googleusercontent.com/jrwYlicGyj5N28m-6AGqw95qvLYQ7uzEGSHUa5huKiwQ5jmLquU-eBMD3N458yC_TK7OyuwFGifP7OVXV9Vvxw",
         "url": "https://play.google.com/store/apps/details?id=com.disappster.skyalert"
       }
