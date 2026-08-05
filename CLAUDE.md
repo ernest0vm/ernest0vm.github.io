@@ -53,6 +53,12 @@ Se edita en `src/data/resumeData.json`:
      cookies ni referer. **Conservar el query completo**: sin la firma dan 403.
      Esto aplica solo a logos de empresa — las imágenes de perfil, publicaciones
      e Instagram/Facebook sí llevan tokens que expiran en horas.
+- **La fuente debe ser cuadrada.** `Timeline.astro` recorta el logo con
+  `object-cover` y un radio interior (`calc(var(--radius-xl) - 0.375rem)`, el
+  mismo esquema que la foto de perfil) para que las esquinas queden redondeadas.
+  Con `object-contain` el radio recortaría una caja con márgenes transparentes y
+  el redondeo no se vería; con `cover`, una fuente no cuadrada se recorta. Los
+  dos orígenes de arriba ya lo son (favicons 128×128, `company-logo_200_200`).
 - Si no hay ninguno de los dos, no poner `logo`: `Timeline.astro` dibuja un
   monograma. Va debajo de la imagen, así que también cubre el día que una URL
   deje de responder.
