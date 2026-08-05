@@ -43,17 +43,22 @@ Se edita en `src/data/resumeData.json`:
 - El `bio` lleva el token `{{years}}`, que `About.astro` sustituye por los años
   de experiencia. No escribir el número a mano.
 - Los logos de empleos y educación (`logo`) **sí** son URLs remotas, por
-  decisión explícita del dueño del repo pese al riesgo de que caduquen. Usan
-  `https://www.google.com/s2/favicons?domain=X&sz=128`. Si el dominio no tiene
-  favicon propio, el servicio devuelve un globo genérico (mismo hash para
-  cualquier dominio inexistente): en ese caso **no** poner `logo` y dejar que
-  `Timeline.astro` muestre el monograma. Ese monograma va debajo de la imagen,
-  así que también cubre el día que una URL deje de responder.
-- No tomar logos de LinkedIn ni de redes sociales: sus CDN firman las URLs con
-  tokens que expiran en horas y bloquean el hotlinking.
-- Verificar que el dominio pertenezca de verdad a la empresa antes de usarlo;
-  ya hubo dos casos (`cant.mx`, `smsolutions.com.mx`) que resultaron ser
-  negocios ajenos con nombre parecido.
+  decisión explícita del dueño del repo. Hay dos orígenes válidos:
+  1. `https://www.google.com/s2/favicons?domain=X&sz=128`. Si el dominio no
+     tiene favicon propio, el servicio devuelve un globo genérico (mismo hash
+     para cualquier dominio inexistente); en ese caso no usarlo.
+  2. El `og:image` de una página **pública de empresa** en LinkedIn
+     (`mx.linkedin.com/company/<slug>`). Estas URLs de `media.licdn.com` se
+     emiten con `e=2147483647`, el centinela de no-caducidad, y cargan sin
+     cookies ni referer. **Conservar el query completo**: sin la firma dan 403.
+     Esto aplica solo a logos de empresa — las imágenes de perfil, publicaciones
+     e Instagram/Facebook sí llevan tokens que expiran en horas.
+- Si no hay ninguno de los dos, no poner `logo`: `Timeline.astro` dibuja un
+  monograma. Va debajo de la imagen, así que también cubre el día que una URL
+  deje de responder.
+- Verificar que el dominio o la página pertenezca de verdad a la empresa antes
+  de usarlo; ya hubo dos casos (`cant.mx`, `smsolutions.com.mx`) que resultaron
+  ser negocios ajenos con nombre parecido.
 
 ## Años de experiencia
 
