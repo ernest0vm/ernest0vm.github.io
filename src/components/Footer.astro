@@ -17,14 +17,19 @@ const iconFor = (className = '') =>
 ---
 
 <footer class="px-6 pt-10 pb-14">
+  <!-- A 3-column grid rather than justify-between: with flex, the middle group
+       lands wherever the two unequal outer items leave room, which pushed the
+       social icons visibly right of centre. Equal columns centre them for real. -->
   <div
-    class="glass mx-auto flex max-w-5xl flex-col items-center gap-6 rounded-glass px-6 py-8 sm:flex-row sm:justify-between"
+    class="glass mx-auto flex max-w-5xl flex-col items-center gap-6 rounded-glass px-6 py-8 sm:grid sm:grid-cols-3 sm:gap-4"
   >
-    <p class="order-2 text-xs text-white/40 sm:order-1">
+    <p class="order-2 text-xs text-white/40 sm:order-1 sm:justify-self-start">
       © {year} Ernesto Valdez
     </p>
 
-    <ul class="order-1 flex items-center gap-2 sm:order-2">
+    <ul
+      class="order-1 flex items-center gap-2 sm:order-2 sm:justify-self-center"
+    >
       {
         networks.map((network) => (
           <li>
@@ -45,7 +50,7 @@ const iconFor = (className = '') =>
     <a
       href="#home"
       aria-label="Volver arriba"
-      class="order-3 flex size-9 items-center justify-center rounded-full text-white/50 transition hover:bg-white/10 hover:text-accent-300"
+      class="order-3 flex size-9 items-center justify-center rounded-full text-white/50 transition hover:bg-white/10 hover:text-accent-300 sm:justify-self-end"
     >
       <Icon name="fa6-solid:chevron-up" class="size-4" />
     </a>

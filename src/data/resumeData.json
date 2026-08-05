@@ -60,52 +60,59 @@
     ],
     "work": [
       {
-        "company": "Reservamos",
-        "title": "Lead Mobile Engineer",
-        "years": "MAYO 2021 - ACTUAL",
-        "description": "Actualmente  lidero  el  área  móvil  de  la  vertical  B2C  dando  mantenimiento  a  la  app  de Reservamosla  cual  se encuentra en React Native con Expoe integraciones nativas de Adyen, también soy el responsable del desarrollo de la app de Vanda Pasajeroy Vanda Conductorcon Fluttery a través de estrategias de white labeltambién desarrollo  la  app  de Roll&Bits Pasajeroy Roll&Bits  Conductor,  adicional  desarrolle  un  package  llamado Flutter_Adyen_CSE, además de utilizar SDK de terceros como OneSignal, Mixpanel, Facebook App Events, Riskified entre otros.",
-        "logo": "https://www.google.com/s2/favicons?domain=reservamos.com&sz=128"
+        "company": "Reserhub",
+        "title": "Mobile Engineer Tech Lead",
+        "years": "Abril 2025 - Actual",
+        "description": "Como líder del equipo Platform en Reserhub impulso la mejora continua a través de la estrategia One Platform. Junto con el equipo diseñamos y mantenemos infraestructuras escalables, seguras y eficientes que permiten a los squads entregar software de forma más rápida, confiable y autónoma. Promovemos la estandarización, reducimos el trabajo duplicado y facilitamos una experiencia de autoservicio que mejora la colaboración entre áreas, siendo el puente que conecta tecnología y procesos.",
+        "logo": "https://www.google.com/s2/favicons?domain=reserhub.com&sz=128"
       },
       {
-        "company": "Chib Mexico",
-        "title": "Tech Lead / Full Stack Developer",
-        "years": "JULIO 2020 - MAYO 2021",
-        "description": "Desarrollo de nuevas aplicaciones para iOS y Android con Flutter de CHIBMX y CHIB USA para envió de remesas de manera instantánea, desarrollo y mantenimiento de landing page y administrador CMS desarrollados en Angular 11, desarrollo  de microservicios  basados en NodeJS-ExpressJS, Python–Flask, configuración de Api Gateway KongHQ, despliegue de microservicios en AWS a través de Jenkins y Docker, mantenimiento de bot de whatsapp a través de Twilio y programación de despliegue de las aplicaciones a Google Play y App Store.",
+        "company": "Reserhub",
+        "title": "Lead Mobile Engineer",
+        "years": "Mayo 2021 - Abril 2025",
+        "description": "Como líder de desarrollo de apps móviles me encargué de crear y mantener las apps de Reservamos: las apps de Pasajero para venta de boletos de vans y autobús para Vanda y Roll&Bits, así como apps de operación interna exclusivas para conductores. También implementé nuevas funcionalidades en la app de eCommerce de Reservamos, utilizando tecnologías híbridas de vanguardia como Flutter y React Native.",
+        "logo": "https://www.google.com/s2/favicons?domain=reserhub.com&sz=128"
+      },
+      {
+        "company": "Chib",
+        "title": "Tech Lead",
+        "years": "Julio 2020 - Mayo 2021",
+        "description": "Desarrollo de nuevas aplicaciones para iOS y Android con Flutter de CHIB MX y CHIB USA para envío de remesas de manera instantánea, desarrollo y mantenimiento de landing page y administrador CMS en Angular 11, microservicios basados en NodeJS-ExpressJS y Python-Flask, configuración de API Gateway KongHQ, despliegue de microservicios en AWS a través de Jenkins y Docker, mantenimiento de bot de WhatsApp con Twilio y programación de despliegue de las aplicaciones a Google Play y App Store.",
         "logo": "https://media.licdn.com/dms/image/v2/C4E0BAQGNfta2w2bezg/company-logo_200_200/company-logo_200_200/0/1641577163643/chibmex_logo?e=2147483647&v=beta&t=lE7ltoFs5tZdm6ILr0vqx5cLCSsiu7qR6X_SqqMy1ws"
       },
       {
-        "company": "Bussi Mobility",
+        "company": "BUSSI",
         "title": "Flutter Mobile Developer",
         "years": "Octubre 2019 - Marzo 2020",
-        "description": "Desarrollo y mantenimiento de Apps BUSSI y BUSSI Driver, Desarrollo de Aplicaciones Cross-Platform (Flutter), Uso de lenguajes Dart, Swift, Java, Kotlin, Manejo de GraphQL, Redux, Fastlane, Firebase, WebSockets, Despliegue de aplicaciones en Google Play Store y Apple App Store.",
+        "description": "Desarrollo y mantenimiento de las apps BUSSI y BUSSI Driver, aplicaciones cross-platform con Flutter. Uso de Dart, Swift, Java y Kotlin; manejo de GraphQL, Redux, Fastlane, Firebase y WebSockets, y despliegue de aplicaciones en Google Play Store y Apple App Store.",
         "logo": "https://media.licdn.com/dms/image/v2/C4E0BAQFpyerMJZZdAg/company-logo_200_200/company-logo_200_200/0/1630595480536/bussi_logo?e=2147483647&v=beta&t=1HtN01B0Ta-iwjQSlYllDPeBaObsTxgO-pXzxSYS5AM"
       },
       {
-        "company": "Grupo CAN&T",
+        "company": "CANTEC",
         "title": "Sr. Mobile App Developer",
-        "years": "Enero 2019 - Octubre 2019",
-        "description": "Desarrollo de Aplicaciones Moviles en Cross Platform (Xamarin Forms & React Native), Soporte a las aplicaciones de FamilyCard, MediChat y Multidoctores, Diseño de interfaces UI/UX, Programación con leguajes .Net, JS, Java y Objetive-C, Cross Platform iOS, Android, UWP, Despliegue de aplicaciones en Google Play Store y Apple App Store, Manejo de Microsoft Azure para operacion de aplicaciones.",
+        "years": "Enero 2019 - Septiembre 2019",
+        "description": "Desarrollo de aplicaciones móviles cross-platform con Xamarin Forms y React Native, soporte a las aplicaciones de FamilyCard, MediChat y Multidoctores, diseño de interfaces UI/UX y programación en .NET, JS, Java y Objective-C para iOS, Android y UWP. Despliegue en Google Play Store y Apple App Store, y manejo de Microsoft Azure para la operación de las aplicaciones.",
         "logo": "https://www.google.com/s2/favicons?domain=grupocantec.com&sz=128"
       },
       {
-        "company": "SkyAlert de Mexico",
-        "title": "IoT Enginner / Production Lead",
+        "company": "SkyAlert",
+        "title": "IoT Hardware Engineer / Production Leader",
         "years": "Julio 2017 - Enero 2019",
-        "description": "En SkyAlert trabajé como desarrollador de hardware y software utilizando las tecnologías más innovadoras, como el internet de las cosas (IoT), infraestructuras basadas en la nube, datos analíticos, así como el desarrollo de herramientas para el estudio sísmico, aplicadas en la red sísmica de SkyAlert (Red SkyAlert) y en la evolución de los dispositivos de prevención EPICENTER. Así mismo me encargo de los esfuerzos para lograr el abastecimiento de los dispositivos para clientes comerciales y corporativos, desarrollando herramientas para hacer más eficiente la producción y planificación de recursos de manufactura.",
+        "description": "Desarrollo de hardware y software con tecnologías como internet de las cosas (IoT), infraestructuras en la nube y datos analíticos, además de herramientas para el estudio sísmico aplicadas en la Red SkyAlert y en la evolución de los dispositivos de prevención EPICENTER. También lideré los esfuerzos de abastecimiento de dispositivos para clientes comerciales y corporativos, desarrollando herramientas para hacer más eficiente la producción y la planificación de recursos de manufactura.",
         "logo": "https://www.google.com/s2/favicons?domain=skyalert.mx&sz=128"
       },
       {
         "company": "Service Management Solutions",
-        "title": "Motherboard Enginner",
+        "title": "Motherboard Engineer Level 3",
         "years": "Junio 2017 - Julio 2017",
-        "description": "Ocupaba el puesto de MotherBoard Enginner de Nivel 3, reparando Motherboards de laptop y All in One de la marca HP y Asus a nivel componente de montaje superficial BGA, QFN, SOD, SOT, mediante herramientas especializadas para dicho fin, diagnosticando fallas y ejecutando soluciones para los fallos que existan en los productos de garantía comercial y empresarial, control de calidad, revisión y testeo de dispositivos electrónicos nuevos y retorno a campo de dispositivos electrónicos funcionales.",
+        "description": "Reparación de motherboards de laptop y All in One de las marcas HP y Asus a nivel componente de montaje superficial BGA, QFN, SOD y SOT, mediante herramientas especializadas. Diagnóstico de fallas y ejecución de soluciones en productos de garantía comercial y empresarial, control de calidad, revisión y testeo de dispositivos electrónicos nuevos y retorno a campo de dispositivos funcionales.",
         "logo": "https://www.google.com/s2/favicons?domain=smsmexico.mx&sz=128"
       },
       {
         "company": "Grupo Avatecsys",
-        "title": "Head of Technology",
+        "title": "Head of Information Technology",
         "years": "Septiembre 2009 - Marzo 2017",
-        "description": "Ejercí el puesto de Gerente de Tecnología en Grupo Avatecsys S.A. diseñando y planeando los proyectos que requieren implementar soluciones mediante dispositivos electrónicos automatizados o controlados remotamente en procesos de producción, seguridad, prevención de desastres y protección civil, dando como resultado la patente MX311249B del Sistema de Alerta Temprano Integral Sísmico, entre otras actividades como manejo de equipos de trabajo, administración de redes de voz y datos, soporte técnico a computadoras, capacitación de personal, atención a clientes, soporte a ventas, reparación de dispositivos electrónicos, inventarios, diseño de planos de instalación de sistemas de seguridad, diseño de página web y diseño de publicidad.",
+        "description": "Jefe de Tecnología en Grupo Avatecsys S.A., diseñando y planeando proyectos que implementan soluciones mediante dispositivos electrónicos automatizados o controlados remotamente en procesos de producción, seguridad, prevención de desastres y protección civil, dando como resultado la patente MX311249B del Sistema de Alerta Temprano Integral Sísmico. Entre otras actividades: manejo de equipos de trabajo, administración de redes de voz y datos, soporte técnico, capacitación de personal, atención a clientes y reparación de dispositivos electrónicos.",
         "logo": "https://media.licdn.com/dms/image/v2/C560BAQG4ynsSle8R2g/company-logo_200_200/company-logo_200_200/0/1630633348513?e=2147483647&v=beta&t=Kjt8QHxSvDWe6K3TSqszib2dwWL3ey30v8rlFX9qxio"
       }
     ],

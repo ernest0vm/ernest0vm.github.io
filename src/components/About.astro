@@ -17,6 +17,11 @@ const phone = data?.phone;
 const email = data?.email;
 const resumeDownload = data?.resumedownload;
 
+// Phone and email ship base64-encoded and are assembled on click. This is not
+// encryption — a determined scraper can decode it — but it does keep the plain
+// values out of the HTML, which is what naive address harvesters read.
+const encode = (value) => Buffer.from(String(value), 'utf8').toString('base64');
+
 const details = [
   { icon: 'fa6-solid:user', label: name },
   {
@@ -25,10 +30,16 @@ const details = [
   },
   {
     icon: 'fa6-solid:phone',
-    label: phone,
-    href: `tel:${String(phone).replace(/\s/g, '')}`,
+    reveal: 'Ver teléfono',
+    value: encode(phone),
+    scheme: 'tel',
   },
-  { icon: 'fa6-solid:envelope', label: email, href: `mailto:${email}` },
+  {
+    icon: 'fa6-solid:envelope',
+    reveal: 'Ver correo',
+    value: encode(email),
+    scheme: 'mailto',
+  },
 ];
 ---
 
@@ -59,13 +70,16 @@ const details = [
                   name={detail.icon}
                   class="size-4 shrink-0 text-accent-400"
                 />
-                {detail.href ? (
-                  <a
-                    href={detail.href}
-                    class="truncate text-sm text-white/80 hover:text-accent-300"
+                {detail.value ? (
+                  <button
+                    type="button"
+                    data-reveal
+                    data-value={detail.value}
+                    data-scheme={detail.scheme}
+                    class="cursor-pointer truncate text-sm text-white/60 underline decoration-dotted underline-offset-4 hover:text-accent-300"
                   >
-                    {detail.label}
-                  </a>
+                    {detail.reveal}
+                  </button>
                 ) : (
                   <span class="truncate text-sm text-white/80">
                     {detail.label}
@@ -89,3 +103,28 @@ const details = [
     </div>
   </div>
 </Section>
+
+<script>
+  // Swap the "Ver teléfono/correo" button for the real value on click. The
+  // value only exists decoded once the visitor asks for it.
+  document.querySelectorAll('[data-reveal]').forEach((button) => {
+    button.addEventListener(
+      'click',
+      () => {
+        const value = atob(button.dataset.value ?? '');
+        const scheme = button.dataset.scheme;
+        const href =
+          scheme === 'tel'
+            ? `tel:${value.replace(/\s/g, '')}`
+            : `${scheme}:${value}`;
+
+        const link = document.createElement('a');
+        link.href = href;
+        link.textContent = value;
+        link.className = 'truncate text-sm text-white/80 hover:text-accent-300';
+        button.replaceWith(link);
+      },
+      { once: true },
+    );
+  });
+</script>
