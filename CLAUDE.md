@@ -5,8 +5,7 @@ en GitHub Pages bajo `https://ernest0vm.github.io/resume/`.
 
 **Idioma**: el texto visible al usuario va en español; el código, los comentarios
 y los mensajes de commit en inglés. En el texto visible, preferir el término en
-español antes que el anglicismo cuando exista uno de uso corriente: «marca
-blanca», no «white label».
+español antes que el anglicismo cuando exista uno de uso corriente.
 
 ## Comandos
 
@@ -78,6 +77,9 @@ Se edita en `src/data/resumeData.json`:
 - Una misma empresa puede aparecer en varias entradas de `work` cuando son
   verticales de negocio distintas (hoy: Reserhub para B2B y Reservamos para
   B2C, cada una con el logo de su propio dominio). No fusionarlas.
+- **No describir ninguna app como producto de marca blanca** (ni con el
+  anglicismo equivalente), aunque así venga redactado en LinkedIn o en el CV
+  original: es decisión explícita del dueño del repo. Ya se coló dos veces.
 - Verificar que el dominio o la página pertenezca de verdad a la empresa antes
   de usarlo; ya hubo dos casos (`cant.mx`, `smsolutions.com.mx`) que resultaron
   ser negocios ajenos con nombre parecido.
