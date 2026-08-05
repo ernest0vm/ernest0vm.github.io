@@ -70,7 +70,8 @@
         "company": "Chib Mexico",
         "title": "Tech Lead / Full Stack Developer",
         "years": "JULIO 2020 - MAYO 2021",
-        "description": "Desarrollo de nuevas aplicaciones para iOS y Android con Flutter de CHIBMX y CHIB USA para envió de remesas de manera instantánea, desarrollo y mantenimiento de landing page y administrador CMS desarrollados en Angular 11, desarrollo  de microservicios  basados en NodeJS-ExpressJS, Python–Flask, configuración de Api Gateway KongHQ, despliegue de microservicios en AWS a través de Jenkins y Docker, mantenimiento de bot de whatsapp a través de Twilio y programación de despliegue de las aplicaciones a Google Play y App Store."
+        "description": "Desarrollo de nuevas aplicaciones para iOS y Android con Flutter de CHIBMX y CHIB USA para envió de remesas de manera instantánea, desarrollo y mantenimiento de landing page y administrador CMS desarrollados en Angular 11, desarrollo  de microservicios  basados en NodeJS-ExpressJS, Python–Flask, configuración de Api Gateway KongHQ, despliegue de microservicios en AWS a través de Jenkins y Docker, mantenimiento de bot de whatsapp a través de Twilio y programación de despliegue de las aplicaciones a Google Play y App Store.",
+        "logo": "https://media.licdn.com/dms/image/v2/C4E0BAQGNfta2w2bezg/company-logo_200_200/company-logo_200_200/0/1641577163643/chibmex_logo?e=2147483647&v=beta&t=lE7ltoFs5tZdm6ILr0vqx5cLCSsiu7qR6X_SqqMy1ws"
       },
       {
         "company": "Bussi Mobility",
@@ -102,7 +103,8 @@
         "company": "Grupo Avatecsys",
         "title": "Head of Technology",
         "years": "Septiembre 2009 - Marzo 2017",
-        "description": "Ejercí el puesto de Gerente de Tecnología en Grupo Avatecsys S.A. diseñando y planeando los proyectos que requieren implementar soluciones mediante dispositivos electrónicos automatizados o controlados remotamente en procesos de producción, seguridad, prevención de desastres y protección civil, dando como resultado la patente MX311249B del Sistema de Alerta Temprano Integral Sísmico, entre otras actividades como manejo de equipos de trabajo, administración de redes de voz y datos, soporte técnico a computadoras, capacitación de personal, atención a clientes, soporte a ventas, reparación de dispositivos electrónicos, inventarios, diseño de planos de instalación de sistemas de seguridad, diseño de página web y diseño de publicidad."
+        "description": "Ejercí el puesto de Gerente de Tecnología en Grupo Avatecsys S.A. diseñando y planeando los proyectos que requieren implementar soluciones mediante dispositivos electrónicos automatizados o controlados remotamente en procesos de producción, seguridad, prevención de desastres y protección civil, dando como resultado la patente MX311249B del Sistema de Alerta Temprano Integral Sísmico, entre otras actividades como manejo de equipos de trabajo, administración de redes de voz y datos, soporte técnico a computadoras, capacitación de personal, atención a clientes, soporte a ventas, reparación de dispositivos electrónicos, inventarios, diseño de planos de instalación de sistemas de seguridad, diseño de página web y diseño de publicidad.",
+        "logo": "https://media.licdn.com/dms/image/v2/C560BAQG4ynsSle8R2g/company-logo_200_200/company-logo_200_200/0/1630633348513?e=2147483647&v=beta&t=Kjt8QHxSvDWe6K3TSqszib2dwWL3ey30v8rlFX9qxio"
       }
     ],
     "skills": [
