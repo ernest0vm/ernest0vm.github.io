@@ -2,10 +2,5 @@
 dist/
 .astro/
 
-# vendored template assets (do not reformat)
-public/js/
-public/css/
-
 # lockfiles
-package-lock.json
 yarn.lock
