@@ -65,3 +65,8 @@ jobs:
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v5
+        with:
+          # Pages' own queue has sat on a deployment for the full default 10
+          # minutes and then aborted. Give it 25 so a slow queue still lands;
+          # a failed deploy cannot be re-run, it needs a fresh commit.
+          timeout: 1500000
