@@ -175,6 +175,14 @@ Al agregar `main` u otra rama al environment `github-pages`, revisar sus
 deployment branch policies: un deploy puede fallar sin log si la rama no está
 permitida.
 
+**Un deploy fallido no se arregla con «Re-run jobs».** `actions/deploy-pages`
+usa el SHA del commit como `pages_build_version`, así que el ID del despliegue
+es el SHA. Si ese SHA ya quedó en `failure`, cualquier reintento —re-run o
+`workflow_dispatch`— choca con él y muere en segundos con `Deployment
+cancelled`. La salida es empujar un commit nuevo. Antes de asumir cuota,
+comprobar: el límite de Pages son 10 despliegues por hora y se consulta con
+`gh api repos/<owner>/<repo>/deployments`.
+
 ## Base path
 
 `base: '/resume'`. Las URLs de `public/` deben incluirlo (`/resume/favicon.ico`).
