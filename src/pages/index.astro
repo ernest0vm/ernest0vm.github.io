@@ -34,13 +34,13 @@ const work = (resume?.work ?? []).map((item) => ({
   <main>
     <Hero data={main} />
     <About data={main} />
+    <Timeline id="work" eyebrow="Trayectoria" title="Empleos" items={work} />
     <Timeline
       id="education"
       eyebrow="Formación"
       title="Educación"
       items={education}
     />
-    <Timeline id="work" eyebrow="Trayectoria" title="Empleos" items={work} />
     <Skills data={resume} />
     <Portfolio data={portfolio} />
   </main>

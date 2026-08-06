@@ -2,8 +2,8 @@
 const links = [
   { href: '#home', label: 'Inicio' },
   { href: '#about', label: 'Acerca de' },
-  { href: '#education', label: 'Educación' },
   { href: '#work', label: 'Empleos' },
+  { href: '#education', label: 'Educación' },
   { href: '#skills', label: 'Habilidades' },
   { href: '#portfolio', label: 'Portafolio' },
 ];
@@ -62,34 +62,38 @@ const links = [
     );
   };
 
-  if (sections.length) {
-    const visible = new Map();
-
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting)
-            visible.set(entry.target.id, entry.intersectionRatio);
-          else visible.delete(entry.target.id);
-        });
-
-        const top = [...visible.entries()].sort((a, b) => b[1] - a[1])[0];
-        if (top) setCurrent(top[0]);
-      },
-      { rootMargin: '-20% 0px -60% 0px', threshold: [0.1, 0.5, 1] },
-    );
-
-    sections.forEach((section) => observer.observe(section));
-  }
-
-  // Tighten the nav once the hero is behind it.
+  // The active section is the last one whose top has crossed a reference line
+  // near the top of the viewport. Ranking by intersectionRatio instead looks
+  // reasonable but is biased against tall sections: Empleos spans several
+  // screens, so its ratio stays below that of any short section sharing the
+  // viewport, and the highlight jumps to the wrong link.
+  const REFERENCE = 0.28;
   const nav = document.getElementById('site-nav');
+
   const onScroll = () => {
+    if (sections.length) {
+      const line = window.innerHeight * REFERENCE;
+      let current = sections[0];
+      sections.forEach((section) => {
+        if (section.getBoundingClientRect().top <= line) current = section;
+      });
+
+      // The last section is often too short to ever reach the line, so give it
+      // the highlight once the page cannot scroll any further.
+      const atBottom =
+        window.innerHeight + window.scrollY >=
+        document.documentElement.scrollHeight - 2;
+      setCurrent(atBottom ? sections[sections.length - 1].id : current.id);
+    }
+
+    // Tighten the nav once the hero is behind it.
     const scrolled = window.scrollY > 80;
     nav?.classList.toggle('scale-95', scrolled);
     nav?.classList.toggle('glass-strong', scrolled);
     nav?.classList.toggle('glass', !scrolled);
   };
+
   window.addEventListener('scroll', onScroll, { passive: true });
+  window.addEventListener('resize', onScroll, { passive: true });
   onScroll();
 </script>
