@@ -66,7 +66,9 @@ jobs:
         id: deployment
         uses: actions/deploy-pages@v5
         with:
-          # Pages' own queue has sat on a deployment for the full default 10
-          # minutes and then aborted. Give it 25 so a slow queue still lands;
-          # a failed deploy cannot be re-run, it needs a fresh commit.
+          # Pages' queue has sat on a deployment until the step aborted. Note
+          # this input did not visibly extend the window in one observed run:
+          # 1500000 was passed and it still gave up after ~600s. Kept because
+          # it is harmless, but do not count on it — if a deploy aborts, the
+          # fix is a fresh commit, since the deployment id is the commit SHA.
           timeout: 1500000
