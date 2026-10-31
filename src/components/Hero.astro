@@ -15,9 +15,7 @@ const { name, role, social } = resume;
   class="relative flex min-h-svh flex-col items-center justify-center px-6"
 >
   <div class="flex flex-col items-center text-center">
-    <h1
-      class="bg-gradient-to-b from-white to-white/45 bg-clip-text text-[clamp(2.75rem,10vw,7rem)] leading-[0.95] font-bold tracking-tight text-transparent"
-    >
+    <h1 class="bg-gradient-to-b from-white to-white/45 bg-clip-text text-[clamp(2.75rem,10vw,7rem)] leading-[0.95] font-bold tracking-tight text-transparent">
       {name}
     </h1>
 
@@ -26,21 +24,19 @@ const { name, role, social } = resume;
     </p>
 
     <ul class="mt-10 flex items-center justify-center gap-2 sm:gap-3">
-      {
-        social.map((network) => (
-          <li>
-            <a
-              href={network.url}
-              target="_blank"
-              rel="noopener noreferrer"
-              aria-label={network.label}
-              class="group glass flex size-11 items-center justify-center rounded-full text-white/70 transition hover:-translate-y-0.5 hover:text-accent-300 sm:size-12"
-            >
-              <Icon name={network.icon} class="size-4.5 sm:size-5" />
-            </a>
-          </li>
-        ))
-      }
+      {social.map((network) => (
+        <li>
+          <a
+            href={network.url}
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label={network.label}
+            class="group glass flex size-11 items-center justify-center rounded-full text-white/70 transition hover:-translate-y-0.5 hover:text-accent-300 sm:size-12"
+          >
+            <Icon name={network.icon} class="size-4.5 sm:size-5" />
+          </a>
+        </li>
+      ))}
     </ul>
   </div>
 

@@ -25,52 +25,50 @@ const groups = [
   lead={t('skills.lead', { years: experienceInWordsCapitalized(locale) })}
 >
   <div class="space-y-12">
-    {
-      groups.map((group) => (
-        <div>
-          <h3 class="text-sm font-semibold tracking-wider text-white/80 uppercase">
-            {group.title}
-          </h3>
-          {group.lead && (
-            <p class="mt-2 max-w-2xl text-sm/6 text-white/50">{group.lead}</p>
-          )}
+    {groups.map((group) => (
+      <div>
+        <h3 class="text-sm font-semibold tracking-wider text-white/80 uppercase">
+          {group.title}
+        </h3>
+        {group.lead && (
+          <p class="mt-2 max-w-2xl text-sm/6 text-white/50">{group.lead}</p>
+        )}
 
-          <ul class="mt-6 grid grid-cols-3 gap-3 sm:grid-cols-4 md:grid-cols-6">
-            {group.items.map((item) => {
-              const tile = (
-                <>
-                  <Icon
-                    name={item.icon}
-                    class="size-8 text-white/70 transition group-hover:scale-110 group-hover:text-accent-300 sm:size-9"
-                  />
-                  <span class="mt-3 line-clamp-2 text-center text-[0.7rem] leading-tight text-white/55 group-hover:text-white/80">
-                    {item.name}
-                  </span>
-                </>
-              );
+        <ul class="mt-6 grid grid-cols-3 gap-3 sm:grid-cols-4 md:grid-cols-6">
+          {group.items.map((item) => {
+            const tile = (
+              <>
+                <Icon
+                  name={item.icon}
+                  class="size-8 text-white/70 transition group-hover:scale-110 group-hover:text-accent-300 sm:size-9"
+                />
+                <span class="mt-3 line-clamp-2 text-center text-[0.7rem] leading-tight text-white/55 group-hover:text-white/80">
+                  {item.name}
+                </span>
+              </>
+            );
 
-              return (
-                <li>
-                  {item.certificationUrl ? (
-                    <a
-                      href={item.certificationUrl}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      class="group glass flex aspect-square flex-col items-center justify-center rounded-2xl p-3 transition hover:-translate-y-1"
-                    >
-                      {tile}
-                    </a>
-                  ) : (
-                    <div class="group glass flex aspect-square flex-col items-center justify-center rounded-2xl p-3 transition hover:-translate-y-1">
-                      {tile}
-                    </div>
-                  )}
-                </li>
-              );
-            })}
-          </ul>
-        </div>
-      ))
-    }
+            return (
+              <li>
+                {item.certificationUrl ? (
+                  <a
+                    href={item.certificationUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    class="group glass flex aspect-square flex-col items-center justify-center rounded-2xl p-3 transition hover:-translate-y-1"
+                  >
+                    {tile}
+                  </a>
+                ) : (
+                  <div class="group glass flex aspect-square flex-col items-center justify-center rounded-2xl p-3 transition hover:-translate-y-1">
+                    {tile}
+                  </div>
+                )}
+              </li>
+            );
+          })}
+        </ul>
+      </div>
+    ))}
   </div>
 </Section>

@@ -29,11 +29,9 @@ const alternates = LOCALES.map((code) => ({
     <link rel="manifest" href={`${base}/manifest.json`} />
     <link rel="shortcut icon" href={`${base}/favicon.ico`} />
     <title>{title}</title>
-    {
-      alternates.map(({ code, href }) => (
-        <link rel="alternate" hreflang={code} href={href} />
-      ))
-    }
+    {alternates.map(({ code, href }) => (
+      <link rel="alternate" hreflang={code} href={href} />
+    ))}
     <link
       rel="alternate"
       hreflang="x-default"
@@ -59,14 +57,8 @@ const alternates = LOCALES.map((code) => ({
       class="pointer-events-none fixed inset-0 -z-10"
       aria-hidden="true"
     >
-      <div
-        class="absolute -top-40 left-1/4 h-[38rem] w-[38rem] rounded-full bg-accent-500/20 blur-[100px]"
-      >
-      </div>
-      <div
-        class="absolute right-0 bottom-1/4 h-[32rem] w-[32rem] rounded-full bg-violet-400/25 blur-[110px]"
-      >
-      </div>
+      <div class="absolute -top-40 left-1/4 h-[38rem] w-[38rem] rounded-full bg-accent-500/20 blur-[100px]"></div>
+      <div class="absolute right-0 bottom-1/4 h-[32rem] w-[32rem] rounded-full bg-violet-400/25 blur-[110px]"></div>
       <div id="particles-bg" class="absolute inset-0"></div>
     </div>
 

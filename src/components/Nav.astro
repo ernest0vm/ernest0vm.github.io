@@ -22,19 +22,17 @@ const links = ['home', 'about', 'work', 'education', 'skills', 'portfolio'].map(
          first item out of reach on narrow screens. -->
     <div class="min-w-0 flex-1 scrollbar-none overflow-x-auto fade-end">
       <ul class="mx-auto flex w-max items-center gap-1 px-2 py-2">
-        {
-          links.map((link) => (
-            <li>
-              <a
-                href={link.href}
-                data-nav-link
-                class="block rounded-full px-3.5 py-1.5 text-[0.8rem] font-semibold tracking-wide whitespace-nowrap text-white/60 transition-colors hover:text-white aria-[current=true]:bg-white/10 aria-[current=true]:text-accent-300"
-              >
-                {link.label}
-              </a>
-            </li>
-          ))
-        }
+        {links.map((link) => (
+          <li>
+            <a
+              href={link.href}
+              data-nav-link
+              class="block rounded-full px-3.5 py-1.5 text-[0.8rem] font-semibold tracking-wide whitespace-nowrap text-white/60 transition-colors hover:text-white aria-[current=true]:bg-white/10 aria-[current=true]:text-accent-300"
+            >
+              {link.label}
+            </a>
+          </li>
+        ))}
       </ul>
     </div>
 

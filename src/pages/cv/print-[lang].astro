@@ -100,28 +100,20 @@ const caption = (project) =>
           <h1>{resume.name}</h1>
           <p class="role">{resume.role}</p>
           <ul class="contacts">
-            {
-              contacts.map((item) => (
-                <li>
-                  <Icon name={item.icon} class="icon" />
-                  {item.href ? (
-                    <a href={item.href}>{item.label}</a>
-                  ) : (
-                    item.label
-                  )}
-                </li>
-              ))
-            }
+            {contacts.map((item) => (
+              <li>
+                <Icon name={item.icon} class="icon" />
+                {item.href ? <a href={item.href}>{item.label}</a> : item.label}
+              </li>
+            ))}
           </ul>
           <ul class="contacts links">
-            {
-              links.map((item) => (
-                <li>
-                  <Icon name={item.icon} class="icon" />
-                  <a href={item.href}>{bare(item.href)}</a>
-                </li>
-              ))
-            }
+            {links.map((item) => (
+              <li>
+                <Icon name={item.icon} class="icon" />
+                <a href={item.href}>{bare(item.href)}</a>
+              </li>
+            ))}
           </ul>
         </div>
       </header>
@@ -133,48 +125,44 @@ const caption = (project) =>
 
       <section>
         <h2>{label('work')}</h2>
-        {
-          resume.work.map((job) => (
-            <article class="entry">
-              <div class="entry-head">
-                <h3>
-                  {job.title} <span class="at">· {job.company}</span>
-                </h3>
-                <p class="when">
-                  {formatPeriod(
-                    job.start,
-                    job.end,
-                    lang,
-                    label('present'),
-                  ).replace(' - ', ' – ')}
-                </p>
-              </div>
-              <p>{c(`work.${job.id}`)}</p>
-            </article>
-          ))
-        }
+        {resume.work.map((job) => (
+          <article class="entry">
+            <div class="entry-head">
+              <h3>
+                {job.title} <span class="at">· {job.company}</span>
+              </h3>
+              <p class="when">
+                {formatPeriod(
+                  job.start,
+                  job.end,
+                  lang,
+                  label('present'),
+                ).replace(' - ', ' – ')}
+              </p>
+            </div>
+            <p>{c(`work.${job.id}`)}</p>
+          </article>
+        ))}
       </section>
 
       <section>
         <h2>{label('education')}</h2>
-        {
-          resume.education.map((item) => (
-            <article class="entry">
-              <div class="entry-head">
-                <h3>
-                  {c(`education.${item.id}.degree`)}{' '}
-                  <span class="at">· {item.school}</span>
-                </h3>
-                <p class="when">{formatMonth(item.graduated, lang)}</p>
-              </div>
-              {item.license && (
-                <p class="muted">
-                  {label('license')}: {item.license}
-                </p>
-              )}
-            </article>
-          ))
-        }
+        {resume.education.map((item) => (
+          <article class="entry">
+            <div class="entry-head">
+              <h3>
+                {c(`education.${item.id}.degree`)}{' '}
+                <span class="at">· {item.school}</span>
+              </h3>
+              <p class="when">{formatMonth(item.graduated, lang)}</p>
+            </div>
+            {item.license && (
+              <p class="muted">
+                {label('license')}: {item.license}
+              </p>
+            )}
+          </article>
+        ))}
       </section>
 
       <section class="keep">
@@ -184,49 +172,41 @@ const caption = (project) =>
           <dd>{resume.skills.map((item) => item.name).join(' · ')}</dd>
           <dt>{label('tools')}</dt>
           <dd>{resume.tools.map((item) => item.name).join(' · ')}</dd>
-          {
-            spoken.length > 0 && (
-              <>
-                <dt>{label('spoken')}</dt>
-                <dd>{spoken.join(' · ')}</dd>
-              </>
-            )
-          }
+          {spoken.length > 0 && (
+            <>
+              <dt>{label('spoken')}</dt>
+              <dd>{spoken.join(' · ')}</dd>
+            </>
+          )}
         </dl>
       </section>
 
       <section>
         <h2>{label('portfolio')}</h2>
         <ul class="apps">
-          {
-            resume.portfolio.map((project) => (
-              <li>
-                {project.url ? (
-                  <a class="app-name" href={project.url}>
-                    {project.title}
-                  </a>
-                ) : (
-                  <span class="app-name">{project.title}</span>
-                )}
-                <span class="muted">{caption(project)}</span>
-              </li>
-            ))
-          }
+          {resume.portfolio.map((project) => (
+            <li>
+              {project.url ? (
+                <a class="app-name" href={project.url}>
+                  {project.title}
+                </a>
+              ) : (
+                <span class="app-name">{project.title}</span>
+              )}
+              <span class="muted">{caption(project)}</span>
+            </li>
+          ))}
         </ul>
       </section>
 
-      {
-        /* Pinned to the bottom of the last page by scripts/build-cv.mjs; until
-        then (e.g. in dev) it simply follows the content. */
-      }
-      {
-        resume.quote && (
-          <figure class="closing-quote">
-            <blockquote>“{c('quote')}”</blockquote>
-            <figcaption>— {resume.quote.author}</figcaption>
-          </figure>
-        )
-      }
+      {/* Pinned to the bottom of the last page by scripts/build-cv.mjs; until
+        then (e.g. in dev) it simply follows the content. */}
+      {resume.quote && (
+        <figure class="closing-quote">
+          <blockquote>“{c('quote')}”</blockquote>
+          <figcaption>— {resume.quote.author}</figcaption>
+        </figure>
+      )}
     </main>
   </body>
 </html>
