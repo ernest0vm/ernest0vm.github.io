@@ -143,6 +143,13 @@ vive en el bloque `@theme` de `src/styles/global.css`. Ese archivo es el
 que actualizar ambos.
 
 El lenguaje visual es glass: `glass` y `glass-strong`, declaradas con `@utility`.
+Cada superficie lleva un tinte, un brillo superior y un reflejo radial en
+`background-image`, y un **anillo especular** en `::after`: un borde degradado
+de 1 px, más brillante arriba, recortado con `mask-composite: exclude`. La
+técnica está adaptada de [Glassy UI](https://github.com/alexburlis/glassyui)
+(MIT); no se adoptó la librería porque todos sus componentes son React con
+`"use client"` y el lente se calcula en el navegador, lo que obligaría a
+hidratar React en cada superficie de un sitio que hoy no envía JS de framework.
 También vive ahí `fade-end`, que desvanece la lista de la nav antes del selector
 de idioma para que los enlaces que desbordan se lean como deslizables.
 
@@ -166,13 +173,43 @@ La variante con prefijo vive en su propio `@supports`. El fallback opaco está
 anidado en dos `@supports` porque escrito como `not (A or B)` el minificador lo
 reescribe a `not A`.
 
+### Guardas de accesibilidad
+
+Al final de `global.css`, **sin capa a propósito**: una regla sin capa le gana
+a cualquier utilidad de la capa `utilities`, así que ninguna clase en el markup
+puede devolver la transparencia.
+
+- `prefers-reduced-transparency: reduce` → superficie opaca (`ink-900`), sin
+  desenfoque ni brillo.
+- `prefers-contrast: more` → vidrio oscuro al 88 %, anillo sólido en el color
+  del texto y todo `text-white/*` a blanco pleno.
+- `forced-colors: active` → contorno en `CanvasText`, sin anillo, el foco por
+  encima de ese contorno y el enlace activo de la nav marcado con `Highlight`
+  (su única señal era un fondo, que el modo de alto contraste elimina).
+
+Para probarlas sin cambiar el sistema operativo, reescribir por CSSOM la
+condición de la `@media` a `all` (`rule.media.mediaText = 'all'`) y leer el
+estilo computado. **Esperar a que terminen las transiciones** antes de leer:
+la utilidad `transition` anima `background-color` y `backdrop-filter`, así que
+una lectura inmediata devuelve el valor viejo y parece que la guarda falla.
+`:focus-visible` no se activa con `element.focus()` desde JS; hay que usar un
+Tab real.
+
 ### Trampa: `isolation: isolate` y el backdrop root
 
 La capa de partículas y gradientes es `fixed` en `Layout.astro`, detrás de todo
 (`-z-10`), para que las superficies glass tengan algo vivo que dejar ver en toda
 la página. Un ancestro con `isolation: isolate` se convierte en _backdrop root_ y
 recorta lo que `backdrop-filter` puede muestrear. Por eso el hero no lleva
-`isolate`. No añadirlo a ninguna sección que contenga superficies glass.
+`isolate`. No añadirlo a ninguna sección que contenga superficies glass. Lo
+mismo vale para `opacity < 1`, `filter`, `mask` o `mix-blend-mode` en un
+**ancestro** de la superficie: por eso el `mask` del anillo vive en el propio
+`::after` y `fade-end` se aplica a un hijo de la nav, no a la nav.
+
+El minificador expande el atajo `mask` en propiedades largas (`mask-image`,
+`mask-clip`, `mask-composite`…) y añade por su cuenta el `-webkit-mask-composite`
+equivalente. Para verificar el CSS publicado, buscar las propiedades largas, no
+el atajo.
 
 Las partículas van fuera de la capa refractada a propósito: `cloneNode` no copia
 los píxeles de un `<canvas>`.

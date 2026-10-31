@@ -101,23 +101,75 @@
    lives in its own @supports block further down. */
 @utility glass {
   position: relative;
+  --glass-rim: color-mix(in oklab, white 42%, transparent);
+  --glass-rim-base: color-mix(in oklab, white 7%, transparent);
   background-color: color-mix(in oklab, white 8%, transparent);
+  /* Sheen along the top plus a soft highlight where the light lands, layered
+     over the tint: a bg-* utility recolours the glass and keeps the sheen. */
+  background-image:
+    radial-gradient(
+      circle at 18% 0%,
+      color-mix(in oklab, white 9%, transparent),
+      transparent 60%
+    ),
+    linear-gradient(
+      180deg,
+      color-mix(in oklab, white 8%, transparent),
+      transparent 45%
+    );
   backdrop-filter: blur(20px) saturate(160%);
-  box-shadow:
-    inset 0 1px 0 0 color-mix(in oklab, white 18%, transparent),
-    inset 0 0 0 1px color-mix(in oklab, white 8%, transparent),
-    0 8px 32px -8px oklch(0 0 0 / 0.6);
+  box-shadow: 0 8px 32px -8px oklch(0 0 0 / 0.6);
 }
 
 /* Slightly denser variant for surfaces that sit over busy content. */
 @utility glass-strong {
   position: relative;
+  --glass-rim: color-mix(in oklab, white 55%, transparent);
+  --glass-rim-base: color-mix(in oklab, white 10%, transparent);
   background-color: color-mix(in oklab, white 12%, transparent);
+  background-image:
+    radial-gradient(
+      circle at 18% 0%,
+      color-mix(in oklab, white 12%, transparent),
+      transparent 60%
+    ),
+    linear-gradient(
+      180deg,
+      color-mix(in oklab, white 11%, transparent),
+      transparent 45%
+    );
   backdrop-filter: blur(28px) saturate(180%);
-  box-shadow:
-    inset 0 1px 0 0 color-mix(in oklab, white 24%, transparent),
-    inset 0 0 0 1px color-mix(in oklab, white 10%, transparent),
-    0 12px 40px -8px oklch(0 0 0 / 0.7);
+  box-shadow: 0 12px 40px -8px oklch(0 0 0 / 0.7);
+}
+
+/* Specular rim: a 1px ring, brightest along the top edge where light catches
+   the bevel, fading down the sides. Drawn on ::after and masked to the
+   padding ring rather than as a border, so it follows the radius and adds no
+   layout. The mask sits on this pseudo-element, never on an ancestor of the
+   glass: a mask (like opacity or filter) on an ancestor turns it into the
+   backdrop root and silently disables the blur. Only the standard mask
+   properties are written — see the backdrop-filter note above for why a
+   prefixed twin in the same rule is a trap. Technique adapted from Glassy UI
+   (MIT, github.com/alexburlis/glassyui). */
+.glass::after,
+.glass-strong::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  padding: 1px;
+  border-radius: inherit;
+  pointer-events: none;
+  background: linear-gradient(
+    180deg,
+    var(--glass-rim),
+    var(--glass-rim-base) 38%,
+    transparent 70%,
+    var(--glass-rim-base)
+  );
+  mask:
+    linear-gradient(#000 0 0) content-box,
+    linear-gradient(#000 0 0);
+  mask-composite: exclude;
 }
 
 /* Fades an element out towards its end edge. The nav uses it so links that
@@ -150,5 +202,80 @@
     .glass-strong {
       background-color: var(--color-ink-900);
     }
+  }
+}
+
+/* ---------------------------------------------------------------------------
+   Accessibility guards (approach adapted from Glassy UI, MIT). Unlayered on
+   purpose: unlayered rules beat Tailwind's utilities layer, so no utility on
+   an element can bring the transparency back.
+--------------------------------------------------------------------------- */
+
+/* Reduce Transparency: an opaque surface, no blur, no sheen. */
+@media (prefers-reduced-transparency: reduce) {
+  .glass,
+  .glass-strong {
+    background-color: var(--color-ink-900);
+    background-image: none;
+    backdrop-filter: none;
+  }
+}
+/* Its prefixed twin cancels the Safari < 18 blur in a separate context, for
+   the same minifier reason as the @supports block above. */
+@supports (-webkit-backdrop-filter: blur(1px)) and
+  (not (backdrop-filter: blur(1px))) {
+  @media (prefers-reduced-transparency: reduce) {
+    .glass,
+    .glass-strong {
+      -webkit-backdrop-filter: none;
+    }
+  }
+}
+
+/* Increase Contrast: keep the glass but make it dark enough that white text
+   holds contrast over any backdrop, edge it in the text colour, and give muted
+   text full strength. */
+@media (prefers-contrast: more) {
+  .glass,
+  .glass-strong {
+    background-color: color-mix(
+      in oklab,
+      var(--color-ink-950) 88%,
+      transparent
+    );
+    background-image: none;
+  }
+  .glass::after,
+  .glass-strong::after {
+    background: color-mix(in oklab, white 75%, transparent);
+  }
+  [class*='text-white/'] {
+    color: #fff;
+  }
+}
+
+/* Forced colours (Windows High Contrast): the browser drops shadows and
+   backgrounds, so surfaces would lose their edges. Outline them in the system
+   text colour, keep focus visible above that outline, and mark the current
+   nav item, whose only cue was a background. */
+@media (forced-colors: active) {
+  .glass,
+  .glass-strong {
+    backdrop-filter: none;
+    outline: 1px solid CanvasText;
+    outline-offset: -1px;
+  }
+  .glass::after,
+  .glass-strong::after {
+    display: none;
+  }
+  .glass:focus-visible,
+  .glass-strong:focus-visible {
+    outline: 2px solid Highlight;
+    outline-offset: 2px;
+  }
+  [aria-current='true'] {
+    outline: 2px solid Highlight;
+    outline-offset: 2px;
   }
 }
