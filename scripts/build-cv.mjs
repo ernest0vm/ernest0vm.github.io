@@ -10,7 +10,7 @@
  * different binary.
  */
 import console from 'node:console';
-import { mkdir, readFile, rm } from 'node:fs/promises';
+import { mkdir, readFile, rm, writeFile } from 'node:fs/promises';
 import process from 'node:process';
 import { URL } from 'node:url';
 import { build, preview } from 'astro';
@@ -19,6 +19,10 @@ import { chromium } from 'playwright-core';
 const BUILD_DIR = './dist-cv/';
 const PDF_DIR = 'cv-pdf';
 const PORT = 4330;
+
+/** Chrome writes one `/Type /Page` object per page (`/Pages` is the tree). */
+const countPages = (pdf) =>
+  pdf.toString('latin1').match(/\/Type\s*\/Page(?!s)/g)?.length ?? 0;
 
 const data = JSON.parse(
   await readFile(new URL('../src/data/resumeData.json', import.meta.url)),
@@ -62,9 +66,7 @@ try {
     // Runs in the page; passed as a string because it is browser code.
     await page.evaluate('document.fonts.ready');
 
-    const path = `${PDF_DIR}/${file}`;
-    await page.pdf({
-      path,
+    const options = {
       preferCSSPageSize: true,
       printBackground: true,
       tagged: true,
@@ -76,7 +78,28 @@ try {
           <span>${data.main.name}</span>
           <span><span class="pageNumber"></span> / <span class="totalPages"></span></span>
         </div>`,
-    });
+    };
+
+    // CSS cannot target "the last page", so print twice: the first pass only
+    // counts pages, then the layout pins the closing quote to the bottom of
+    // the last one (see .pinned in the CV page).
+    const pages = countPages(await page.pdf(options));
+    await page.evaluate(`(() => {
+      const quote = document.querySelector('.closing-quote');
+      if (!quote) return;
+      const root = document.documentElement;
+      const space = quote.offsetHeight + parseFloat(getComputedStyle(quote).marginTop);
+      root.style.setProperty('--pages', ${pages});
+      root.style.setProperty('--quote-space', space + 'px');
+      root.classList.add('pinned');
+    })()`);
+    const pdf = await page.pdf(options);
+    if (countPages(pdf) !== pages) {
+      throw new Error(`${file}: pinning the quote changed the page count`);
+    }
+
+    const path = `${PDF_DIR}/${file}`;
+    await writeFile(path, pdf);
     console.log(`✓ ${path}`);
   }
 } finally {

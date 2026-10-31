@@ -117,132 +117,144 @@ const spoken = (resume.spokenLanguages ?? []).map((item) => ({
     <title>{strings.title} — {main.name}</title>
   </head>
   <body>
-    <header class="masthead">
-      <span class="photo">
-        <img
-          src={`${base}/images/${main.image}`}
-          alt=""
-          width="125"
-          height="125"
-        />
-      </span>
-      <div class="identity">
-        <h1>{main.name}</h1>
-        <p class="role">{main.description}</p>
-        <ul class="contacts">
-          {
-            contacts.map((item) => (
-              <li>
-                <Icon name={item.icon} class="icon" />
-                {item.href ? <a href={item.href}>{item.label}</a> : item.label}
-              </li>
-            ))
-          }
-        </ul>
-        <ul class="contacts links">
-          {
-            links.map((item) => (
-              <li>
-                <Icon name={item.icon} class="icon" />
-                <a href={item.href}>{bare(item.href)}</a>
-              </li>
-            ))
-          }
-        </ul>
-      </div>
-    </header>
+    <main class="sheet">
+      <header class="masthead">
+        <span class="photo">
+          <img
+            src={`${base}/images/${main.image}`}
+            alt=""
+            width="104"
+            height="104"
+          />
+        </span>
+        <div class="identity">
+          <h1>{main.name}</h1>
+          <p class="role">{main.description}</p>
+          <ul class="contacts">
+            {
+              contacts.map((item) => (
+                <li>
+                  <Icon name={item.icon} class="icon" />
+                  {item.href ? (
+                    <a href={item.href}>{item.label}</a>
+                  ) : (
+                    item.label
+                  )}
+                </li>
+              ))
+            }
+          </ul>
+          <ul class="contacts links">
+            {
+              links.map((item) => (
+                <li>
+                  <Icon name={item.icon} class="icon" />
+                  <a href={item.href}>{bare(item.href)}</a>
+                </li>
+              ))
+            }
+          </ul>
+        </div>
+      </header>
 
-    <section>
-      <h2>{strings.profile}</h2>
-      <p>{bio}</p>
-      {
-        main.quote && (
-          <p class="quote">
-            “{l(main.quote.text)}” — {main.quote.author}
-          </p>
-        )
-      }
-    </section>
+      <section>
+        <h2>{strings.profile}</h2>
+        <p>{bio}</p>
+      </section>
 
-    <section>
-      <h2>{strings.work}</h2>
-      {
-        resume.work.map((job) => (
-          <article class="entry">
-            <div class="entry-head">
-              <h3>
-                {job.title} <span class="at">· {job.company}</span>
-              </h3>
-              <p class="when">{dates(l(job.years))}</p>
-            </div>
-            <p>{l(job.description)}</p>
-          </article>
-        ))
-      }
-    </section>
-
-    <section>
-      <h2>{strings.education}</h2>
-      {
-        resume.education.map((item) => (
-          <article class="entry">
-            <div class="entry-head">
-              <h3>
-                {l(item.degree)} <span class="at">· {item.school}</span>
-              </h3>
-              <p class="when">{l(item.graduated)}</p>
-            </div>
-            {item.license && (
-              <p class="muted">
-                {strings.license}: {item.license}
-              </p>
-            )}
-          </article>
-        ))
-      }
-    </section>
-
-    <section class="keep">
-      <h2>{strings.skills}</h2>
-      <dl class="facts">
-        <dt>{strings.languages}</dt>
-        <dd>{resume.skills.map((item) => item.name).join(' · ')}</dd>
-        <dt>{strings.tools}</dt>
-        <dd>{resume.tools.map((item) => item.name).join(' · ')}</dd>
+      <section>
+        <h2>{strings.work}</h2>
         {
-          spoken.length > 0 && (
-            <>
-              <dt>{strings.spoken}</dt>
-              <dd>
-                {spoken
-                  .map((item) => `${item.language} ${item.level}`)
-                  .join(' · ')}
-              </dd>
-            </>
-          )
-        }
-      </dl>
-    </section>
-
-    <section>
-      <h2>{strings.portfolio}</h2>
-      <ul class="apps">
-        {
-          portfolio.projects.map((project) => (
-            <li>
-              {project.url ? (
-                <a class="app-name" href={project.url}>
-                  {project.title}
-                </a>
-              ) : (
-                <span class="app-name">{project.title}</span>
-              )}
-              <span class="muted">{l(project.category)}</span>
-            </li>
+          resume.work.map((job) => (
+            <article class="entry">
+              <div class="entry-head">
+                <h3>
+                  {job.title} <span class="at">· {job.company}</span>
+                </h3>
+                <p class="when">{dates(l(job.years))}</p>
+              </div>
+              <p>{l(job.description)}</p>
+            </article>
           ))
         }
-      </ul>
-    </section>
+      </section>
+
+      <section>
+        <h2>{strings.education}</h2>
+        {
+          resume.education.map((item) => (
+            <article class="entry">
+              <div class="entry-head">
+                <h3>
+                  {l(item.degree)} <span class="at">· {item.school}</span>
+                </h3>
+                <p class="when">{l(item.graduated)}</p>
+              </div>
+              {item.license && (
+                <p class="muted">
+                  {strings.license}: {item.license}
+                </p>
+              )}
+            </article>
+          ))
+        }
+      </section>
+
+      <section class="keep">
+        <h2>{strings.skills}</h2>
+        <dl class="facts">
+          <dt>{strings.languages}</dt>
+          <dd>{resume.skills.map((item) => item.name).join(' · ')}</dd>
+          <dt>{strings.tools}</dt>
+          <dd>{resume.tools.map((item) => item.name).join(' · ')}</dd>
+          {
+            spoken.length > 0 && (
+              <>
+                <dt>{strings.spoken}</dt>
+                <dd>
+                  {spoken
+                    .map((item) => `${item.language} ${item.level}`)
+                    .join(' · ')}
+                </dd>
+              </>
+            )
+          }
+        </dl>
+      </section>
+
+      <section>
+        <h2>{strings.portfolio}</h2>
+        <ul class="apps">
+          {
+            portfolio.projects.map((project) => (
+              <li>
+                {project.url ? (
+                  <a class="app-name" href={project.url}>
+                    {project.title}
+                  </a>
+                ) : (
+                  <span class="app-name">{project.title}</span>
+                )}
+                <span class="muted">{l(project.category)}</span>
+              </li>
+            ))
+          }
+        </ul>
+      </section>
+
+      {
+        /* Pinned to the bottom of the last page by scripts/build-cv.mjs; until
+        then (e.g. in dev) it simply follows the content. */
+      }
+      {
+        main.quote && (
+          <figure class="closing-quote">
+            <blockquote>“{l(main.quote.text)}”</blockquote>
+            <figcaption>— {main.quote.author}</figcaption>
+          </figure>
+        )
+      }
+    </main>
   </body>
 </html>
 
@@ -331,11 +343,13 @@ const spoken = (resume.spokenLanguages ?? []).map((item) => ({
   }
 
   /* The source photo carries its own round frame and a name caption along
-     the bottom; zooming in on the face crops both out. */
+     the bottom. object-view-box crops the 540px source to the square from the
+     top of the hair to the chin, centred on the face and clear of the
+     caption. Chrome-only, which is all this page is ever printed with. */
   .photo {
     flex-shrink: 0;
-    width: 88px;
-    height: 88px;
+    width: 104px;
+    height: 104px;
     overflow: hidden;
     border-radius: 50%;
     border: 2px solid color-mix(in oklab, white 35%, transparent);
@@ -343,9 +357,10 @@ const spoken = (resume.spokenLanguages ?? []).map((item) => ({
 
   .photo img {
     display: block;
-    width: 125px;
-    height: 125px;
-    margin: -5px 0 0 -19px;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-view-box: inset(0.5% 9.5% 18% 9.5%);
   }
 
   h1 {
@@ -371,7 +386,10 @@ const spoken = (resume.spokenLanguages ?? []).map((item) => ({
   }
 
   .contacts.links {
-    margin-top: 4px;
+    display: grid;
+    grid-template-columns: max-content max-content;
+    column-gap: 20px;
+    margin-top: 6px;
     color: oklch(0.8 0.01 260);
   }
 
@@ -415,10 +433,46 @@ const spoken = (resume.spokenLanguages ?? []).map((item) => ({
     background: var(--rule);
   }
 
-  .quote {
-    margin-top: 6px;
-    font-style: italic;
+  .sheet {
+    position: relative;
+  }
+
+  .closing-quote {
+    width: fit-content;
+    max-width: 60%;
+    margin: 20px 0 0 auto;
+    padding-right: 10px;
+    border-right: 2px solid var(--accent);
+    text-align: right;
     color: var(--muted);
+    break-inside: avoid;
+  }
+
+  .closing-quote blockquote {
+    font-style: italic;
+  }
+
+  .closing-quote figcaption {
+    margin-top: 2px;
+    font-size: 8pt;
+  }
+
+  /* Set by scripts/build-cv.mjs for the second print pass, once it knows the
+     page count: the sheet stretches to the end of the last page, and the
+     quote leaves the flow for its bottom-right corner. --quote-space keeps
+     the room it took in the first pass, so the page count cannot change.
+     --page-content is the letter height minus the @page margins above. */
+  .pinned .sheet {
+    --page-content: calc(279.4mm - 12mm - 14mm);
+    min-height: calc(var(--pages) * var(--page-content) - 1mm);
+    padding-bottom: var(--quote-space);
+  }
+
+  .pinned .closing-quote {
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    margin: 0;
   }
 
   .entry {

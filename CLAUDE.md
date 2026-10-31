@@ -165,6 +165,15 @@ sale de esa misma URL, no se repite en el script.
   `http://localhost:4321/resume/cv/print-es/` (no `/cv/es/`: el enrutado de idiomas toma un segmento `/es/` como prefijo del idioma por defecto y responde 404). Para revisar el resultado final,
   `yarn cv:pdf` y abrir `cv-pdf/`.
 - Al verificar el sitio, comprobar que `dist/` no tenga carpeta `cv/`.
+- **La cita va abajo a la derecha de la última página** (decisión del dueño).
+  CSS no puede apuntar a «la última página», así que el script imprime dos
+  veces: la primera cuenta páginas y la segunda añade la clase `pinned`, que
+  estira el contenido hasta el final de la última página y saca la cita del
+  flujo a esa esquina. Si la segunda pasada da otro número de páginas, el
+  script falla en vez de publicar un PDF descuadrado.
+- La foto de `public/images/` trae marco circular y un pie con el nombre; la
+  maqueta la recorta con `object-view-box`. Si se cambia la foto, revisar ese
+  recorte.
 
 ## Años de experiencia
 
