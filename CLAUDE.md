@@ -365,12 +365,11 @@ El sitio vivió hasta octubre de 2026 en el repo `ernest0vm/resume`, como págin
 de proyecto bajo `/resume/`. Se mudó aquí, con su historial, para servirse en la
 raíz; ya no hay `base` en `astro.config.mjs`.
 
-Durante la mudanza hubo redirecciones de `/resume/` y `/resume/en/` hacia la
-raíz (en `public/resume/`). Se quitaron por decisión del dueño del repo, así
-que las URLs viejas responden 404. Si se quisieran recuperar, son dos
-`index.html` con `location.replace('/' + location.hash)`, y solo funcionan si
-el repo `ernest0vm/resume` sigue sin Pages: una página de proyecto le gana a la
-ruta del sitio de usuario con el mismo nombre.
+Las URLs viejas siguen en LinkedIn, en el README del perfil y en PDFs ya
+enviados, así que `public/resume/index.html` y `public/resume/en/index.html`
+redirigen a `/` y `/en/` conservando el ancla de la sección. **No borrarlos.**
+Solo funcionan si el repo `ernest0vm/resume` no tiene Pages activo: una página
+de proyecto le gana a la ruta del sitio de usuario con el mismo nombre.
 
 Los PDFs se publican en el release `cv` de **este** repo. El del repo viejo
 quedó congelado con la última versión anterior a la mudanza.

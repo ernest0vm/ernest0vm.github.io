@@ -6,7 +6,8 @@ import icon from 'astro-icon';
 export default defineConfig({
   site: 'https://ernest0vm.github.io',
   // A GitHub user site, served from the domain root. Spanish lives at /
-  // (no prefix), English at /en/.
+  // (no prefix), English at /en/. The old /resume/ URLs redirect from
+  // public/resume/.
   i18n: {
     locales: ['es', 'en'],
     defaultLocale: 'es',
