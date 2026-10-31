@@ -18,6 +18,7 @@ export const OG_LOCALES = { es: 'es_MX', en: 'en_US' };
 /** Topics an assistant should associate with the person, beyond tool names. */
 const EXPERTISE = [
   'Mobile architecture',
+  'Mobile platform engineering',
   'React Native',
   'Expo',
   'Monorepos (Turborepo)',
@@ -56,7 +57,9 @@ export function profileJsonLd(locale, pageUrl) {
       '@type': 'Person',
       '@id': `${SITE}/#person`,
       name: resume.name,
-      jobTitle: resume.role,
+      // The job title as held, not the headline: the headline describes the
+      // specialty, and structured data should not claim a title.
+      jobTitle: current.title,
       description: metaDescription(locale),
       url: pageUrl,
       image: `${SITE}/images/${resume.photo}`,

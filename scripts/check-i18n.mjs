@@ -72,6 +72,10 @@ const expected = new Set([
   'skillsLead',
   'toolsLead',
   ...resume.work.map((job) => `work.${job.id}.summary`),
+  ...resume.scale.flatMap((item) => [
+    `scale.${item.id}.value`,
+    `scale.${item.id}.label`,
+  ]),
   ...resume.highlights.flatMap((item) => [
     `highlights.${item.id}.title`,
     `highlights.${item.id}.description`,

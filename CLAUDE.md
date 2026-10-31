@@ -103,6 +103,15 @@ Se edita sin tocar código: los hechos en `src/data/resume.json` y el texto en
 - **No describir ninguna app como producto de marca blanca** (ni con el
   anglicismo equivalente), aunque así venga redactado en LinkedIn o en el CV
   original: es decisión explícita del dueño del repo. Ya se coló dos veces.
+- **Las cifras públicas tienen fuente.** «300 mil+ usuarios activos al mes»
+  es la suma, al 31 de octubre de 2026, de los usuarios únicos de 30 días en
+  los proyectos de Mixpanel de cada marca, contando solo eventos de las apps
+  (`mp_lib` distinto de `web` y `ruby`). «Una veintena» son las apps de marca
+  publicadas, repartidas en cuatro repositorios; no decir cuál vive en cuál.
+  La cobertura (72 → 90 %) y el equipo de cinco los aprobó el dueño. No
+  publicar otras métricas internas sin preguntar.
+- `role` es el encabezado del sitio, el PDF y la imagen de vista previa, no
+  un puesto: el JSON-LD usa como `jobTitle` el `title` del empleo actual.
 - Verificar que el dominio o la página pertenezca de verdad a la empresa antes
   de usarlo; ya hubo dos casos (`cant.mx`, `smsolutions.com.mx`) que resultaron
   ser negocios ajenos con nombre parecido.
@@ -123,7 +132,8 @@ versión en ambos idiomas.**
     `summary` y, opcionalmente, `highlights`: una lista de logros que el sitio
     y el PDF muestran como viñetas. Las tarjetas de la sección «Impacto» son
     `highlights.<id>.title` / `.description`, con su icono en
-    `resume.highlights`.
+    `resume.highlights`; la franja de cifras sobre ellas es
+    `scale.<id>.value` / `.label`, con su `id` en `resume.scale`.
   - `cv.json`: las etiquetas de la maqueta del PDF.
 
   Se separan para que el workflow del PDF sepa qué le afecta: `ui.json` no

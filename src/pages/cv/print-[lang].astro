@@ -127,6 +127,14 @@ const caption = (project) =>
 
       <section>
         <h2>{label('highlights')}</h2>
+        <dl class="scale">
+          {resume.scale.map((item) => (
+            <div>
+              <dt>{c(`scale.${item.id}.label`)}</dt>
+              <dd>{c(`scale.${item.id}.value`)}</dd>
+            </div>
+          ))}
+        </dl>
         <ul class="highlights">
           {resume.highlights.map((item) => (
             <li>
@@ -282,7 +290,7 @@ const caption = (project) =>
   body {
     font-family: 'Open Sans', sans-serif;
     font-size: 9.25pt;
-    line-height: 1.45;
+    line-height: 1.42;
     color: var(--text);
   }
 
@@ -505,6 +513,33 @@ const caption = (project) =>
   }
 
   .muted {
+    color: var(--muted);
+  }
+
+  .scale {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 12px;
+    margin-bottom: 8px;
+  }
+
+  /* Value above label, top-aligned so a wrapped label does not lift its
+     value out of line with the others. */
+  .scale div {
+    display: flex;
+    flex-direction: column-reverse;
+    justify-content: flex-end;
+    line-height: 1.25;
+  }
+
+  .scale dd {
+    font-size: 13pt;
+    font-weight: 700;
+    color: var(--ink);
+  }
+
+  .scale dt {
+    font-size: 7.5pt;
     color: var(--muted);
   }
 

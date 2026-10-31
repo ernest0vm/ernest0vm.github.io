@@ -44,6 +44,11 @@ export function GET() {
     '',
     `## ${label('highlights')}`,
     '',
+    ...resume.scale.map(
+      (item) =>
+        `- ${c(`scale.${item.id}.value`)} ${c(`scale.${item.id}.label`)}`,
+    ),
+    '',
     ...resume.highlights.map(
       (item) =>
         `- **${c(`highlights.${item.id}.title`)}**: ${c(`highlights.${item.id}.description`)}`,

@@ -1,13 +1,31 @@
 {
-  "bio": "Tech lead and mobile architect with a full-stack background and {years} years of experience building products end to end. I design and evolve the mobile platform Reserhub uses to ship some 20 ticketing apps for bus lines across Mexico, Colombia, Brazil, Peru and the United States: a Turborepo and Expo monorepo, a hybrid architecture that embeds the web checkout funnel, and a delivery process built on OTA updates, feature flags and staged rollouts. I lead a squad of five engineers and move between architecture decisions and production code across mobile, backend and web, with AI-assisted development behind quality gates. Before mobile I worked on IoT, SMD electronics and embedded firmware, which gives me a full view of the product, from device to cloud.",
+  "bio": "Tech lead and mobile architect with a full-stack background and {years} years of experience building products end to end. I design and evolve the mobile platform Reserhub uses to ship some 20 ticketing apps for bus lines across Mexico, Colombia, Brazil, Peru and the United States, with over 300,000 monthly active users: a Turborepo and Expo monorepo, a hybrid architecture that embeds the web checkout funnel, and a delivery process built on OTA updates, feature flags and staged rollouts. I lead a squad of five engineers and move between architecture decisions and production code across mobile, backend and web, with AI-assisted development behind quality gates. Before mobile I worked on IoT, SMD electronics and embedded firmware, which gives me a full view of the product, from device to cloud.",
   "quote": "Innovation distinguishes between a leader and a follower.",
   "state": "State of Mexico",
   "skillsLead": "These are some of the languages, frameworks and libraries I use in my projects:",
   "toolsLead": "These are the tools I work with today, including the AI tools I use every day to speed up design, development and code review:",
+  "scale": {
+    "apps": {
+      "value": "~20",
+      "label": "branded apps in the stores"
+    },
+    "users": {
+      "value": "300K+",
+      "label": "monthly active users"
+    },
+    "countries": {
+      "value": "5",
+      "label": "countries in the Americas"
+    },
+    "coverage": {
+      "value": "72 → 90%",
+      "label": "test coverage in five weeks"
+    }
+  },
   "highlights": {
     "platform": {
       "title": "Mobile platform architecture",
-      "description": "I designed the Turborepo and Expo monorepo that serves 11 branded apps from shared packages for UI, services, SDKs and per-tenant configuration, documented in design docs that weigh alternatives such as Nx and Module Federation. Along the way I retired legacy stacks and consolidated the apps into a single modern, unified codebase."
+      "description": "I design and evolve the platform behind some 20 branded apps, spread across four repositories. Its core is a Turborepo and Expo monorepo with shared packages for UI, services, SDKs and per-tenant configuration, documented in design docs that weigh alternatives such as Nx and Module Federation."
     },
     "commerce": {
       "title": "E-commerce in production",
@@ -15,7 +33,7 @@
     },
     "delivery": {
       "title": "Delivery and quality",
-      "description": "A standardized EAS Build and Submit pipeline, OTA updates, feature flags and progressive store rollouts, with Sentry and Maestro end-to-end tests. Monorepo test coverage went from 72% to 90% in five weeks."
+      "description": "A standardized EAS Build and Submit pipeline, OTA updates, feature flags and progressive store rollouts, with Sentry and Maestro end-to-end tests."
     },
     "leadership": {
       "title": "Technical leadership",
@@ -23,7 +41,7 @@
     },
     "ai": {
       "title": "AI-assisted engineering",
-      "description": "I made a Compound Engineering loop, with OpenSpec specs and gates before every PR, mandatory across the mobile repos: simplification, verification by an isolated agent and code review. Scheduled agents raise coverage and review PRs."
+      "description": "I made a Compound Engineering loop with OpenSpec specs mandatory across the mobile repos. Before every merge, agent-written code goes through simplification, verification by an isolated agent, CI (lint, type checks and tests), secret and dependency scanning, and human review. Agents run with scoped permissions and no access to production."
     },
     "fullstack": {
       "title": "Full stack, device to cloud",
@@ -32,15 +50,15 @@
   },
   "work": {
     "reserhub": {
-      "summary": "I lead the mobile platform squad for the B2B vertical: the architecture, shared code and delivery process Reserhub uses to ship the ticketing apps of some 20 bus lines.",
+      "summary": "I lead the mobile platform squad for the B2B vertical: the architecture, shared code and delivery process Reserhub uses to ship some 20 ticketing apps for bus lines.",
       "highlights": [
-        "Designed and led the consolidation of the apps into a Turborepo and Expo monorepo: 11 branded apps, shared packages and per-tenant configuration.",
+        "Designed and led the consolidation into a Turborepo and Expo monorepo with shared packages and per-tenant configuration: the core of a platform of some 20 apps across four repositories.",
         "Moved the enterprise apps’ checkout funnel to a hybrid architecture — a native shell embedding the web funnel, with native bridges for session, payments and deep links — validated with an A/B test and rolled out brand by brand.",
         "Leading the migration of the Reservamos B2C app to the new platform with screen and analytics parity; split another branded app into its own repository, upgraded to Expo 58 and React 19.",
-        "Retired legacy stacks and concentrated development in a single unified, modern codebase on Expo and React Native.",
+        "Consolidated onto Expo and React Native an ecosystem carrying legacy stacks (native Swift and Java, Xamarin.Forms, Flutter, old Expo), brand by brand, with screen and analytics parity, an A/B test, feature flags and staged rollouts so sales never stopped.",
         "Built and shipped the apps’ remote configuration admin, with an MCP server so AI agents can read and publish configurations.",
-        "Standardized the EAS pipeline and raised monorepo test coverage from 72% to 90%, with all 11 tenants at 100% line coverage.",
-        "Made an AI-assisted development loop (Compound Engineering + OpenSpec) with quality gates mandatory across the mobile app repositories.",
+        "Standardized the EAS pipeline and raised monorepo test coverage from 72% to 90%, with every app in it at 100% line coverage.",
+        "Made an AI-assisted development loop (Compound Engineering + OpenSpec) mandatory across the mobile repos, with quality and security gates and human review.",
         "Coordinate five engineers through weekly 1:1s, design and code reviews, ADRs, seven-week planning cycles and a full-platform learning program."
       ]
     },

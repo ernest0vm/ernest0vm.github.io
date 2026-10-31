@@ -15,6 +15,18 @@ const c = useTranslations(locale, 'content');
   title={t('highlights.title')}
   lead={t('highlights.lead')}
 >
+  <dl class="mb-4 grid grid-cols-2 gap-4 lg:grid-cols-4">
+    {resume.scale.map((item) => (
+      <div class="glass-strong flex flex-col gap-1 rounded-glass p-5">
+        <dt class="order-2 text-sm/5 text-white/60">
+          {c(`scale.${item.id}.label`)}
+        </dt>
+        <dd class="order-1 text-3xl font-bold tracking-tight text-white">
+          {c(`scale.${item.id}.value`)}
+        </dd>
+      </div>
+    ))}
+  </dl>
   <ul class="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
     {resume.highlights.map((item) => (
       <li class="glass flex flex-col gap-3 rounded-glass p-6">

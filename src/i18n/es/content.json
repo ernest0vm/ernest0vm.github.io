@@ -1,13 +1,31 @@
 {
-  "bio": "Tech lead y arquitecto móvil con perfil full stack y {years} años de experiencia construyendo productos de punta a punta. Hoy diseño y evoluciono la plataforma móvil con la que Reserhub publica una veintena de apps de venta de boletos para líneas de autobús de México, Colombia, Brasil, Perú y Estados Unidos: un monorepo con Turborepo y Expo, una arquitectura híbrida con el funnel de compra web embebido y un proceso de entrega con actualizaciones OTA, feature flags y despliegues graduales. Lidero un squad de cinco ingenieros y alterno entre decisiones de arquitectura y código de producción en móvil, backend y web, con desarrollo asistido por IA bajo compuertas de calidad. Antes de móvil trabajé en IoT, electrónica SMD y firmware embebido, lo que me da una visión completa del producto, del dispositivo a la nube.",
+  "bio": "Tech lead y arquitecto móvil con perfil full stack y {years} años de experiencia construyendo productos de punta a punta. Hoy diseño y evoluciono la plataforma móvil con la que Reserhub publica una veintena de apps de venta de boletos para líneas de autobús de México, Colombia, Brasil, Perú y Estados Unidos, con más de 300 mil usuarios activos al mes: un monorepo con Turborepo y Expo, una arquitectura híbrida con el funnel de compra web embebido y un proceso de entrega con actualizaciones OTA, feature flags y despliegues graduales. Lidero un squad de cinco ingenieros y alterno entre decisiones de arquitectura y código de producción en móvil, backend y web, con desarrollo asistido por IA bajo compuertas de calidad. Antes de móvil trabajé en IoT, electrónica SMD y firmware embebido, lo que me da una visión completa del producto, del dispositivo a la nube.",
   "quote": "La innovación es lo que distingue a un líder de un seguidor.",
   "state": "Estado de México",
   "skillsLead": "Estos son algunos de los lenguajes, frameworks y librerías que utilizo en mis proyectos:",
   "toolsLead": "Estas son las herramientas con las que trabajo hoy, incluidas las de IA que uso a diario para acelerar diseño, desarrollo y revisión de código:",
+  "scale": {
+    "apps": {
+      "value": "~20",
+      "label": "apps de marca en tiendas"
+    },
+    "users": {
+      "value": "300 mil+",
+      "label": "usuarios activos al mes"
+    },
+    "countries": {
+      "value": "5",
+      "label": "países de América"
+    },
+    "coverage": {
+      "value": "72 → 90 %",
+      "label": "cobertura de pruebas en cinco semanas"
+    }
+  },
   "highlights": {
     "platform": {
       "title": "Arquitectura de plataforma móvil",
-      "description": "Diseñé el monorepo con Turborepo y Expo que sirve a 11 apps de marca desde paquetes compartidos de UI, servicios, SDKs y configuración por tenant, documentado en design docs que comparan alternativas como Nx y Module Federation. En el camino retiré stacks heredados y concentré las apps en una base de código moderna y unificada."
+      "description": "Diseño y evoluciono la plataforma de una veintena de apps de marca, repartidas en cuatro repositorios. Su núcleo es un monorepo con Turborepo y Expo y paquetes compartidos de UI, servicios, SDKs y configuración por tenant, documentado en design docs que comparan alternativas como Nx y Module Federation."
     },
     "commerce": {
       "title": "E-commerce en producción",
@@ -15,7 +33,7 @@
     },
     "delivery": {
       "title": "Entrega y calidad",
-      "description": "Pipeline homologado de EAS Build y Submit, actualizaciones OTA, feature flags y rollouts progresivos de liberación a tiendas, con Sentry y pruebas E2E en Maestro. La cobertura de pruebas del monorepo pasó de 72 % a 90 % en cinco semanas."
+      "description": "Pipeline homologado de EAS Build y Submit, actualizaciones OTA, feature flags y rollouts progresivos de liberación a tiendas, con Sentry y pruebas E2E en Maestro."
     },
     "leadership": {
       "title": "Liderazgo técnico",
@@ -23,7 +41,7 @@
     },
     "ai": {
       "title": "Desarrollo asistido por IA",
-      "description": "Hice obligatorio en los repos móviles un ciclo de Compound Engineering con specs de OpenSpec y compuertas antes de cada PR: simplificación, verificación con un agente aislado y code review. Agentes programados suben la cobertura y revisan PRs."
+      "description": "Hice obligatorio en los repos móviles un ciclo de Compound Engineering con specs de OpenSpec. Antes de cada merge, el código de los agentes pasa por simplificación, verificación con un agente aislado, CI (lint, tipos y pruebas), escaneo de secretos y dependencias y revisión humana. Los agentes operan con permisos acotados, sin acceso a producción."
     },
     "fullstack": {
       "title": "Full stack, del dispositivo a la nube",
@@ -32,15 +50,15 @@
   },
   "work": {
     "reserhub": {
-      "summary": "Lidero el squad de plataforma móvil de la vertical B2B: la arquitectura, el código compartido y el proceso de entrega con los que Reserhub publica las apps de venta de boletos de una veintena de líneas de autobús.",
+      "summary": "Lidero el squad de plataforma móvil de la vertical B2B: la arquitectura, el código compartido y el proceso de entrega con los que Reserhub publica una veintena de apps de venta de boletos para líneas de autobús.",
       "highlights": [
-        "Diseñé y lideré la unificación de las apps en un monorepo con Turborepo y Expo: 11 apps de marca, paquetes compartidos y configuración por tenant.",
+        "Diseñé y lideré la unificación en un monorepo con Turborepo y Expo, con paquetes compartidos y configuración por tenant: el núcleo de una plataforma de una veintena de apps en cuatro repositorios.",
         "Llevé el funnel de compra de las apps enterprise a una arquitectura híbrida —shell nativo con el funnel web embebido y puentes nativos para sesión, pagos y deep links—, validada con prueba A/B y desplegada marca por marca.",
         "Lidero la migración de la app B2C de Reservamos a la nueva plataforma con paridad de pantallas y analítica, y separé otra app de marca en su propio repositorio, actualizada a Expo 58 y React 19.",
-        "Retiré stacks heredados y concentré el desarrollo en una base de código unificada y moderna sobre Expo y React Native.",
+        "Consolidé en Expo y React Native un ecosistema con stacks heredados (Swift y Java nativos, Xamarin.Forms, Flutter, Expo antiguo), marca por marca, con paridad de pantallas y analítica, prueba A/B, feature flags y rollouts progresivos para no interrumpir la venta.",
         "Desarrollé y puse en producción el admin de configuraciones remotas de las apps, con un servidor MCP para que los agentes de IA consulten y publiquen configuraciones.",
-        "Homologué el pipeline de EAS y llevé la cobertura de pruebas del monorepo de 72 % a 90 %, con los 11 tenants al 100 % de líneas.",
-        "Hice obligatorio un ciclo de desarrollo asistido por IA (Compound Engineering + OpenSpec) con compuertas de calidad en los repositorios de apps móviles.",
+        "Homologué el pipeline de EAS y llevé la cobertura de pruebas del monorepo de 72 % a 90 %, con todas sus apps al 100 % de líneas.",
+        "Hice obligatorio un ciclo de desarrollo asistido por IA (Compound Engineering + OpenSpec) en los repos móviles, con compuertas de calidad y seguridad y revisión humana.",
         "Coordino a cinco ingenieros con 1:1 semanales, revisiones de diseño y código, ADRs, ciclos de planeación de siete semanas y un programa de aprendizaje full-platform."
       ]
     },
@@ -97,14 +115,14 @@
     "autovias": "Boletos de autobús en México",
     "rapi2s": "Boletos de autobús en México",
     "sur-de-jalisco": "Boletos de autobús en México",
-    "berlinas-del-fonce": "Pasajes de autobús en Colombia",
-    "flota-magdalena": "Pasajes de autobús en Colombia",
-    "rapido-ochoa": "Pasajes de autobús en Colombia",
+    "berlinas-del-fonce": "Pasajes de bus en Colombia",
+    "flota-magdalena": "Pasajes de bus en Colombia",
+    "rapido-ochoa": "Pasajes de bus en Colombia",
     "gontijo": "Pasajes de autobús en Brasil",
     "saritur": "Pasajes de autobús en Brasil",
     "expresso-sao-luiz": "Pasajes de autobús en Brasil",
     "unida": "Pasajes de autobús en Brasil",
-    "vanda": "Reserva de viajes en van, interurbano",
+    "vanda": "Viajes interurbanos en van",
     "bussi": "Vanpooling interurbano",
     "chib": "Envío de remesas de EE. UU. a México",
     "familycard-health": "Telemedicina",
