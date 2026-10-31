@@ -1,0 +1,30 @@
+version: 2
+
+# Security updates are switched on in the repo settings and arrive as soon as
+# an advisory lands. This file adds monthly version updates, grouped so each
+# ecosystem opens a single PR for minor and patch bumps; majors come apart.
+updates:
+  - package-ecosystem: npm
+    directory: /
+    schedule:
+      interval: monthly
+    # Same 7-day wait as npmMinimalAgeGate in .yarnrc.yml, which Yarn also
+    # enforces while Dependabot resolves the update: a younger release would
+    # make the PR fail. Security updates are exempt from the cooldown.
+    cooldown:
+      default-days: 7
+    groups:
+      npm:
+        patterns: ['*']
+        update-types: [minor, patch]
+
+  - package-ecosystem: github-actions
+    directory: /
+    schedule:
+      interval: monthly
+    cooldown:
+      default-days: 7
+    groups:
+      actions:
+        patterns: ['*']
+        update-types: [minor, patch]

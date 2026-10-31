@@ -226,6 +226,14 @@ La variante con prefijo vive en su propio `@supports`. El fallback opaco está
 anidado en dos `@supports` porque escrito como `not (A or B)` el minificador lo
 reescribe a `not A`.
 
+Desde Astro 7.4 (Vite 8.3) el minificador además **reescribe cualquier prueba de
+`backdrop-filter` dentro de `@supports`** a `(-webkit-backdrop-filter: …) or
+(backdrop-filter: …)`. Por eso el bloque de Safari < 18 se condiciona solo a la
+variante con prefijo: la guarda anterior, «con prefijo y sin estándar», quedó
+convertida en una condición imposible y Safari 17 se habría quedado sin
+desenfoque. Tras actualizar Astro o Vite, revisar los `@supports` del CSS
+publicado (`grep -o '@supports[^{]*backdrop[^{]*{' dist/_astro/*.css`).
+
 ### Guardas de accesibilidad
 
 Al final de `global.css`, **sin capa a propósito**: una regla sin capa le gana
@@ -291,6 +299,13 @@ archivo cambia en cada build, así que basta comparar el nombre servido contra
 - **ESLint no parsea TypeScript dentro de bloques `<script>`** de `.astro`.
   Escribir esos scripts en JS plano; el frontmatter sí acepta TS.
 - **husky + lint-staged** corren ESLint y Prettier sobre lo staged en cada commit.
+- **Node ≥ 22.23.4**: lo exige Astro 7.4. CI usa el último 22.x de `setup-node`.
+- **Dependabot**: alertas y actualizaciones de seguridad activadas en la
+  configuración del repo (llegan de inmediato). `.github/dependabot.yml` añade
+  actualizaciones mensuales de versión, un PR agrupado por ecosistema (npm y
+  GitHub Actions) para minor y patch, con la misma espera de 7 días que el
+  filtro de Yarn. Antes de fusionar uno que toque Astro o Vite, revisar la
+  trampa del minificador de arriba contra `yarn preview`.
 
 ## Deploy
 
