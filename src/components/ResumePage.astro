@@ -3,23 +3,31 @@ import Layout from '../layouts/Layout.astro';
 import Nav from './Nav.astro';
 import Hero from './Hero.astro';
 import About from './About.astro';
+import Highlights from './Highlights.astro';
 import Timeline from './Timeline.astro';
 import Skills from './Skills.astro';
 import Portfolio from './Portfolio.astro';
 import Footer from './Footer.astro';
 import resume from '../data/resume.json';
-import { formatMonth, formatPeriod, useTranslations } from '../i18n/index.js';
+import {
+  formatMonth,
+  formatPeriod,
+  useList,
+  useTranslations,
+} from '../i18n/index.js';
 import { experienceInWords } from '../utils/experience.js';
 
 const { locale = 'es' } = Astro.props;
 const t = useTranslations(locale);
 const c = useTranslations(locale, 'content');
+const list = useList(locale);
 
 const work = resume.work.map((job) => ({
   heading: job.company,
   subheading: job.title,
   meta: formatPeriod(job.start, job.end, locale, t('date.present')),
-  description: c(`work.${job.id}`),
+  description: c(`work.${job.id}.summary`),
+  bullets: list(`work.${job.id}.highlights`),
   logo: job.logo,
 }));
 
@@ -47,6 +55,7 @@ const metaDescription = c('bio', { years: experienceInWords(locale) });
   <main>
     <Hero locale={locale} />
     <About locale={locale} />
+    <Highlights locale={locale} />
     <Timeline
       id="work"
       eyebrow={t('work.eyebrow')}

@@ -4,6 +4,7 @@
     "label": "Main",
     "home": "Home",
     "about": "About",
+    "highlights": "Impact",
     "work": "Experience",
     "education": "Education",
     "skills": "Skills",
@@ -23,6 +24,11 @@
     "showWhatsapp": "Show WhatsApp",
     "showEmail": "Show email",
     "download": "Download resume"
+  },
+  "highlights": {
+    "eyebrow": "Impact",
+    "title": "What I bring",
+    "lead": "Architecture, delivery and technical leadership for mobile platforms — and the backend and web behind them — that sell in production every day."
   },
   "work": {
     "eyebrow": "Career",

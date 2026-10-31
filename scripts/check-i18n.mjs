@@ -3,7 +3,7 @@
  * - a key present in one locale and missing in the other (ui, content, cv);
  * - a translation whose {placeholders} differ from its counterpart's;
  * - an entry in resume.json with no text in content.json, or text whose entry
- *   is gone;
+ *   is gone (a job's optional `highlights` bullets are allowed);
  * - a bio without its {years} placeholder;
  * - "marca blanca" / "white label" anywhere (see CLAUDE.md, "Contenido").
  */
@@ -71,7 +71,11 @@ const expected = new Set([
   'state',
   'skillsLead',
   'toolsLead',
-  ...resume.work.map((job) => `work.${job.id}`),
+  ...resume.work.map((job) => `work.${job.id}.summary`),
+  ...resume.highlights.flatMap((item) => [
+    `highlights.${item.id}.title`,
+    `highlights.${item.id}.description`,
+  ]),
   ...resume.education.flatMap((item) => [
     `education.${item.id}.degree`,
     `education.${item.id}.description`,
@@ -89,6 +93,9 @@ for (const locale of LOCALES) {
       errors.push(`${locale}/content.json has no text for "${key}"`);
   }
   for (const key of content.keys()) {
+    // A job's bullet list is optional; its items flatten to work.<id>.highlights.N.
+    const bullet = /^work\.([\w-]+)\.highlights\.\d+$/.exec(key);
+    if (bullet && resume.work.some((job) => job.id === bullet[1])) continue;
     if (!expected.has(key))
       errors.push(
         `${locale}/content.json "${key}" matches no entry in resume.json`,

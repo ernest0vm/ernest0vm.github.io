@@ -116,8 +116,12 @@ versión en ambos idiomas.**
   `languages`.
 - **Texto** (`src/i18n/<locale>/`), tres archivos por idioma:
   - `ui.json`: la plantilla del sitio (nav, encabezados, botones, `aria-label`).
-  - `content.json`: el CV, indexado por esos `id` (`work.reserhub`,
-    `education.utfv.degree`, `portfolio.vanda`…).
+  - `content.json`: el CV, indexado por esos `id` (`work.reserhub.summary`,
+    `education.utfv.degree`, `portfolio.vanda`…). Cada empleo lleva un
+    `summary` y, opcionalmente, `highlights`: una lista de logros que el sitio
+    y el PDF muestran como viñetas. Las tarjetas de la sección «Impacto» son
+    `highlights.<id>.title` / `.description`, con su icono en
+    `resume.highlights`.
   - `cv.json`: las etiquetas de la maqueta del PDF.
 
   Se separan para que el workflow del PDF sepa qué le afecta: `ui.json` no
@@ -135,7 +139,8 @@ falla si:
 - aparece «marca blanca» / «white label» en cualquier archivo.
 
 Para añadir un empleo: una entrada en `resume.work` con su `id`, y
-`work.<id>` en los dos `content.json`. No se usa ninguna librería de i18n: en un
+`work.<id>.summary` (más `work.<id>.highlights` si tiene logros que destacar)
+en los dos `content.json`. Las listas se leen con `useList(locale)`. No se usa ninguna librería de i18n: en un
 sitio estático no aportan nada que este helper no haga.
 
 Cada componente recibe `locale` como prop desde `ResumePage`. Los años de

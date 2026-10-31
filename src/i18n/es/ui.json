@@ -4,6 +4,7 @@
     "label": "Principal",
     "home": "Inicio",
     "about": "Acerca de",
+    "highlights": "Impacto",
     "work": "Empleos",
     "education": "Educación",
     "skills": "Habilidades",
@@ -23,6 +24,11 @@
     "showWhatsapp": "Ver WhatsApp",
     "showEmail": "Ver correo",
     "download": "Descargar currículum"
+  },
+  "highlights": {
+    "eyebrow": "Impacto",
+    "title": "Lo que aporto",
+    "lead": "Arquitectura, entrega y liderazgo técnico en plataformas móviles —y en el backend y la web que las sostienen— que venden en producción todos los días."
   },
   "work": {
     "eyebrow": "Trayectoria",

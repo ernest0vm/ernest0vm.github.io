@@ -1,0 +1,36 @@
+---
+import { Icon } from 'astro-icon/components';
+import Section from './Section.astro';
+import resume from '../data/resume.json';
+import { useTranslations } from '../i18n/index.js';
+
+const { locale = 'es' } = Astro.props;
+const t = useTranslations(locale);
+const c = useTranslations(locale, 'content');
+---
+
+<Section
+  id="highlights"
+  eyebrow={t('highlights.eyebrow')}
+  title={t('highlights.title')}
+  lead={t('highlights.lead')}
+>
+  <ul class="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+    {resume.highlights.map((item) => (
+      <li class="glass flex flex-col gap-3 rounded-glass p-6">
+        <span
+          class="flex size-10 items-center justify-center rounded-xl bg-accent-500/20 text-accent-300 ring-1 ring-accent-400/30"
+          aria-hidden="true"
+        >
+          <Icon name={item.icon} class="size-4.5" />
+        </span>
+        <h3 class="text-base font-semibold text-white">
+          {c(`highlights.${item.id}.title`)}
+        </h3>
+        <p class="text-sm/6 text-white/60">
+          {c(`highlights.${item.id}.description`)}
+        </p>
+      </li>
+    ))}
+  </ul>
+</Section>

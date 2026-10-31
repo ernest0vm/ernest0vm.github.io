@@ -44,6 +44,19 @@ export function useTranslations(locale = DEFAULT_LOCALE, namespace = 'ui') {
   };
 }
 
+/**
+ * Returns `list(key)` for one namespace: the array stored at that key (e.g. a
+ * job's highlights), falling back to Spanish, or an empty array.
+ */
+export function useList(locale = DEFAULT_LOCALE, namespace = 'content') {
+  return (key) => {
+    const value =
+      lookup(messages[locale]?.[namespace], key) ??
+      lookup(messages[DEFAULT_LOCALE][namespace], key);
+    return Array.isArray(value) ? value : [];
+  };
+}
+
 /** "2025-04" -> "Abril 2025" / "April 2025". */
 export function formatMonth(isoMonth, locale = DEFAULT_LOCALE) {
   const [year, month] = isoMonth.split('-').map(Number);

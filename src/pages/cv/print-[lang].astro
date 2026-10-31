@@ -15,6 +15,7 @@ import resume from '../../data/resume.json';
 import {
   formatMonth,
   formatPeriod,
+  useList,
   useTranslations,
 } from '../../i18n/index.js';
 import { experienceInWords } from '../../utils/experience.js';
@@ -32,6 +33,7 @@ export function getStaticPaths() {
 const { lang } = Astro.params;
 const label = useTranslations(lang, 'cv');
 const c = useTranslations(lang, 'content');
+const list = useList(lang);
 const { contact } = resume;
 const base = import.meta.env.BASE_URL.replace(/\/+$/, '');
 
@@ -124,6 +126,18 @@ const caption = (project) =>
       </section>
 
       <section>
+        <h2>{label('highlights')}</h2>
+        <ul class="highlights">
+          {resume.highlights.map((item) => (
+            <li>
+              <strong>{c(`highlights.${item.id}.title`)}.</strong>{' '}
+              {c(`highlights.${item.id}.description`)}
+            </li>
+          ))}
+        </ul>
+      </section>
+
+      <section>
         <h2>{label('work')}</h2>
         {resume.work.map((job) => (
           <article class="entry">
@@ -140,7 +154,14 @@ const caption = (project) =>
                 ).replace(' - ', ' – ')}
               </p>
             </div>
-            <p>{c(`work.${job.id}`)}</p>
+            <p>{c(`work.${job.id}.summary`)}</p>
+            {list(`work.${job.id}.highlights`).length > 0 && (
+              <ul class="bullets">
+                {list(`work.${job.id}.highlights`).map((bullet) => (
+                  <li>{bullet}</li>
+                ))}
+              </ul>
+            )}
           </article>
         ))}
       </section>
@@ -436,6 +457,21 @@ const caption = (project) =>
     break-inside: avoid;
   }
 
+  /* A job with a bullet list may span pages, but only between bullets: kept
+     whole, the longest entry would leave most of a page blank. */
+  .entry:has(.bullets) {
+    break-inside: auto;
+  }
+
+  .entry-head,
+  .entry:has(.bullets) > p {
+    break-after: avoid;
+  }
+
+  .bullets li {
+    break-inside: avoid;
+  }
+
   .entry + .entry {
     margin-top: 10px;
   }
@@ -470,6 +506,30 @@ const caption = (project) =>
 
   .muted {
     color: var(--muted);
+  }
+
+  .highlights {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 6px 20px;
+  }
+
+  .highlights li {
+    break-inside: avoid;
+  }
+
+  .highlights strong {
+    color: var(--ink);
+  }
+
+  .bullets {
+    margin-top: 3px;
+    padding-left: 14px;
+    list-style: disc;
+  }
+
+  .bullets li::marker {
+    color: var(--accent);
   }
 
   .facts {
