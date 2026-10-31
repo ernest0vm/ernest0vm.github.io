@@ -15,7 +15,8 @@ import {
   useList,
   useTranslations,
 } from '../i18n/index.js';
-import { experienceInWords } from '../utils/experience.js';
+import { metaDescription, profileJsonLd } from '../utils/seo.js';
+import { getAbsoluteLocaleUrl } from 'astro:i18n';
 
 const { locale = 'es' } = Astro.props;
 const t = useTranslations(locale);
@@ -40,15 +41,17 @@ const education = resume.education.map((item) => ({
   logo: item.logo,
 }));
 
-// The bio carries a {years} placeholder; resolve it here too so the meta
-// description never ships the raw placeholder.
-const metaDescription = c('bio', { years: experienceInWords(locale) });
+// A short, search-sized summary rather than the full bio, plus structured
+// data for search engines and AI assistants (see src/utils/seo.js).
+const description = metaDescription(locale);
+const jsonLd = profileJsonLd(locale, getAbsoluteLocaleUrl(locale));
 ---
 
 <Layout
   locale={locale}
   title={`${resume.name} — ${resume.role}`}
-  description={metaDescription}
+  description={description}
+  jsonLd={jsonLd}
 >
   <Nav locale={locale} />
 

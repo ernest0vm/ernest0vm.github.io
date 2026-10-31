@@ -57,5 +57,10 @@
   },
   "date": {
     "present": "Actual"
+  },
+  "meta": {
+    "description": "Ernesto Valdez: tech lead, arquitecto móvil y desarrollador full stack con {years} años de experiencia en React Native, Expo, liderazgo técnico e IA aplicada.",
+    "tagline": "{years} años construyendo productos móviles, web y backend",
+    "ogAlt": "Ernesto Valdez, tech lead, arquitecto móvil y desarrollador full stack"
   }
 }

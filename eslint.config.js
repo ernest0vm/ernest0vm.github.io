@@ -30,6 +30,12 @@ export default [
     },
   },
   {
+    // Astro endpoints (llms.txt, the social preview images) return a Web API
+    // Response, which runs on Node's global of the same name.
+    files: ['src/pages/**/*.js'],
+    languageOptions: { globals: { Response: 'readonly' } },
+  },
+  {
     // The CV print layout is styled with plain scoped CSS, independent of the
     // site's Tailwind theme, so its class names are not Tailwind utilities.
     files: ['src/pages/cv/**'],

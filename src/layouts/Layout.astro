@@ -2,14 +2,26 @@
 import { getAbsoluteLocaleUrl } from 'astro:i18n';
 import '../styles/global.css';
 import { LOCALES, DEFAULT_LOCALE, useTranslations } from '../i18n/index.js';
+import resume from '../data/resume.json';
+import { OG_LOCALES, SITE } from '../utils/seo.js';
+import {
+  HEIGHT as OG_HEIGHT,
+  WIDTH as OG_WIDTH,
+} from '../pages/og/[lang].png.js';
 
 const base = import.meta.env.BASE_URL.replace(/\/+$/, '');
 const {
   locale = DEFAULT_LOCALE,
   title = 'Ernesto Valdez',
   description = '',
+  jsonLd,
 } = Astro.props;
 const t = useTranslations(locale);
+
+const canonical = getAbsoluteLocaleUrl(locale);
+const ogImage = `${SITE}/og/${locale}.png`;
+// rel="me" ties the page to the person's other profiles for search engines.
+const profiles = resume.social.filter((network) => network.id !== 'whatsapp');
 
 // Tell search engines the two pages are translations of each other, so each
 // language ranks for its own audience instead of competing as duplicates.
@@ -26,6 +38,43 @@ const alternates = LOCALES.map((code) => ({
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="theme-color" content="#0b0d12" />
     <meta name="description" content={description} />
+    <meta name="author" content={resume.name} />
+    <meta name="robots" content="index, follow, max-image-preview:large" />
+    <link rel="canonical" href={canonical} />
+    <link rel="sitemap" href="/sitemap-index.xml" />
+    {profiles.map((network) => (
+      <link rel="me" href={network.url} />
+    ))}
+
+    <!-- Link previews (LinkedIn, WhatsApp, Slack, X…) -->
+    <meta property="og:type" content="profile" />
+    <meta property="og:site_name" content={resume.name} />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={canonical} />
+    <meta property="og:locale" content={OG_LOCALES[locale]} />
+    {LOCALES.filter((code) => code !== locale).map((code) => (
+      <meta property="og:locale:alternate" content={OG_LOCALES[code]} />
+    ))}
+    <meta property="og:image" content={ogImage} />
+    <meta property="og:image:type" content="image/png" />
+    <meta property="og:image:width" content={String(OG_WIDTH)} />
+    <meta property="og:image:height" content={String(OG_HEIGHT)} />
+    <meta property="og:image:alt" content={t('meta.ogAlt')} />
+    <meta property="profile:first_name" content={resume.name.split(' ')[0]} />
+    <meta
+      property="profile:last_name"
+      content={resume.name.split(' ').slice(1).join(' ')}
+    />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={ogImage} />
+    <meta name="twitter:image:alt" content={t('meta.ogAlt')} />
+
+    {jsonLd && (
+      <script type="application/ld+json" set:html={JSON.stringify(jsonLd)} />
+    )}
     <link rel="manifest" href={`${base}/manifest.json`} />
     <link rel="shortcut icon" href={`${base}/favicon.ico`} />
     <title>{title}</title>

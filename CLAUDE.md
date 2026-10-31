@@ -27,20 +27,22 @@ herramientas del navegador.
 
 ## Estructura
 
-| Ruta                                                | Qué es                                                                                                                                     |
-| --------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------ |
-| `src/pages/index.astro`, `src/pages/en/index.astro` | Rutas de cada idioma; solo montan `ResumePage` con su `locale`.                                                                            |
-| `src/components/ResumePage.astro`                   | La página real: resuelve los textos del idioma y compone las secciones.                                                                    |
-| `src/i18n/{es,en}/`                                 | Todo el texto visible, por idioma: `ui.json` (sitio), `content.json` (el CV), `cv.json` (etiquetas del PDF).                               |
-| `src/i18n/index.js`                                 | `useTranslations(locale, namespace)` y los formateadores de fechas.                                                                        |
-| `src/layouts/Layout.astro`                          | Shell HTML + capa de fondo fija + init de partículas.                                                                                      |
-| `src/components/`                                   | `Nav`, `Hero`, `About`, `Timeline` (reusado para educación y empleos), `Skills`, `Portfolio`, `Footer`, y `Section` como envoltorio común. |
-| `src/data/resume.json`                              | Los datos neutrales al idioma: nombres, fechas, URLs, logos, iconos, `id`s.                                                                |
-| `src/styles/global.css`                             | Tailwind + tokens `@theme` + utilidades `glass`.                                                                                           |
-| `src/utils/experience.js`                           | Años de experiencia calculados y deletreados.                                                                                              |
-| `src/pages/cv/print-[lang].astro`                   | Maqueta imprimible del CV. Solo existe en el build del PDF; ver "PDF del CV".                                                              |
-| `scripts/build-cv.mjs`                              | Construye esa maqueta y la imprime a PDF con Chrome.                                                                                       |
-| `scripts/check-i18n.mjs`                            | Valida que los dos idiomas estén completos y en regla; corre en `yarn lint`.                                                               |
+| Ruta                                                  | Qué es                                                                                                                                     |
+| ----------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------ |
+| `src/pages/index.astro`, `src/pages/en/index.astro`   | Rutas de cada idioma; solo montan `ResumePage` con su `locale`.                                                                            |
+| `src/components/ResumePage.astro`                     | La página real: resuelve los textos del idioma y compone las secciones.                                                                    |
+| `src/i18n/{es,en}/`                                   | Todo el texto visible, por idioma: `ui.json` (sitio), `content.json` (el CV), `cv.json` (etiquetas del PDF).                               |
+| `src/i18n/index.js`                                   | `useTranslations(locale, namespace)` y los formateadores de fechas.                                                                        |
+| `src/layouts/Layout.astro`                            | Shell HTML + capa de fondo fija + init de partículas.                                                                                      |
+| `src/components/`                                     | `Nav`, `Hero`, `About`, `Timeline` (reusado para educación y empleos), `Skills`, `Portfolio`, `Footer`, y `Section` como envoltorio común. |
+| `src/data/resume.json`                                | Los datos neutrales al idioma: nombres, fechas, URLs, logos, iconos, `id`s.                                                                |
+| `src/styles/global.css`                               | Tailwind + tokens `@theme` + utilidades `glass`.                                                                                           |
+| `src/utils/experience.js`                             | Años de experiencia calculados y deletreados.                                                                                              |
+| `src/pages/cv/print-[lang].astro`                     | Maqueta imprimible del CV. Solo existe en el build del PDF; ver "PDF del CV".                                                              |
+| `scripts/build-cv.mjs`                                | Construye esa maqueta y la imprime a PDF con Chrome.                                                                                       |
+| `scripts/check-i18n.mjs`                              | Valida que los dos idiomas estén completos y en regla; corre en `yarn lint`.                                                               |
+| `src/utils/seo.js`                                    | Descripción meta y JSON-LD (`ProfilePage` + `Person`) para buscadores y asistentes de IA.                                                  |
+| `src/pages/og/[lang].png.js`, `src/pages/llms.txt.js` | Imagen de vista previa por idioma y `llms.txt`, generados en el build.                                                                     |
 
 ## Contenido
 
@@ -345,6 +347,36 @@ archivo cambia en cada build, así que basta comparar el nombre servido contra
   GitHub Actions) para minor y patch, con la misma espera de 7 días que el
   filtro de Yarn. Antes de fusionar uno que toque Astro o Vite, revisar la
   trampa del minificador de arriba contra `yarn preview`.
+
+## SEO y GEO
+
+Todo sale de `resume.json` y las traducciones, así que nada se desincroniza
+del contenido visible.
+
+- **`<head>`** (`Layout.astro`): descripción corta por idioma
+  (`meta.description` en `ui.json`, ~160 caracteres; el bio completo es
+  demasiado largo para un buscador), URL canónica, `hreflang`, `rel="me"` a
+  LinkedIn/GitHub/Behance, Open Graph (`og:type=profile`) y Twitter Card.
+- **Imagen de vista previa** (`/og/es.png`, `/og/en.png`, 1200×630): la arma
+  `satori` como SVG y `@resvg/resvg-js` la pasa a PNG, porque LinkedIn,
+  WhatsApp y compañía no aceptan SVG. Satori ignora `background-size`: el zoom
+  de la foto es un `<img>` más grande dentro de un círculo con
+  `overflow: hidden`. La columna de texto lleva ancho fijo; como item flexible
+  crecería hasta su línea más larga y empujaría la foto fuera del lienzo.
+- **JSON-LD** (`src/utils/seo.js`): `ProfilePage` con un `Person` (puesto,
+  empresa actual, formación, idiomas, perfiles y `knowsAbout`). **Sin teléfono
+  ni correo**: es texto plano para un recolector, igual que el HTML.
+- **`/llms.txt`** (GEO): el CV completo en Markdown e inglés, con enlaces a la
+  versión en español y a los PDFs. También sin datos de contacto.
+- **`robots.txt`** (`public/`): permite todo y nombra a los rastreadores de IA
+  (GPTBot, ClaudeBot, PerplexityBot, Google-Extended…) para que la intención
+  sea explícita; apunta al sitemap.
+- **Sitemap** (`@astrojs/sitemap`): `sitemap-index.xml` con las dos URLs y sus
+  alternativas `es-MX` / `en-US`. Los redirects de `public/resume/` no entran
+  porque son archivos estáticos, no páginas.
+
+Los endpoints devuelven un `Response` de la Web API; ESLint lo conoce como
+global solo en `src/pages/**/*.js`.
 
 ## Deploy
 
