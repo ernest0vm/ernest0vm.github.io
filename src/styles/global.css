@@ -181,9 +181,12 @@
 }
 
 /* Safari below 18 only implements the prefixed property. Separate rule, so
-   the minifier cannot collapse it into the standard one above. */
-@supports (-webkit-backdrop-filter: blur(1px)) and
-  (not (backdrop-filter: blur(1px))) {
+   the minifier cannot collapse it into the standard one above. Gated on the
+   prefixed property alone: the minifier rewrites any backdrop-filter test in
+   @supports into "(-webkit-… or …)", which once turned a "prefixed and not
+   standard" guard here into a condition that never matched. Browsers with
+   both just get the same blur from two separate rules. */
+@supports (-webkit-backdrop-filter: blur(1px)) {
   .glass {
     -webkit-backdrop-filter: blur(20px) saturate(160%);
   }
@@ -220,10 +223,9 @@
     backdrop-filter: none;
   }
 }
-/* Its prefixed twin cancels the Safari < 18 blur in a separate context, for
-   the same minifier reason as the @supports block above. */
-@supports (-webkit-backdrop-filter: blur(1px)) and
-  (not (backdrop-filter: blur(1px))) {
+/* Its prefixed twin cancels the prefixed blur in a separate context, for the
+   same minifier reasons as the @supports block above. */
+@supports (-webkit-backdrop-filter: blur(1px)) {
   @media (prefers-reduced-transparency: reduce) {
     .glass,
     .glass-strong {
