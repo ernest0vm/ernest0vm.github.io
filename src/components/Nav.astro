@@ -1,6 +1,6 @@
 ---
 import { getRelativeLocaleUrl } from 'astro:i18n';
-import { otherLocale, useTranslations } from '../i18n/ui.js';
+import { otherLocale, useTranslations } from '../i18n/index.js';
 
 const { locale = 'es' } = Astro.props;
 const t = useTranslations(locale);

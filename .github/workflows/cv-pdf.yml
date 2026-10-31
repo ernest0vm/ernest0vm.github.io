@@ -6,7 +6,10 @@ on:
   push:
     branches: [main]
     paths:
-      - src/data/resumeData.json
+      - src/data/resume.json
+      - src/i18n/*/content.json
+      - src/i18n/*/cv.json
+      - src/i18n/index.js
       - src/pages/cv/**
       - src/utils/experience.js
       - public/images/**
@@ -56,7 +59,7 @@ jobs:
         env:
           GH_TOKEN: ${{ github.token }}
         run: |
-          notes="Generado automáticamente a partir de resumeData.json (${GITHUB_SHA::7}). No editar a mano: se reemplaza en cada cambio de datos."
+          notes="Generado automáticamente a partir de resume.json y las traducciones (${GITHUB_SHA::7}). No editar a mano: se reemplaza en cada cambio de datos."
           if gh release view cv > /dev/null 2>&1; then
             gh release upload cv cv-pdf/*.pdf --clobber
             gh release edit cv --notes "$notes"

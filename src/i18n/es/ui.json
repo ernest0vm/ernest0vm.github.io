@@ -1,0 +1,55 @@
+{
+  "skip": "Saltar al contenido",
+  "nav": {
+    "label": "Principal",
+    "home": "Inicio",
+    "about": "Acerca de",
+    "work": "Empleos",
+    "education": "Educación",
+    "skills": "Habilidades",
+    "portfolio": "Portafolio"
+  },
+  "lang": {
+    "switch": "View in English"
+  },
+  "hero": {
+    "next": "Ir a la siguiente sección"
+  },
+  "about": {
+    "eyebrow": "Acerca de mí",
+    "title": "Perfil",
+    "photo": "Foto de {name}",
+    "showPhone": "Ver teléfono",
+    "showWhatsapp": "Ver WhatsApp",
+    "showEmail": "Ver correo",
+    "download": "Descargar currículum"
+  },
+  "work": {
+    "eyebrow": "Trayectoria",
+    "title": "Empleos"
+  },
+  "education": {
+    "eyebrow": "Formación",
+    "title": "Educación",
+    "license": "Cédula profesional {number}"
+  },
+  "skills": {
+    "eyebrow": "Habilidades",
+    "title": "Con qué construyo",
+    "lead": "{years} años de experiencia repartidos entre móvil, backend, nube y electrónica.",
+    "languages": "Lenguajes y frameworks",
+    "tools": "Herramientas"
+  },
+  "portfolio": {
+    "eyebrow": "Portafolio",
+    "title": "Apps que he construido",
+    "lead": "Aplicaciones publicadas en Google Play y App Store, construidas con Expo, Flutter, React Native y Xamarin.",
+    "retired": "Retirada de las tiendas"
+  },
+  "footer": {
+    "top": "Volver arriba"
+  },
+  "date": {
+    "present": "Actual"
+  }
+}

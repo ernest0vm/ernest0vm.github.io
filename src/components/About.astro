@@ -1,35 +1,24 @@
 ---
 import { Icon } from 'astro-icon/components';
 import Section from './Section.astro';
+import resume from '../data/resume.json';
 import { experienceInWords } from '../utils/experience.js';
-import { localized, useTranslations } from '../i18n/ui.js';
+import { useTranslations } from '../i18n/index.js';
 
-const { data, resume, locale = 'es' } = Astro.props;
+const { locale = 'es' } = Astro.props;
 const t = useTranslations(locale);
+const c = useTranslations(locale, 'content');
 const base = import.meta.env.BASE_URL.replace(/\/+$/, '');
 
-const name = data?.name;
-const profilepic = `${base}/images/${data?.image}`;
-// The bio keeps a {{years}} token so the copy stays editable in the data file
-// while the count itself is derived from the start date.
-const bio = (localized(data?.bio, locale) ?? '').replaceAll(
-  '{{years}}',
-  experienceInWords(locale),
-);
-const city = data?.address?.city;
-const state = localized(data?.address?.state, locale);
-const phones = data?.phones ?? [];
-const email = data?.email;
-const resumeDownload = localized(data?.resumedownload, locale);
-const quote = data?.quote;
-const languages = (resume?.spokenLanguages ?? []).map((item) =>
-  [
-    localized(item.language, locale),
-    localized(item.level, locale),
-    item.certificate && `(${item.certificate})`,
-  ]
-    .filter(Boolean)
-    .join(' '),
+const { name, contact } = resume;
+const profilepic = `${base}/images/${resume.photo}`;
+// The bio keeps a {years} placeholder so the copy stays editable while the
+// count itself is derived from the first job's start date.
+const bio = c('bio', { years: experienceInWords(locale) });
+const resumeDownload = `${resume.cv.release}${resume.cv.files[locale]}`;
+const languages = resume.languages.map(
+  (item) =>
+    `${c(`languages.${item.id}.name`)} ${item.cefr} · ${c(`languages.${item.id}.level`)}`,
 );
 
 // Phone and email ship base64-encoded and are assembled on click. This is not
@@ -41,10 +30,10 @@ const details = [
   { icon: 'fa6-solid:user', label: name },
   {
     icon: 'fa6-solid:location-dot',
-    label: [city, state].filter(Boolean).join(', '),
+    label: [contact.city, c('state')].filter(Boolean).join(', '),
   },
   // The WhatsApp number opens a chat; any other number dials.
-  ...phones.map((phone) =>
+  ...contact.phones.map((phone) =>
     phone.whatsapp
       ? {
           icon: 'fa6-brands:whatsapp',
@@ -62,7 +51,7 @@ const details = [
   {
     icon: 'fa6-solid:envelope',
     reveal: t('about.showEmail'),
-    value: encode(email),
+    value: encode(contact.email),
     scheme: 'mailto',
   },
   ...languages.map((label) => ({ icon: 'fa6-solid:language', label })),
@@ -88,13 +77,13 @@ const details = [
       <p class="text-base/8 text-white/75">{bio}</p>
 
       {
-        quote && (
+        resume.quote && (
           <figure class="mt-6 border-l-2 border-accent-400/60 pl-4">
             <blockquote class="text-sm/7 text-white/70 italic">
-              “{localized(quote.text, locale)}”
+              “{c('quote')}”
             </blockquote>
             <figcaption class="mt-1 text-xs text-white/45">
-              — {quote.author}
+              — {resume.quote.author}
             </figcaption>
           </figure>
         )

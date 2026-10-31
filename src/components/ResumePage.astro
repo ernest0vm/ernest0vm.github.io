@@ -7,51 +7,46 @@ import Timeline from './Timeline.astro';
 import Skills from './Skills.astro';
 import Portfolio from './Portfolio.astro';
 import Footer from './Footer.astro';
-import resumeData from '../data/resumeData.json';
-import { localized, useTranslations } from '../i18n/ui.js';
+import resume from '../data/resume.json';
+import { formatMonth, formatPeriod, useTranslations } from '../i18n/index.js';
 import { experienceInWords } from '../utils/experience.js';
 
 const { locale = 'es' } = Astro.props;
 const t = useTranslations(locale);
-const l = (value) => localized(value, locale);
+const c = useTranslations(locale, 'content');
 
-const { main, resume, portfolio } = resumeData;
+const work = resume.work.map((job) => ({
+  heading: job.company,
+  subheading: job.title,
+  meta: formatPeriod(job.start, job.end, locale, t('date.present')),
+  description: c(`work.${job.id}`),
+  logo: job.logo,
+}));
 
-const education = (resume?.education ?? []).map((item) => ({
+const education = resume.education.map((item) => ({
   heading: item.school,
-  subheading: l(item.degree),
-  meta: l(item.graduated),
+  subheading: c(`education.${item.id}.degree`),
+  meta: formatMonth(item.graduated, locale),
   note: item.license && t('education.license', { number: item.license }),
-  description: l(item.description),
+  description: c(`education.${item.id}.description`),
   logo: item.logo,
 }));
 
-const work = (resume?.work ?? []).map((item) => ({
-  heading: item.company,
-  subheading: item.title,
-  meta: l(item.years),
-  description: l(item.description),
-  logo: item.logo,
-}));
-
-// The bio carries a {{years}} token; resolve it here too so the meta
+// The bio carries a {years} placeholder; resolve it here too so the meta
 // description never ships the raw placeholder.
-const metaDescription = l(main.bio).replaceAll(
-  '{{years}}',
-  experienceInWords(locale),
-);
+const metaDescription = c('bio', { years: experienceInWords(locale) });
 ---
 
 <Layout
   locale={locale}
-  title={`${main.name} — ${main.description}`}
+  title={`${resume.name} — ${resume.role}`}
   description={metaDescription}
 >
   <Nav locale={locale} />
 
   <main>
-    <Hero data={main} locale={locale} />
-    <About data={main} resume={resume} locale={locale} />
+    <Hero locale={locale} />
+    <About locale={locale} />
     <Timeline
       id="work"
       eyebrow={t('work.eyebrow')}
@@ -64,9 +59,9 @@ const metaDescription = l(main.bio).replaceAll(
       title={t('education.title')}
       items={education}
     />
-    <Skills data={resume} locale={locale} />
-    <Portfolio data={portfolio} locale={locale} />
+    <Skills locale={locale} />
+    <Portfolio locale={locale} />
   </main>
 
-  <Footer data={main} locale={locale} />
+  <Footer locale={locale} />
 </Layout>
