@@ -16,6 +16,7 @@ yarn install
 yarn dev          # http://localhost:4321/resume/
 yarn build        # -> dist/
 yarn preview      # sirve dist/ (ver "Verificación" abajo)
+yarn cv:pdf       # -> cv-pdf/*.pdf (ver "PDF del CV" abajo)
 yarn lint
 yarn format
 ```
@@ -35,6 +36,8 @@ herramientas del navegador.
 | `src/data/resumeData.json`                          | Todo el contenido. Editarlo no requiere tocar código.                                                                                      |
 | `src/styles/global.css`                             | Tailwind + tokens `@theme` + utilidades `glass`.                                                                                           |
 | `src/utils/experience.js`                           | Años de experiencia calculados y deletreados.                                                                                              |
+| `src/pages/cv/print-[lang].astro`                   | Maqueta imprimible del CV. Solo existe en el build del PDF; ver "PDF del CV".                                                              |
+| `scripts/build-cv.mjs`                              | Construye esa maqueta y la imprime a PDF con Chrome.                                                                                       |
 
 ## Contenido
 
@@ -46,6 +49,11 @@ Se edita en `src/data/resumeData.json`:
   veces. Colecciones instaladas: `simple-icons`, `fa6-brands`, `fa6-solid`.
 - El `bio` lleva el token `{{years}}`, que `About.astro` sustituye por los años
   de experiencia. No escribir el número a mano.
+- `main.phones` es una lista; el número con `"whatsapp": true` se muestra con
+  ese icono y abre `wa.me`, los demás marcan con `tel:`. Van con lada
+  internacional (`+52 …`), que es como se leen en el PDF en inglés.
+- `main.quote`, `resume.spokenLanguages` y la `license` (cédula profesional) de
+  cada entrada de educación salen tanto en el sitio como en el PDF.
 - Los logos de empleos y educación (`logo`) **sí** son URLs remotas, por
   decisión explícita del dueño del repo. Hay tres orígenes válidos:
   1. `https://www.google.com/s2/favicons?domain=X&sz=128`. Si el dominio no
@@ -97,7 +105,7 @@ Hay dos fuentes de texto, y **todo texto visible nuevo necesita ambas versiones*
   cambia entre idiomas (nombres de empresas, escuelas y apps, URLs, logos,
   iconos) se queda como valor plano y no se duplica. `localized(valor, locale)`
   acepta las dos formas, así que un campo plano puede pasar a bilingüe sin tocar
-  código. `resumedownload` admite lo mismo si algún día hay un PDF en inglés.
+  código. `resumedownload` es bilingüe: cada idioma apunta a su propio PDF.
 - **Plantilla** (`src/i18n/ui.js`): encabezados, nav, botones y `aria-label`.
   Se usan con `useTranslations(locale)`; admite variables (`{years}`, `{name}`).
 
@@ -122,6 +130,41 @@ teléfono» / «Ver correo» («Show phone» / «Show email» en inglés). No es
 mantiene los valores fuera del alcance de los recolectores de direcciones, que
 leen el HTML plano. Al tocar esa sección, verificar con `grep` sobre
 `dist/index.html` **y** `dist/en/index.html` que los valores siguen sin aparecer.
+(El enlace de WhatsApp en `main.social` ya expone ese número como
+`wa.me/52…`; es anterior a esta regla y se dejó así.)
+
+El PDF **sí** los lleva en claro, por decisión explícita del dueño del repo: es
+para lo que sirve un CV descargable. Por eso la maqueta imprimible nunca se
+publica como HTML (ver abajo).
+
+## PDF del CV
+
+Un PDF por idioma, generado a partir de `resumeData.json`, publicado como
+archivos del release `cv` de GitHub. Los botones «Descargar currículum» apuntan
+a `releases/download/cv/<archivo>` (en `resumedownload`), así que la URL nunca
+cambia y no queda ningún PDF en el historial de git. El nombre de cada archivo
+sale de esa misma URL, no se repite en el script.
+
+- **Workflow propio** (`.github/workflows/cv-pdf.yml`), separado del deploy:
+  corre solo cuando cambian los datos, la maqueta del PDF, `experience.js`, las
+  imágenes de `public/` o el propio script. Un cambio de estilo del sitio no lo
+  dispara. También corre el 1 de septiembre, cuando cambian los años de
+  experiencia, y a mano con `workflow_dispatch`.
+- **Estilos desacoplados**: `src/pages/cv/print-[lang].astro` tiene su propio CSS y
+  sus propios textos; no usa Tailwind, `global.css` ni `ui.js`. Así nada del
+  sitio afecta al PDF sin regenerarlo. Por eso tiene una excepción a
+  `better-tailwindcss/no-unknown-classes` en `eslint.config.js`. Si se le añade
+  una dependencia nueva, agregarla también a los `paths` del workflow.
+- **La ruta no existe en el build normal**: su `getStaticPaths` devuelve `[]`
+  salvo con `CV_PDF=1`, que solo pone `scripts/build-cv.mjs`. Ese script
+  construye en `dist-cv/` (no pisa `dist/`), lo sirve con `astro preview` en el
+  puerto 4330 e imprime con `playwright-core` usando el Chrome instalado (el
+  runner de GitHub ya trae uno; `CHROME_PATH` para otro binario). No descarga
+  navegadores.
+- Para iterar sobre la maqueta: `CV_PDF=1 yarn dev` y abrir
+  `http://localhost:4321/resume/cv/print-es/` (no `/cv/es/`: el enrutado de idiomas toma un segmento `/es/` como prefijo del idioma por defecto y responde 404). Para revisar el resultado final,
+  `yarn cv:pdf` y abrir `cv-pdf/`.
+- Al verificar el sitio, comprobar que `dist/` no tenga carpeta `cv/`.
 
 ## Años de experiencia
 

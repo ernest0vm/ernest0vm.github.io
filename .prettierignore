@@ -4,3 +4,7 @@ dist/
 
 # lockfiles
 yarn.lock
+
+# CV PDF build output
+dist-cv/
+cv-pdf/

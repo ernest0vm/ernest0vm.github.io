@@ -28,3 +28,7 @@
 
 yarn-debug.log*
 yarn-error.log*
+
+# CV PDF build (scripts/build-cv.mjs)
+/dist-cv
+/cv-pdf

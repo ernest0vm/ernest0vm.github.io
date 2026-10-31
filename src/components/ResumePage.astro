@@ -21,6 +21,7 @@ const education = (resume?.education ?? []).map((item) => ({
   heading: item.school,
   subheading: l(item.degree),
   meta: l(item.graduated),
+  note: item.license && t('education.license', { number: item.license }),
   description: l(item.description),
   logo: item.logo,
 }));
@@ -50,7 +51,7 @@ const metaDescription = l(main.bio).replaceAll(
 
   <main>
     <Hero data={main} locale={locale} />
-    <About data={main} locale={locale} />
+    <About data={main} resume={resume} locale={locale} />
     <Timeline
       id="work"
       eyebrow={t('work.eyebrow')}

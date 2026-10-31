@@ -4,7 +4,14 @@ import betterTailwind from 'eslint-plugin-better-tailwindcss';
 
 export default [
   {
-    ignores: ['dist/', 'node_modules/', 'public/', '.astro/'],
+    ignores: [
+      'dist/',
+      'dist-cv/',
+      'cv-pdf/',
+      'node_modules/',
+      'public/',
+      '.astro/',
+    ],
   },
   js.configs.recommended,
   ...eslintPluginAstro.configs.recommended,
@@ -21,5 +28,11 @@ export default [
         entryPoint: 'src/styles/global.css',
       },
     },
+  },
+  {
+    // The CV print layout is styled with plain scoped CSS, independent of the
+    // site's Tailwind theme, so its class names are not Tailwind utilities.
+    files: ['src/pages/cv/**'],
+    rules: { 'better-tailwindcss/no-unknown-classes': 'off' },
   },
 ];

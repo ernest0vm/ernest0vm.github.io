@@ -7,9 +7,24 @@
       "es": "Cuento con {{years}} años de experiencia en el diseño End-To-End de productos tecnológicos de alto impacto a través de la investigación e implementación de nuevas tecnologías como el internet de las cosas (IoT), aplicaciones móviles, cómputo en la nube, diseño de electrónica SMD, desarrollo de firmware embebido y software fullstack en tecnologías .NET y open source.",
       "en": "I have {{years}} years of experience designing high-impact technology products end to end, researching and implementing new technologies such as the Internet of Things (IoT), mobile apps, cloud computing, SMD electronics design, embedded firmware development and full-stack software on .NET and open-source stacks."
     },
+    "quote": {
+      "text": {
+        "es": "La innovación es lo que distingue a un líder de un seguidor.",
+        "en": "Innovation distinguishes between a leader and a follower."
+      },
+      "author": "Steve Jobs"
+    },
     "contactmessage": "Here is where you should write your message to readers to have them get in contact with you.",
     "email": "ernestovm07@gmail.com",
-    "phone": "55 1682 3244",
+    "phones": [
+      {
+        "number": "+52 55 1682 3244",
+        "whatsapp": true
+      },
+      {
+        "number": "+52 55 2275 9728"
+      }
+    ],
     "github": "https://github.com/ernest0vm",
     "address": {
       "street": "_",
@@ -21,7 +36,10 @@
       "zip": "54400"
     },
     "website": "_",
-    "resumedownload": "https://1drv.ms/b/c/503c1a44f4be9fa3/Efhh8G8P99JLuMwqS6OAP-UBRLuRmLmHovoN54NNJmgX8g",
+    "resumedownload": {
+      "es": "https://github.com/ernest0vm/resume/releases/download/cv/CV-Ernesto-Valdez.pdf",
+      "en": "https://github.com/ernest0vm/resume/releases/download/cv/Resume-Ernesto-Valdez.pdf"
+    },
     "social": [
       {
         "name": "linkedin",
@@ -65,6 +83,7 @@
           "es": "Agosto 2009",
           "en": "August 2009"
         },
+        "license": "7133679",
         "description": {
           "es": "Aprendí la capacidad de aplicar tecnologías especializadas (robots, tornos de control numérico, controladores lógicos programables, computadoras industriales) para la implementación de soluciones de automatización parcial o total en sistemas de manufactura, garantizando su operación segura, así como la eficacia de sus procesos industriales.",
           "en": "I learned to apply specialized technologies (robots, CNC lathes, programmable logic controllers, industrial computers) to implement partial or full automation solutions in manufacturing systems, ensuring their safe operation and the efficiency of their industrial processes."
@@ -81,11 +100,25 @@
           "es": "Julio 2006",
           "en": "July 2006"
         },
+        "license": "538848",
         "description": {
           "es": "Aprendí a proponer soluciones de sistemas de información y bases de datos, así como asimilar la aplicación de nuevos desarrollos tecnológicos en las áreas administrativas, evaluar su implementación en la organización donde se desempeñen, apoyando a la toma de decisiones de los ejecutivos y al desarrollo del sector productivo y social del país.",
           "en": "I learned to propose information-system and database solutions, adopt new technology developments in administrative areas and evaluate their implementation within the organization, supporting executive decision-making and the productive and social development of the country."
         },
         "logo": "https://graph.facebook.com/somoscecytem/picture?type=large"
+      }
+    ],
+    "spokenLanguages": [
+      {
+        "language": {
+          "es": "Inglés",
+          "en": "English"
+        },
+        "level": {
+          "es": "B2 · Intermedio",
+          "en": "B2 · Intermediate"
+        },
+        "certificate": "EF SET"
       }
     ],
     "work": [

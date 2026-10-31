@@ -1,0 +1,499 @@
+---
+/**
+ * Print layout for the downloadable CV. scripts/build-cv.mjs builds this page
+ * and prints it to PDF; it is never part of the public site.
+ *
+ * Deliberately self-contained: its own strings and plain scoped CSS, no
+ * Tailwind and no global.css, so restyling the site neither changes the PDF
+ * nor needs to regenerate it. Only the data (and this file) do.
+ */
+import process from 'node:process';
+import { Icon } from 'astro-icon/components';
+import { getAbsoluteLocaleUrl } from 'astro:i18n';
+import resumeData from '../../data/resumeData.json';
+import { experienceInWords } from '../../utils/experience.js';
+
+// Served at /cv/print-es/ and /cv/print-en/: a bare /es/ segment would be
+// taken by Astro's i18n routing as a prefixed default locale and answer 404.
+export function getStaticPaths() {
+  // The page prints phone and email in plain text, which must never ship with
+  // the site (see "Datos de contacto" in CLAUDE.md). Only the PDF build sets
+  // CV_PDF; a normal build emits no route at all.
+  if (process.env.CV_PDF !== '1') return [];
+  return [{ params: { lang: 'es' } }, { params: { lang: 'en' } }];
+}
+
+const { lang } = Astro.params;
+
+const strings = {
+  es: {
+    title: 'CV',
+    profile: 'Perfil',
+    work: 'Experiencia profesional',
+    education: 'Educación',
+    skills: 'Habilidades',
+    languages: 'Lenguajes y frameworks',
+    tools: 'Herramientas',
+    spoken: 'Idiomas',
+    portfolio: 'Portafolio de apps',
+    license: 'Cédula profesional',
+  },
+  en: {
+    title: 'Résumé',
+    profile: 'Profile',
+    work: 'Professional experience',
+    education: 'Education',
+    skills: 'Skills',
+    languages: 'Languages & frameworks',
+    tools: 'Tools',
+    spoken: 'Spoken languages',
+    portfolio: 'App portfolio',
+    license: 'Professional license',
+  },
+}[lang];
+
+/** Same contract as localized() in src/i18n/ui.js, kept local on purpose. */
+const l = (value) =>
+  value && typeof value === 'object' && !Array.isArray(value)
+    ? (value[lang] ?? value.es)
+    : value;
+
+const { main, resume, portfolio } = resumeData;
+const base = import.meta.env.BASE_URL.replace(/\/+$/, '');
+
+const bio = (l(main.bio) ?? '').replaceAll(
+  '{{years}}',
+  experienceInWords(lang),
+);
+const location = [main.address?.city, l(main.address?.state)]
+  .filter(Boolean)
+  .join(', ');
+const dates = (text = '') => text.replace(/\s+-\s+/, ' – ');
+/** "https://github.com/ernest0vm/" -> "github.com/ernest0vm" */
+const bare = (url) =>
+  url.replace(/^https?:\/\/(www\.)?/, '').replace(/\/$/, '');
+
+const contacts = [
+  ...(main.phones ?? []).map((phone) => ({
+    icon: phone.whatsapp ? 'fa6-brands:whatsapp' : 'fa6-solid:phone',
+    label: phone.number,
+    href: phone.whatsapp
+      ? `https://wa.me/${phone.number.replace(/\D/g, '')}`
+      : `tel:${phone.number.replace(/\s/g, '')}`,
+  })),
+  {
+    icon: 'fa6-solid:envelope',
+    label: main.email,
+    href: `mailto:${main.email}`,
+  },
+  { icon: 'fa6-solid:location-dot', label: location },
+];
+
+const siteUrl = getAbsoluteLocaleUrl(lang);
+const socialIcons = {
+  linkedin: 'fa6-brands:linkedin-in',
+  github: 'fa6-brands:github',
+  behance: 'fa6-brands:behance',
+};
+const links = [
+  { icon: 'fa6-solid:globe', href: siteUrl },
+  ...(main.social ?? [])
+    .filter((network) => socialIcons[network.name])
+    .map((network) => ({ icon: socialIcons[network.name], href: network.url })),
+];
+
+const spoken = (resume.spokenLanguages ?? []).map((item) => ({
+  language: l(item.language),
+  level: [l(item.level), item.certificate && `(${item.certificate})`]
+    .filter(Boolean)
+    .join(' '),
+}));
+---
+
+<html lang={lang}>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="robots" content="noindex" />
+    <title>{strings.title} — {main.name}</title>
+  </head>
+  <body>
+    <header class="masthead">
+      <span class="photo">
+        <img
+          src={`${base}/images/${main.image}`}
+          alt=""
+          width="125"
+          height="125"
+        />
+      </span>
+      <div class="identity">
+        <h1>{main.name}</h1>
+        <p class="role">{main.description}</p>
+        <ul class="contacts">
+          {
+            contacts.map((item) => (
+              <li>
+                <Icon name={item.icon} class="icon" />
+                {item.href ? <a href={item.href}>{item.label}</a> : item.label}
+              </li>
+            ))
+          }
+        </ul>
+        <ul class="contacts links">
+          {
+            links.map((item) => (
+              <li>
+                <Icon name={item.icon} class="icon" />
+                <a href={item.href}>{bare(item.href)}</a>
+              </li>
+            ))
+          }
+        </ul>
+      </div>
+    </header>
+
+    <section>
+      <h2>{strings.profile}</h2>
+      <p>{bio}</p>
+      {
+        main.quote && (
+          <p class="quote">
+            “{l(main.quote.text)}” — {main.quote.author}
+          </p>
+        )
+      }
+    </section>
+
+    <section>
+      <h2>{strings.work}</h2>
+      {
+        resume.work.map((job) => (
+          <article class="entry">
+            <div class="entry-head">
+              <h3>
+                {job.title} <span class="at">· {job.company}</span>
+              </h3>
+              <p class="when">{dates(l(job.years))}</p>
+            </div>
+            <p>{l(job.description)}</p>
+          </article>
+        ))
+      }
+    </section>
+
+    <section>
+      <h2>{strings.education}</h2>
+      {
+        resume.education.map((item) => (
+          <article class="entry">
+            <div class="entry-head">
+              <h3>
+                {l(item.degree)} <span class="at">· {item.school}</span>
+              </h3>
+              <p class="when">{l(item.graduated)}</p>
+            </div>
+            {item.license && (
+              <p class="muted">
+                {strings.license}: {item.license}
+              </p>
+            )}
+          </article>
+        ))
+      }
+    </section>
+
+    <section class="keep">
+      <h2>{strings.skills}</h2>
+      <dl class="facts">
+        <dt>{strings.languages}</dt>
+        <dd>{resume.skills.map((item) => item.name).join(' · ')}</dd>
+        <dt>{strings.tools}</dt>
+        <dd>{resume.tools.map((item) => item.name).join(' · ')}</dd>
+        {
+          spoken.length > 0 && (
+            <>
+              <dt>{strings.spoken}</dt>
+              <dd>
+                {spoken
+                  .map((item) => `${item.language} ${item.level}`)
+                  .join(' · ')}
+              </dd>
+            </>
+          )
+        }
+      </dl>
+    </section>
+
+    <section>
+      <h2>{strings.portfolio}</h2>
+      <ul class="apps">
+        {
+          portfolio.projects.map((project) => (
+            <li>
+              {project.url ? (
+                <a class="app-name" href={project.url}>
+                  {project.title}
+                </a>
+              ) : (
+                <span class="app-name">{project.title}</span>
+              )}
+              <span class="muted">{l(project.category)}</span>
+            </li>
+          ))
+        }
+      </ul>
+    </section>
+  </body>
+</html>
+
+<style is:global>
+  /* Open Sans is the site's face too, served from /public/fonts. */
+  @font-face {
+    font-family: 'Open Sans';
+    src: url('/resume/fonts/opensans-regular.woff') format('woff');
+    font-weight: 400;
+  }
+  @font-face {
+    font-family: 'Open Sans';
+    src: url('/resume/fonts/opensans-semibold.woff') format('woff');
+    font-weight: 600;
+  }
+  @font-face {
+    font-family: 'Open Sans';
+    src: url('/resume/fonts/opensans-bold.woff') format('woff');
+    font-weight: 700;
+  }
+
+  /* The masthead echoes the site's dark glass; the body is light so it reads
+     and prints well. Accent text uses a deeper cyan than the site's, which
+     would not hold contrast on white. */
+  :root {
+    --ink: oklch(0.21 0.017 260);
+    --text: oklch(0.3 0.02 260);
+    --muted: oklch(0.5 0.015 260);
+    --rule: oklch(0.9 0.01 260);
+    --accent: oklch(0.5 0.1 215);
+    --accent-light: oklch(0.88 0.13 195);
+    --violet: oklch(0.72 0.17 295);
+  }
+
+  @page {
+    size: letter;
+    margin: 12mm 14mm 14mm;
+  }
+
+  * {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
+
+  html {
+    print-color-adjust: exact;
+    -webkit-print-color-adjust: exact;
+  }
+
+  body {
+    font-family: 'Open Sans', sans-serif;
+    font-size: 9.25pt;
+    line-height: 1.5;
+    color: var(--text);
+  }
+
+  a {
+    color: inherit;
+    text-decoration: none;
+  }
+
+  ul {
+    list-style: none;
+  }
+
+  .masthead {
+    display: flex;
+    gap: 18px;
+    align-items: center;
+    padding: 18px 22px;
+    border-radius: 14px;
+    color: oklch(0.92 0.01 260);
+    background:
+      radial-gradient(
+        circle at 88% 0%,
+        color-mix(in oklab, var(--violet) 35%, transparent),
+        transparent 55%
+      ),
+      radial-gradient(
+        circle at 0% 100%,
+        color-mix(in oklab, var(--accent-light) 22%, transparent),
+        transparent 50%
+      ),
+      var(--ink);
+  }
+
+  /* The source photo carries its own round frame and a name caption along
+     the bottom; zooming in on the face crops both out. */
+  .photo {
+    flex-shrink: 0;
+    width: 88px;
+    height: 88px;
+    overflow: hidden;
+    border-radius: 50%;
+    border: 2px solid color-mix(in oklab, white 35%, transparent);
+  }
+
+  .photo img {
+    display: block;
+    width: 125px;
+    height: 125px;
+    margin: -5px 0 0 -19px;
+  }
+
+  h1 {
+    font-size: 21pt;
+    font-weight: 700;
+    line-height: 1.15;
+    color: white;
+  }
+
+  .role {
+    margin-top: 2px;
+    font-size: 11pt;
+    font-weight: 600;
+    color: var(--accent-light);
+  }
+
+  .contacts {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 3px 16px;
+    margin-top: 10px;
+    font-size: 8.5pt;
+  }
+
+  .contacts.links {
+    margin-top: 4px;
+    color: oklch(0.8 0.01 260);
+  }
+
+  .contacts li {
+    display: flex;
+    gap: 6px;
+    align-items: center;
+  }
+
+  .icon {
+    width: 10px;
+    height: 10px;
+    color: var(--accent-light);
+  }
+
+  section {
+    margin-top: 16px;
+  }
+
+  .keep {
+    break-inside: avoid;
+  }
+
+  h2 {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+    margin-bottom: 8px;
+    font-size: 9pt;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--accent);
+    break-after: avoid;
+  }
+
+  h2::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: var(--rule);
+  }
+
+  .quote {
+    margin-top: 6px;
+    font-style: italic;
+    color: var(--muted);
+  }
+
+  .entry {
+    break-inside: avoid;
+  }
+
+  .entry + .entry {
+    margin-top: 10px;
+  }
+
+  .entry-head {
+    display: flex;
+    gap: 12px;
+    justify-content: space-between;
+    align-items: baseline;
+    margin-bottom: 2px;
+  }
+
+  h3 {
+    font-size: 10pt;
+    font-weight: 700;
+    color: var(--ink);
+  }
+
+  .at {
+    font-weight: 600;
+    color: var(--accent);
+  }
+
+  .when {
+    flex-shrink: 0;
+    font-size: 8pt;
+    font-weight: 600;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    color: var(--muted);
+  }
+
+  .muted {
+    color: var(--muted);
+  }
+
+  .facts {
+    display: grid;
+    grid-template-columns: max-content 1fr;
+    gap: 4px 16px;
+  }
+
+  .facts dt {
+    font-weight: 700;
+    color: var(--ink);
+  }
+
+  .apps {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4px 20px;
+  }
+
+  .apps li {
+    break-inside: avoid;
+  }
+
+  .app-name {
+    font-weight: 700;
+    color: var(--ink);
+  }
+
+  a.app-name {
+    color: var(--accent);
+  }
+
+  .app-name::after {
+    content: ' — ';
+    font-weight: 400;
+    color: var(--muted);
+  }
+</style>

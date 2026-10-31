@@ -1,0 +1,65 @@
+name: Generate CV PDFs
+
+# Kept apart from the Pages deploy so restyling the site never regenerates the
+# PDF: it only runs when the content or the PDF layout itself changes.
+on:
+  push:
+    branches: [main]
+    paths:
+      - src/data/resumeData.json
+      - src/pages/cv/**
+      - src/utils/experience.js
+      - public/images/**
+      - scripts/build-cv.mjs
+      - .github/workflows/cv-pdf.yml
+  schedule:
+    # The years of experience in the profile roll over on 1 September; without
+    # this the PDF would keep the old figure until the next data change.
+    - cron: '41 6 1 9 *'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: cv-pdf
+  cancel-in-progress: true
+
+jobs:
+  pdf:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v7
+
+      - name: Set up Node
+        uses: actions/setup-node@v7
+        with:
+          node-version: 22
+
+      - name: Enable Corepack
+        # Same ordering constraint as in deploy.yml: after setup-node, before
+        # any yarn call.
+        run: corepack enable
+
+      - name: Install dependencies
+        run: yarn install --immutable
+
+      - name: Build PDFs
+        # Prints with the runner's preinstalled Chrome; see the script header.
+        run: yarn cv:pdf
+
+      - name: Publish to the cv release
+        # The site's download buttons point at
+        # releases/download/cv/<file>, so the tag name is fixed. Assets are
+        # replaced in place: the URLs never change and no PDF lands in git.
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          notes="Generado automáticamente a partir de resumeData.json (${GITHUB_SHA::7}). No editar a mano: se reemplaza en cada cambio de datos."
+          if gh release view cv > /dev/null 2>&1; then
+            gh release upload cv cv-pdf/*.pdf --clobber
+            gh release edit cv --notes "$notes"
+          else
+            gh release create cv cv-pdf/*.pdf --title "CV (PDF)" --notes "$notes" --target "$GITHUB_SHA" --latest=false
+          fi

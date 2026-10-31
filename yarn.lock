@@ -4270,6 +4270,15 @@ __metadata:
   languageName: node
   linkType: hard
 
+"playwright-core@npm:^1.64.1":
+  version: 1.64.1
+  resolution: "playwright-core@npm:1.64.1"
+  bin:
+    playwright-core: cli.js
+  checksum: 10c0/91c4f5ed1cff4b0e18b6ac62f66770f5f1b6c204d4aebd6a321c07466dca18a70822ac692597c6059705a703f9768097ac551df179fb49294d639509148e04f3
+  languageName: node
+  linkType: hard
+
 "postcss-selector-parser@npm:^7.1.0":
   version: 7.1.4
   resolution: "postcss-selector-parser@npm:7.1.4"
@@ -4492,6 +4501,7 @@ __metadata:
     eslint-plugin-better-tailwindcss: "npm:^4.7.0"
     husky: "npm:^9.1.7"
     lint-staged: "npm:^17.2.0"
+    playwright-core: "npm:^1.64.1"
     prettier: "npm:^3.9.6"
     prettier-plugin-astro: "npm:^0.14.1"
     prettier-plugin-tailwindcss: "npm:^0.8.1"

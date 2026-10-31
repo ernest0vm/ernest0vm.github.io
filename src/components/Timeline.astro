@@ -73,6 +73,10 @@ const initials = (text = '') =>
                     {item.subheading}
                   </p>
                 )}
+
+                {item.note && (
+                  <p class="mt-1 text-xs text-white/50">{item.note}</p>
+                )}
               </div>
             </div>
 
