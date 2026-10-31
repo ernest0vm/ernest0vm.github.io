@@ -63,7 +63,7 @@ const ui = {
     'about.showPhone': 'Show phone',
     'about.showWhatsapp': 'Show WhatsApp',
     'about.showEmail': 'Show email',
-    'about.download': 'Download résumé',
+    'about.download': 'Download resume',
     'work.eyebrow': 'Career',
     'work.title': 'Experience',
     'education.eyebrow': 'Background',
