@@ -7,7 +7,7 @@
   "highlights": {
     "platform": {
       "title": "Arquitectura de plataforma móvil",
-      "description": "Diseñé el monorepo con Turborepo y Expo que sirve a 11 apps de marca desde paquetes compartidos de UI, servicios, SDKs y configuración por tenant, documentado en design docs que comparan alternativas como Nx y Module Federation. En el camino retiré stacks heredados y concentré las apps en pocas bases de código modernas."
+      "description": "Diseñé el monorepo con Turborepo y Expo que sirve a 11 apps de marca desde paquetes compartidos de UI, servicios, SDKs y configuración por tenant, documentado en design docs que comparan alternativas como Nx y Module Federation. En el camino retiré stacks heredados y concentré las apps en una base de código moderna y unificada."
     },
     "commerce": {
       "title": "E-commerce en producción",
@@ -15,7 +15,7 @@
     },
     "delivery": {
       "title": "Entrega y calidad",
-      "description": "Pipeline homologado de EAS Build y Submit, actualizaciones OTA, feature flags y salidas a tienda al 5 % antes del 100 %, con Sentry y pruebas E2E en Maestro. La cobertura de pruebas del monorepo pasó de 72 % a 90 % en cinco semanas."
+      "description": "Pipeline homologado de EAS Build y Submit, actualizaciones OTA, feature flags y rollouts progresivos de liberación a tiendas, con Sentry y pruebas E2E en Maestro. La cobertura de pruebas del monorepo pasó de 72 % a 90 % en cinco semanas."
     },
     "leadership": {
       "title": "Liderazgo técnico",
@@ -23,11 +23,11 @@
     },
     "ai": {
       "title": "Desarrollo asistido por IA",
-      "description": "Hice obligatorio en los tres repos móviles un ciclo de Compound Engineering con specs de OpenSpec y compuertas antes de cada PR: simplificación, verificación con un agente aislado y code review. Agentes programados suben la cobertura y revisan PRs."
+      "description": "Hice obligatorio en los repos móviles un ciclo de Compound Engineering con specs de OpenSpec y compuertas antes de cada PR: simplificación, verificación con un agente aislado y code review. Agentes programados suben la cobertura y revisan PRs."
     },
     "fullstack": {
       "title": "Full stack, del dispositivo a la nube",
-      "description": "Además de móvil, construyo backend y web: puse en producción el admin de configuraciones remotas de las apps, con un servidor MCP para agentes, y antes desarrollé microservicios en Node.js y Python, un CMS en Angular y una plataforma multi-tenant en Rails, con despliegues en AWS y Docker."
+      "description": "Además de móvil, construyo backend y web: puse en producción el admin de configuraciones remotas de las apps, con un servidor MCP para agentes, y antes desarrollé microservicios en Node.js y Python, un CMS en Angular y una plataforma multi-tenant en Rails, con Docker y despliegues en AWS, Azure, Google Cloud, Render, Heroku y Vercel, entre otros."
     }
   },
   "work": {
@@ -36,18 +36,18 @@
       "highlights": [
         "Diseñé y lideré la unificación de las apps en un monorepo con Turborepo y Expo: 11 apps de marca, paquetes compartidos y configuración por tenant.",
         "Llevé el funnel de compra de las apps enterprise a una arquitectura híbrida —shell nativo con el funnel web embebido y puentes nativos para sesión, pagos y deep links—, validada con prueba A/B y desplegada marca por marca.",
-        "Lidero la migración de la app B2C de Reservamos a la nueva plataforma con paridad de pantallas y analítica, y separé otra app de marca en su propio repositorio, actualizada a Expo 57 y React 19.",
-        "Retiré stacks heredados y concentré el desarrollo en pocas bases de código modernas sobre Expo y React Native.",
+        "Lidero la migración de la app B2C de Reservamos a la nueva plataforma con paridad de pantallas y analítica, y separé otra app de marca en su propio repositorio, actualizada a Expo 58 y React 19.",
+        "Retiré stacks heredados y concentré el desarrollo en una base de código unificada y moderna sobre Expo y React Native.",
         "Desarrollé y puse en producción el admin de configuraciones remotas de las apps, con un servidor MCP para que los agentes de IA consulten y publiquen configuraciones.",
         "Homologué el pipeline de EAS y llevé la cobertura de pruebas del monorepo de 72 % a 90 %, con los 11 tenants al 100 % de líneas.",
-        "Hice obligatorio un ciclo de desarrollo asistido por IA (Compound Engineering + OpenSpec) con compuertas de calidad en los tres repos móviles.",
+        "Hice obligatorio un ciclo de desarrollo asistido por IA (Compound Engineering + OpenSpec) con compuertas de calidad en los repositorios de apps móviles.",
         "Coordino a cinco ingenieros con 1:1 semanales, revisiones de diseño y código, ADRs, ciclos de planeación de siete semanas y un programa de aprendizaje full-platform."
       ]
     },
     "reservamos": {
       "summary": "Lideré el desarrollo móvil de la vertical B2C y de las apps para líneas enterprise, con un equipo de hasta seis ingenieros.",
       "highlights": [
-        "Mantuve y evolucioné la app de Reservamos en Expo y React Native, con las integraciones nativas de Adyen y Riskified encapsuladas en librerías internas, y la integré como una marca más de la app multi-marca para líneas enterprise.",
+        "Mantuve y evolucioné la app de Reservamos en Expo y React Native, con las integraciones nativas de Adyen y Riskified encapsuladas en librerías internas nativas con bridges de React Native, y la integré como una marca más en la base de código unificada para clientes enterprise.",
         "Automaticé la compilación y publicación con EAS y scripts compartidos entre apps, adopté actualizaciones OTA y mantuve al día el SDK de Expo rumbo a la nueva arquitectura de React Native.",
         "Co-desarrollé Bus Tracker, una plataforma multi-tenant de rastreo de flotas con backend en Rails, panel web y app de conductores.",
         "Construí con Flutter las apps de pasajero y de conductor de Vanda y Roll&Bits.",

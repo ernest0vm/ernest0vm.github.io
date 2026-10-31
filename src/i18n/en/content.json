@@ -7,7 +7,7 @@
   "highlights": {
     "platform": {
       "title": "Mobile platform architecture",
-      "description": "I designed the Turborepo and Expo monorepo that serves 11 branded apps from shared packages for UI, services, SDKs and per-tenant configuration, documented in design docs that weigh alternatives such as Nx and Module Federation. Along the way I retired legacy stacks and concentrated the apps in a few modern codebases."
+      "description": "I designed the Turborepo and Expo monorepo that serves 11 branded apps from shared packages for UI, services, SDKs and per-tenant configuration, documented in design docs that weigh alternatives such as Nx and Module Federation. Along the way I retired legacy stacks and consolidated the apps into a single modern, unified codebase."
     },
     "commerce": {
       "title": "E-commerce in production",
@@ -15,7 +15,7 @@
     },
     "delivery": {
       "title": "Delivery and quality",
-      "description": "A standardized EAS Build and Submit pipeline, OTA updates, feature flags and store releases at 5% before 100%, with Sentry and Maestro end-to-end tests. Monorepo test coverage went from 72% to 90% in five weeks."
+      "description": "A standardized EAS Build and Submit pipeline, OTA updates, feature flags and progressive store rollouts, with Sentry and Maestro end-to-end tests. Monorepo test coverage went from 72% to 90% in five weeks."
     },
     "leadership": {
       "title": "Technical leadership",
@@ -23,11 +23,11 @@
     },
     "ai": {
       "title": "AI-assisted engineering",
-      "description": "I made a Compound Engineering loop, with OpenSpec specs and gates before every PR, mandatory across the three mobile repos: simplification, verification by an isolated agent and code review. Scheduled agents raise coverage and review PRs."
+      "description": "I made a Compound Engineering loop, with OpenSpec specs and gates before every PR, mandatory across the mobile repos: simplification, verification by an isolated agent and code review. Scheduled agents raise coverage and review PRs."
     },
     "fullstack": {
       "title": "Full stack, device to cloud",
-      "description": "Beyond mobile, I build backend and web: I shipped the apps’ remote configuration admin to production, with an MCP server for agents, and earlier built microservices in Node.js and Python, an Angular CMS and a multi-tenant Rails platform, deployed on AWS and Docker."
+      "description": "Beyond mobile, I build backend and web: I shipped the apps’ remote configuration admin to production, with an MCP server for agents, and earlier built microservices in Node.js and Python, an Angular CMS and a multi-tenant Rails platform, with Docker and deployments on AWS, Azure, Google Cloud, Render, Heroku and Vercel, among others."
     }
   },
   "work": {
@@ -36,18 +36,18 @@
       "highlights": [
         "Designed and led the consolidation of the apps into a Turborepo and Expo monorepo: 11 branded apps, shared packages and per-tenant configuration.",
         "Moved the enterprise apps’ checkout funnel to a hybrid architecture — a native shell embedding the web funnel, with native bridges for session, payments and deep links — validated with an A/B test and rolled out brand by brand.",
-        "Leading the migration of the Reservamos B2C app to the new platform with screen and analytics parity; split another branded app into its own repository, upgraded to Expo 57 and React 19.",
-        "Retired legacy stacks and concentrated development in a few modern codebases on Expo and React Native.",
+        "Leading the migration of the Reservamos B2C app to the new platform with screen and analytics parity; split another branded app into its own repository, upgraded to Expo 58 and React 19.",
+        "Retired legacy stacks and concentrated development in a single unified, modern codebase on Expo and React Native.",
         "Built and shipped the apps’ remote configuration admin, with an MCP server so AI agents can read and publish configurations.",
         "Standardized the EAS pipeline and raised monorepo test coverage from 72% to 90%, with all 11 tenants at 100% line coverage.",
-        "Made an AI-assisted development loop (Compound Engineering + OpenSpec) with quality gates mandatory across the three mobile repos.",
+        "Made an AI-assisted development loop (Compound Engineering + OpenSpec) with quality gates mandatory across the mobile app repositories.",
         "Coordinate five engineers through weekly 1:1s, design and code reviews, ADRs, seven-week planning cycles and a full-platform learning program."
       ]
     },
     "reservamos": {
       "summary": "Led mobile development for the B2C vertical and the apps for enterprise bus lines, with a team of up to six engineers.",
       "highlights": [
-        "Maintained and evolved the Reservamos app on Expo and React Native, with the native Adyen and Riskified integrations wrapped in internal libraries, and brought it into the multi-brand enterprise app as one more brand.",
+        "Maintained and evolved the Reservamos app on Expo and React Native, with the native Adyen and Riskified integrations wrapped in internal native libraries with React Native bridges, and brought it into the unified codebase for enterprise clients as one more brand.",
         "Automated builds and store publishing with EAS and scripts shared across apps, adopted OTA updates and kept the Expo SDK current on the way to the React Native New Architecture.",
         "Co-built Bus Tracker, a multi-tenant fleet tracking platform with a Rails backend, web dashboard and driver app.",
         "Built the Vanda and Roll&Bits passenger and driver apps with Flutter.",
