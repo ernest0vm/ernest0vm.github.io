@@ -360,7 +360,7 @@ const spoken = (resume.spokenLanguages ?? []).map((item) => ({
     width: 100%;
     height: 100%;
     object-fit: cover;
-    object-view-box: inset(0.5% 9.5% 18% 9.5%);
+    object-view-box: inset(0% 6% 15.5% 6%);
   }
 
   h1 {
@@ -377,18 +377,22 @@ const spoken = (resume.spokenLanguages ?? []).map((item) => ({
     color: var(--accent-light);
   }
 
+  /* Two equal columns spanning the whole masthead, for contacts and links
+     alike, so both blocks line up and no space is left over on the right. */
+  .identity {
+    flex: 1;
+    min-width: 0;
+  }
+
   .contacts {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 3px 16px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 3px 20px;
     margin-top: 10px;
     font-size: 8.5pt;
   }
 
   .contacts.links {
-    display: grid;
-    grid-template-columns: max-content max-content;
-    column-gap: 20px;
     margin-top: 6px;
     color: oklch(0.8 0.01 260);
   }
