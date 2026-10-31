@@ -3,14 +3,20 @@
  * Print layout for the downloadable CV. scripts/build-cv.mjs builds this page
  * and prints it to PDF; it is never part of the public site.
  *
- * Deliberately self-contained: its own strings and plain scoped CSS, no
- * Tailwind and no global.css, so restyling the site neither changes the PDF
- * nor needs to regenerate it. Only the data (and this file) do.
+ * Deliberately independent of the site's look: plain scoped CSS, no Tailwind
+ * and no global.css, and its labels come from src/i18n/<locale>/cv.json, not
+ * the site's ui.json. Restyling the site neither changes the PDF nor needs to
+ * regenerate it; only the data, the content/cv translations and this file do.
  */
 import process from 'node:process';
 import { Icon } from 'astro-icon/components';
 import { getAbsoluteLocaleUrl } from 'astro:i18n';
-import resumeData from '../../data/resumeData.json';
+import resume from '../../data/resume.json';
+import {
+  formatMonth,
+  formatPeriod,
+  useTranslations,
+} from '../../i18n/index.js';
 import { experienceInWords } from '../../utils/experience.js';
 
 // Served at /cv/print-es/ and /cv/print-en/: a bare /es/ segment would be
@@ -24,57 +30,19 @@ export function getStaticPaths() {
 }
 
 const { lang } = Astro.params;
-
-const strings = {
-  es: {
-    title: 'CV',
-    profile: 'Perfil',
-    work: 'Experiencia profesional',
-    education: 'Educación',
-    skills: 'Habilidades',
-    languages: 'Lenguajes y frameworks',
-    tools: 'Herramientas',
-    spoken: 'Idiomas',
-    portfolio: 'Portafolio de apps',
-    license: 'Cédula profesional',
-  },
-  en: {
-    title: 'Resume',
-    profile: 'Profile',
-    work: 'Professional experience',
-    education: 'Education',
-    skills: 'Skills',
-    languages: 'Languages & frameworks',
-    tools: 'Tools',
-    spoken: 'Spoken languages',
-    portfolio: 'App portfolio',
-    license: 'Professional license',
-  },
-}[lang];
-
-/** Same contract as localized() in src/i18n/ui.js, kept local on purpose. */
-const l = (value) =>
-  value && typeof value === 'object' && !Array.isArray(value)
-    ? (value[lang] ?? value.es)
-    : value;
-
-const { main, resume, portfolio } = resumeData;
+const label = useTranslations(lang, 'cv');
+const c = useTranslations(lang, 'content');
+const { contact } = resume;
 const base = import.meta.env.BASE_URL.replace(/\/+$/, '');
 
-const bio = (l(main.bio) ?? '').replaceAll(
-  '{{years}}',
-  experienceInWords(lang),
-);
-const location = [main.address?.city, l(main.address?.state)]
-  .filter(Boolean)
-  .join(', ');
-const dates = (text = '') => text.replace(/\s+-\s+/, ' – ');
+const bio = c('bio', { years: experienceInWords(lang) });
+const location = [contact.city, c('state')].filter(Boolean).join(', ');
 /** "https://github.com/ernest0vm/" -> "github.com/ernest0vm" */
 const bare = (url) =>
   url.replace(/^https?:\/\/(www\.)?/, '').replace(/\/$/, '');
 
 const contacts = [
-  ...(main.phones ?? []).map((phone) => ({
+  ...contact.phones.map((phone) => ({
     icon: phone.whatsapp ? 'fa6-brands:whatsapp' : 'fa6-solid:phone',
     label: phone.number,
     href: phone.whatsapp
@@ -83,53 +51,54 @@ const contacts = [
   })),
   {
     icon: 'fa6-solid:envelope',
-    label: main.email,
-    href: `mailto:${main.email}`,
+    label: contact.email,
+    href: `mailto:${contact.email}`,
   },
   { icon: 'fa6-solid:location-dot', label: location },
 ];
 
-const siteUrl = getAbsoluteLocaleUrl(lang);
-const socialIcons = {
-  linkedin: 'fa6-brands:linkedin-in',
-  github: 'fa6-brands:github',
-  behance: 'fa6-brands:behance',
-};
+// WhatsApp is already in the contact row, so only the profile links go here.
 const links = [
-  { icon: 'fa6-solid:globe', href: siteUrl },
-  ...(main.social ?? [])
-    .filter((network) => socialIcons[network.name])
-    .map((network) => ({ icon: socialIcons[network.name], href: network.url })),
+  { icon: 'fa6-solid:globe', href: getAbsoluteLocaleUrl(lang) },
+  ...resume.social
+    .filter((network) => network.id !== 'whatsapp')
+    .map((network) => ({ icon: network.icon, href: network.url })),
 ];
 
-const spoken = (resume.spokenLanguages ?? []).map((item) => ({
-  language: l(item.language),
-  level: [l(item.level), item.certificate && `(${item.certificate})`]
+const spoken = resume.languages.map(
+  (item) =>
+    `${c(`languages.${item.id}.name`)} ${item.cefr} · ${c(`languages.${item.id}.level`)}`,
+);
+const caption = (project) =>
+  [
+    c(`portfolio.${project.id}`),
+    project.stack,
+    project.retired && label('retired'),
+  ]
     .filter(Boolean)
-    .join(' '),
-}));
+    .join(' · ');
 ---
 
 <html lang={lang}>
   <head>
     <meta charset="utf-8" />
     <meta name="robots" content="noindex" />
-    <title>{strings.title} — {main.name}</title>
+    <title>{label('title')} — {resume.name}</title>
   </head>
   <body>
     <main class="sheet">
       <header class="masthead">
         <span class="photo">
           <img
-            src={`${base}/images/${main.image}`}
+            src={`${base}/images/${resume.photo}`}
             alt=""
             width="104"
             height="104"
           />
         </span>
         <div class="identity">
-          <h1>{main.name}</h1>
-          <p class="role">{main.description}</p>
+          <h1>{resume.name}</h1>
+          <p class="role">{resume.role}</p>
           <ul class="contacts">
             {
               contacts.map((item) => (
@@ -158,12 +127,12 @@ const spoken = (resume.spokenLanguages ?? []).map((item) => ({
       </header>
 
       <section>
-        <h2>{strings.profile}</h2>
+        <h2>{label('profile')}</h2>
         <p>{bio}</p>
       </section>
 
       <section>
-        <h2>{strings.work}</h2>
+        <h2>{label('work')}</h2>
         {
           resume.work.map((job) => (
             <article class="entry">
@@ -171,28 +140,36 @@ const spoken = (resume.spokenLanguages ?? []).map((item) => ({
                 <h3>
                   {job.title} <span class="at">· {job.company}</span>
                 </h3>
-                <p class="when">{dates(l(job.years))}</p>
+                <p class="when">
+                  {formatPeriod(
+                    job.start,
+                    job.end,
+                    lang,
+                    label('present'),
+                  ).replace(' - ', ' – ')}
+                </p>
               </div>
-              <p>{l(job.description)}</p>
+              <p>{c(`work.${job.id}`)}</p>
             </article>
           ))
         }
       </section>
 
       <section>
-        <h2>{strings.education}</h2>
+        <h2>{label('education')}</h2>
         {
           resume.education.map((item) => (
             <article class="entry">
               <div class="entry-head">
                 <h3>
-                  {l(item.degree)} <span class="at">· {item.school}</span>
+                  {c(`education.${item.id}.degree`)}{' '}
+                  <span class="at">· {item.school}</span>
                 </h3>
-                <p class="when">{l(item.graduated)}</p>
+                <p class="when">{formatMonth(item.graduated, lang)}</p>
               </div>
               {item.license && (
                 <p class="muted">
-                  {strings.license}: {item.license}
+                  {label('license')}: {item.license}
                 </p>
               )}
             </article>
@@ -201,21 +178,17 @@ const spoken = (resume.spokenLanguages ?? []).map((item) => ({
       </section>
 
       <section class="keep">
-        <h2>{strings.skills}</h2>
+        <h2>{label('skills')}</h2>
         <dl class="facts">
-          <dt>{strings.languages}</dt>
+          <dt>{label('languages')}</dt>
           <dd>{resume.skills.map((item) => item.name).join(' · ')}</dd>
-          <dt>{strings.tools}</dt>
+          <dt>{label('tools')}</dt>
           <dd>{resume.tools.map((item) => item.name).join(' · ')}</dd>
           {
             spoken.length > 0 && (
               <>
-                <dt>{strings.spoken}</dt>
-                <dd>
-                  {spoken
-                    .map((item) => `${item.language} ${item.level}`)
-                    .join(' · ')}
-                </dd>
+                <dt>{label('spoken')}</dt>
+                <dd>{spoken.join(' · ')}</dd>
               </>
             )
           }
@@ -223,10 +196,10 @@ const spoken = (resume.spokenLanguages ?? []).map((item) => ({
       </section>
 
       <section>
-        <h2>{strings.portfolio}</h2>
+        <h2>{label('portfolio')}</h2>
         <ul class="apps">
           {
-            portfolio.projects.map((project) => (
+            resume.portfolio.map((project) => (
               <li>
                 {project.url ? (
                   <a class="app-name" href={project.url}>
@@ -235,7 +208,7 @@ const spoken = (resume.spokenLanguages ?? []).map((item) => ({
                 ) : (
                   <span class="app-name">{project.title}</span>
                 )}
-                <span class="muted">{l(project.category)}</span>
+                <span class="muted">{caption(project)}</span>
               </li>
             ))
           }
@@ -247,10 +220,10 @@ const spoken = (resume.spokenLanguages ?? []).map((item) => ({
         then (e.g. in dev) it simply follows the content. */
       }
       {
-        main.quote && (
+        resume.quote && (
           <figure class="closing-quote">
-            <blockquote>“{l(main.quote.text)}”</blockquote>
-            <figcaption>— {main.quote.author}</figcaption>
+            <blockquote>“{c('quote')}”</blockquote>
+            <figcaption>— {resume.quote.author}</figcaption>
           </figure>
         )
       }

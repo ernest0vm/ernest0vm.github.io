@@ -1,21 +1,11 @@
 ---
 import { Icon } from 'astro-icon/components';
-import { useTranslations } from '../i18n/ui.js';
+import resume from '../data/resume.json';
+import { useTranslations } from '../i18n/index.js';
 
-const { data, locale = 'es' } = Astro.props;
+const { locale = 'es' } = Astro.props;
 const t = useTranslations(locale);
-const networks = data?.social ?? [];
 const year = new Date().getFullYear();
-
-const brandIcons = {
-  linkedin: 'fa6-brands:linkedin-in',
-  behance: 'fa6-brands:behance',
-  github: 'fa6-brands:github',
-  whatsapp: 'fa6-brands:whatsapp',
-};
-
-const iconFor = (className = '') =>
-  brandIcons[className.replace(/^fab fa-/, '')] ?? 'fa6-solid:link';
 ---
 
 <footer class="px-6 pt-10 pb-14">
@@ -26,23 +16,23 @@ const iconFor = (className = '') =>
     class="glass mx-auto flex max-w-5xl flex-col items-center gap-6 rounded-glass px-6 py-8 sm:grid sm:grid-cols-3 sm:gap-4"
   >
     <p class="order-2 text-xs text-white/40 sm:order-1 sm:justify-self-start">
-      © {year} Ernesto Valdez
+      {`© ${year} ${resume.name}`}
     </p>
 
     <ul
       class="order-1 flex items-center gap-2 sm:order-2 sm:justify-self-center"
     >
       {
-        networks.map((network) => (
+        resume.social.map((network) => (
           <li>
             <a
               href={network.url}
               target="_blank"
               rel="noopener noreferrer"
-              aria-label={network.name}
+              aria-label={network.label}
               class="flex size-9 items-center justify-center rounded-full text-white/50 transition hover:bg-white/10 hover:text-accent-300"
             >
-              <Icon name={iconFor(network.className)} class="size-4" />
+              <Icon name={network.icon} class="size-4" />
             </a>
           </li>
         ))

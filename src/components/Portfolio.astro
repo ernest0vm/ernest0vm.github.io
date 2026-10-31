@@ -1,11 +1,22 @@
 ---
 import { Icon } from 'astro-icon/components';
 import Section from './Section.astro';
-import { localized, useTranslations } from '../i18n/ui.js';
+import resume from '../data/resume.json';
+import { useTranslations } from '../i18n/index.js';
 
-const { data, locale = 'es' } = Astro.props;
+const { locale = 'es' } = Astro.props;
 const t = useTranslations(locale);
-const projects = data?.projects ?? [];
+const c = useTranslations(locale, 'content');
+
+/** "Venta de boletos · Expo", plus a note for apps pulled from the stores. */
+const caption = (project) =>
+  [
+    c(`portfolio.${project.id}`),
+    project.stack,
+    project.retired && t('portfolio.retired'),
+  ]
+    .filter(Boolean)
+    .join(' · ');
 
 /** Fallback for apps with no store listing left, same idea as the timeline. */
 const initials = (text = '') =>
@@ -25,7 +36,7 @@ const initials = (text = '') =>
 >
   <ul class="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
     {
-      projects.map((project) => {
+      resume.portfolio.map((project) => {
         const card = (
           <>
             {/* Monogram under the icon, so a store image that stops resolving
@@ -53,9 +64,7 @@ const initials = (text = '') =>
               <h3 class="text-sm font-semibold text-white group-hover:text-accent-300">
                 {project.title}
               </h3>
-              <p class="mt-1 text-xs/5 text-white/50">
-                {localized(project.category, locale)}
-              </p>
+              <p class="mt-1 text-xs/5 text-white/50">{caption(project)}</p>
             </div>
 
             {project.url && (

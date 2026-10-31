@@ -24,15 +24,15 @@ const PORT = 4330;
 const countPages = (pdf) =>
   pdf.toString('latin1').match(/\/Type\s*\/Page(?!s)/g)?.length ?? 0;
 
-const data = JSON.parse(
-  await readFile(new URL('../src/data/resumeData.json', import.meta.url)),
+const resume = JSON.parse(
+  await readFile(new URL('../src/data/resume.json', import.meta.url)),
 );
 
-// The file names come from the download links in resumeData.json, so the PDF
-// and the button that points at it cannot drift apart.
-const targets = ['es', 'en'].map((lang) => ({
+// The same file names the site's download buttons point at (resume.cv), so
+// the PDF and the button cannot drift apart.
+const targets = Object.entries(resume.cv.files).map(([lang, file]) => ({
   lang,
-  file: new URL(data.main.resumedownload[lang]).pathname.split('/').pop(),
+  file,
 }));
 
 // Turns on the route's getStaticPaths. A separate outDir keeps this build from
@@ -75,7 +75,7 @@ try {
       // Header/footer templates render outside the page and cannot see its
       // fonts or styles, hence the inline system font.
       footerTemplate: `<div style="width:100%;padding:0 14mm;font:7pt Helvetica,Arial,sans-serif;color:#8a8f99;display:flex;justify-content:space-between">
-          <span>${data.main.name}</span>
+          <span>${resume.name}</span>
           <span><span class="pageNumber"></span> / <span class="totalPages"></span></span>
         </div>`,
     };

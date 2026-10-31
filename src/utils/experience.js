@@ -3,8 +3,18 @@
  * hard-coded in the copy, so the CV never quietly goes stale.
  */
 
-// Grupo Avatecsys, September 2009 — see resume.work in the resume data.
-export const EXPERIENCE_START = new Date(Date.UTC(2009, 8, 1));
+import resume from '../data/resume.json';
+
+// The earliest job's start month (Grupo Avatecsys, September 2009), counted
+// from the 1st. Adding an earlier job to resume.json moves it automatically.
+const [startYear, startMonth] = resume.work
+  .map((job) => job.start)
+  .sort()[0]
+  .split('-')
+  .map(Number);
+export const EXPERIENCE_START = new Date(
+  Date.UTC(startYear, startMonth - 1, 1),
+);
 
 /** Full years elapsed since EXPERIENCE_START (the anniversary must have passed). */
 export function yearsOfExperience(reference = new Date()) {

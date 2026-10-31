@@ -1,0 +1,354 @@
+{
+  "name": "Ernesto Valdez",
+  "role": "Tech Lead / Sr Mobile & Full Stack Developer",
+  "photo": "15321975906209479.jpg",
+  "contact": {
+    "email": "ernestovm07@gmail.com",
+    "phones": [
+      {
+        "number": "+52 55 1682 3244",
+        "whatsapp": true
+      },
+      {
+        "number": "+52 55 2275 9728"
+      }
+    ],
+    "city": "Nicolás Romero"
+  },
+  "social": [
+    {
+      "id": "linkedin",
+      "label": "LinkedIn",
+      "icon": "fa6-brands:linkedin-in",
+      "url": "https://www.linkedin.com/in/ernestovaldez/"
+    },
+    {
+      "id": "behance",
+      "label": "Behance",
+      "icon": "fa6-brands:behance",
+      "url": "https://www.behance.net/ernestovm"
+    },
+    {
+      "id": "github",
+      "label": "GitHub",
+      "icon": "fa6-brands:github",
+      "url": "https://github.com/ernest0vm"
+    },
+    {
+      "id": "whatsapp",
+      "label": "WhatsApp",
+      "icon": "fa6-brands:whatsapp",
+      "url": "https://wa.me/525516823244"
+    }
+  ],
+  "cv": {
+    "release": "https://github.com/ernest0vm/ernest0vm.github.io/releases/download/cv/",
+    "files": {
+      "es": "CV-Ernesto-Valdez.pdf",
+      "en": "Resume-Ernesto-Valdez.pdf"
+    }
+  },
+  "quote": {
+    "author": "Steve Jobs"
+  },
+  "work": [
+    {
+      "id": "reserhub",
+      "company": "Reserhub",
+      "title": "Mobile Engineer Tech Lead",
+      "start": "2025-04",
+      "end": null,
+      "logo": "https://www.google.com/s2/favicons?domain=reserhub.com&sz=128"
+    },
+    {
+      "id": "reservamos",
+      "company": "Reservamos",
+      "title": "Lead Mobile Engineer",
+      "start": "2021-05",
+      "end": "2025-04",
+      "logo": "https://www.google.com/s2/favicons?domain=reservamos.com&sz=128"
+    },
+    {
+      "id": "chib",
+      "company": "Chib",
+      "title": "Tech Lead",
+      "start": "2020-07",
+      "end": "2021-05",
+      "logo": "https://media.licdn.com/dms/image/v2/C4E0BAQGNfta2w2bezg/company-logo_200_200/company-logo_200_200/0/1641577163643/chibmex_logo?e=2147483647&v=beta&t=lE7ltoFs5tZdm6ILr0vqx5cLCSsiu7qR6X_SqqMy1ws"
+    },
+    {
+      "id": "bussi",
+      "company": "BUSSI",
+      "title": "Flutter Mobile Developer",
+      "start": "2019-10",
+      "end": "2020-03",
+      "logo": "https://media.licdn.com/dms/image/v2/C4E0BAQFpyerMJZZdAg/company-logo_200_200/company-logo_200_200/0/1630595480536/bussi_logo?e=2147483647&v=beta&t=1HtN01B0Ta-iwjQSlYllDPeBaObsTxgO-pXzxSYS5AM"
+    },
+    {
+      "id": "cantec",
+      "company": "CANTEC",
+      "title": "Sr. Mobile App Developer",
+      "start": "2019-01",
+      "end": "2019-09",
+      "logo": "https://www.google.com/s2/favicons?domain=grupocantec.com&sz=128"
+    },
+    {
+      "id": "skyalert",
+      "company": "SkyAlert",
+      "title": "IoT Hardware Engineer / Production Leader",
+      "start": "2017-07",
+      "end": "2019-01",
+      "logo": "https://www.google.com/s2/favicons?domain=skyalert.mx&sz=128"
+    },
+    {
+      "id": "sms",
+      "company": "Service Management Solutions",
+      "title": "Motherboard Engineer Level 3",
+      "start": "2017-06",
+      "end": "2017-07",
+      "logo": "https://www.google.com/s2/favicons?domain=smsmexico.mx&sz=128"
+    },
+    {
+      "id": "avatecsys",
+      "company": "Grupo Avatecsys",
+      "title": "Head of Information Technology",
+      "start": "2009-09",
+      "end": "2017-03",
+      "logo": "https://media.licdn.com/dms/image/v2/C560BAQG4ynsSle8R2g/company-logo_200_200/company-logo_200_200/0/1630633348513?e=2147483647&v=beta&t=Kjt8QHxSvDWe6K3TSqszib2dwWL3ey30v8rlFX9qxio"
+    }
+  ],
+  "education": [
+    {
+      "id": "utfv",
+      "school": "Universidad Tecnológica Fidel Velázquez",
+      "graduated": "2009-08",
+      "license": "7133679",
+      "logo": "https://www.google.com/s2/favicons?domain=dragones.utfv.edu.mx&sz=128"
+    },
+    {
+      "id": "cecytem",
+      "school": "Colegio de Estudios Científicos y Tecnológicos del Estado de México",
+      "graduated": "2006-07",
+      "license": "538848",
+      "logo": "https://graph.facebook.com/somoscecytem/picture?type=large"
+    }
+  ],
+  "languages": [
+    {
+      "id": "english",
+      "cefr": "B2"
+    }
+  ],
+  "skills": [
+    {
+      "name": "Dart",
+      "icon": "simple-icons:dart"
+    },
+    {
+      "name": "Flutter",
+      "icon": "simple-icons:flutter"
+    },
+    {
+      "name": "TypeScript",
+      "icon": "simple-icons:typescript"
+    },
+    {
+      "name": "JavaScript",
+      "icon": "simple-icons:javascript",
+      "certificationUrl": "https://www.sololearn.com/Certificate/1024-1163660/pdf/"
+    },
+    {
+      "name": "React",
+      "icon": "simple-icons:react"
+    },
+    {
+      "name": "Kotlin",
+      "icon": "simple-icons:kotlin"
+    },
+    {
+      "name": "Swift",
+      "icon": "simple-icons:swift",
+      "certificationUrl": "https://www.sololearn.com/Certificate/1075-1163660/pdf/"
+    },
+    {
+      "name": "Node.js",
+      "icon": "simple-icons:nodedotjs"
+    },
+    {
+      "name": "Python",
+      "icon": "simple-icons:python",
+      "certificationUrl": "https://www.sololearn.com/Certificate/1073-1163660/pdf/"
+    },
+    {
+      "name": "C#",
+      "icon": "simple-icons:csharp",
+      "certificationUrl": "https://www.sololearn.com/Certificate/1080-1163660/pdf/"
+    },
+    {
+      "name": "SQL",
+      "icon": "simple-icons:postgresql",
+      "certificationUrl": "https://www.sololearn.com/Certificate/1060-1163660/pdf/"
+    },
+    {
+      "name": "HTML5",
+      "icon": "simple-icons:html5"
+    }
+  ],
+  "tools": [
+    {
+      "name": "Claude Code",
+      "icon": "simple-icons:claudecode"
+    },
+    {
+      "name": "Cursor",
+      "icon": "simple-icons:cursor"
+    },
+    {
+      "name": "GitHub Copilot",
+      "icon": "simple-icons:githubcopilot"
+    },
+    {
+      "name": "Codex",
+      "icon": "simple-icons:openai"
+    },
+    {
+      "name": "Expo",
+      "icon": "simple-icons:expo"
+    },
+    {
+      "name": "Turborepo",
+      "icon": "simple-icons:turborepo"
+    },
+    {
+      "name": "VS Code",
+      "icon": "simple-icons:visualstudiocode"
+    },
+    {
+      "name": "Android Studio",
+      "icon": "simple-icons:androidstudio"
+    },
+    {
+      "name": "Xcode",
+      "icon": "simple-icons:xcode"
+    },
+    {
+      "name": "Git",
+      "icon": "simple-icons:git"
+    },
+    {
+      "name": "GitHub Actions",
+      "icon": "simple-icons:githubactions"
+    },
+    {
+      "name": "Docker",
+      "icon": "simple-icons:docker"
+    },
+    {
+      "name": "Postman",
+      "icon": "simple-icons:postman"
+    },
+    {
+      "name": "Figma",
+      "icon": "simple-icons:figma"
+    },
+    {
+      "name": "Firebase",
+      "icon": "simple-icons:firebase"
+    },
+    {
+      "name": "AWS",
+      "icon": "simple-icons:amazonwebservices"
+    },
+    {
+      "name": "Google Cloud",
+      "icon": "simple-icons:googlecloud"
+    },
+    {
+      "name": "Azure",
+      "icon": "simple-icons:microsoftazure"
+    }
+  ],
+  "portfolio": [
+    {
+      "id": "reservamos",
+      "title": "Reservamos",
+      "stack": "Expo",
+      "image": "https://play-lh.googleusercontent.com/BZ48Ayob4TFct1qiiyxSixE-7jCsIoZcOjYG_7o571BvCIe07OdINjExn1MAf8FwyYw-xuziQft0aeV0zwlnmg",
+      "url": "https://play.google.com/store/apps/details?id=com.reservamos.viajes"
+    },
+    {
+      "id": "rollbits",
+      "title": "Roll&Bits",
+      "stack": "Expo",
+      "image": "https://play-lh.googleusercontent.com/bi4ldDvLNc9L42pny8-4wY2ccudW5qZnWxiPUyE6wzU1yKgbSmGs85JhFoBdvOQ-gEp0ZGWOP2fTF-ypjjXfSw",
+      "url": "https://play.google.com/store/apps/details?id=com.web_view_rnb"
+    },
+    {
+      "id": "rollbits-conductor",
+      "title": "Roll&Bits Conductor",
+      "stack": "Flutter",
+      "image": "https://play-lh.googleusercontent.com/cr02VB6g-6p7m3TK9tnswzwNYQ2Rkx2UFLQ9zCCpD55o6y5y9M2gHhIYKYqeekQUZ8cHGfo7Xi6B17LHS99I",
+      "url": "https://play.google.com/store/apps/details?id=com.gfa.rollandbits.driver"
+    },
+    {
+      "id": "primera-plus",
+      "title": "Primera Plus",
+      "stack": "Expo",
+      "image": "https://play-lh.googleusercontent.com/ojLPbmwLsU11NIbt51jYTDHGHL3DqDGITOzKK0zjUnqdFi7lHbndR_h9VoeSihkj3t7VvpXF_jWcSZFhflOz",
+      "url": "https://play.google.com/store/apps/details?id=com.gfa.PrimeraPlus"
+    },
+    {
+      "id": "expreso-brasilia",
+      "title": "Expreso Brasilia",
+      "stack": "Expo",
+      "image": "https://play-lh.googleusercontent.com/FiIj1N8IMS8R3uDmr3DbomYdDrGzEGzlsDyYmU8WIW9IzUVgI1wIuA7tvBOfRvRO1DmKgpmTBfsbpL1SLGS6Aw",
+      "url": "https://play.google.com/store/apps/details?id=com.expresobrasilia.viajes"
+    },
+    {
+      "id": "smilebus",
+      "title": "Smilebus",
+      "stack": "Expo",
+      "image": "https://play-lh.googleusercontent.com/CoyjfrKZ6U6B5jf79IOFzBVmaq0EMWebuzXVtlrxJBlfQztsH-Un6Dp0i85Zsqv3Tf20KNghkGQ3LBZ-PahoSQ",
+      "url": "https://play.google.com/store/apps/details?id=com.smilebus.viajes"
+    },
+    {
+      "id": "conecta-gfa",
+      "title": "Conecta GFA",
+      "stack": "Expo",
+      "image": "https://play-lh.googleusercontent.com/I8wSLlWcGxj2LmEzbisgY7-4lJVHOEgBKajdY3OLMF3erk32X1uCxrvnjqOa98PZgPSxERzGoYVrrp99eYV-_Q",
+      "url": "https://play.google.com/store/apps/details?id=com.web_view_conecta"
+    },
+    {
+      "id": "vanda",
+      "title": "Vanda",
+      "stack": "Flutter",
+      "retired": true
+    },
+    {
+      "id": "bussi",
+      "title": "Bussi",
+      "stack": "Flutter",
+      "retired": true
+    },
+    {
+      "id": "chib",
+      "title": "Chib",
+      "stack": "Flutter",
+      "retired": true
+    },
+    {
+      "id": "familycard-health",
+      "title": "FamilyCard Health",
+      "stack": "Xamarin Forms",
+      "image": "https://play-lh.googleusercontent.com/uF_IByFrXp6EVIxqsKdxfG3DDKIjcgVeuu7c29NxK34k391SxKtsFAiFc74dqVU6u4p8dGcncJ022vEeFA6w0g",
+      "url": "https://play.google.com/store/apps/details?id=familycard.familycard"
+    },
+    {
+      "id": "skyalert",
+      "title": "SkyAlert",
+      "stack": "React Native",
+      "image": "https://play-lh.googleusercontent.com/jrwYlicGyj5N28m-6AGqw95qvLYQ7uzEGSHUa5huKiwQ5jmLquU-eBMD3N458yC_TK7OyuwFGifP7OVXV9Vvxw",
+      "url": "https://play.google.com/store/apps/details?id=com.disappster.skyalert"
+    }
+  ]
+}

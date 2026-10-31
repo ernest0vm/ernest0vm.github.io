@@ -31,30 +31,39 @@ herramientas del navegador.
 | --------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------ |
 | `src/pages/index.astro`, `src/pages/en/index.astro` | Rutas de cada idioma; solo montan `ResumePage` con su `locale`.                                                                            |
 | `src/components/ResumePage.astro`                   | La página real: resuelve los textos del idioma y compone las secciones.                                                                    |
-| `src/i18n/ui.js`                                    | Textos de la plantilla (nav, encabezados, botones) en ambos idiomas, más `localized()`.                                                    |
+| `src/i18n/{es,en}/`                                 | Todo el texto visible, por idioma: `ui.json` (sitio), `content.json` (el CV), `cv.json` (etiquetas del PDF).                               |
+| `src/i18n/index.js`                                 | `useTranslations(locale, namespace)` y los formateadores de fechas.                                                                        |
 | `src/layouts/Layout.astro`                          | Shell HTML + capa de fondo fija + init de partículas.                                                                                      |
 | `src/components/`                                   | `Nav`, `Hero`, `About`, `Timeline` (reusado para educación y empleos), `Skills`, `Portfolio`, `Footer`, y `Section` como envoltorio común. |
-| `src/data/resumeData.json`                          | Todo el contenido. Editarlo no requiere tocar código.                                                                                      |
+| `src/data/resume.json`                              | Los datos neutrales al idioma: nombres, fechas, URLs, logos, iconos, `id`s.                                                                |
 | `src/styles/global.css`                             | Tailwind + tokens `@theme` + utilidades `glass`.                                                                                           |
 | `src/utils/experience.js`                           | Años de experiencia calculados y deletreados.                                                                                              |
 | `src/pages/cv/print-[lang].astro`                   | Maqueta imprimible del CV. Solo existe en el build del PDF; ver "PDF del CV".                                                              |
 | `scripts/build-cv.mjs`                              | Construye esa maqueta y la imprime a PDF con Chrome.                                                                                       |
+| `scripts/check-i18n.mjs`                            | Valida que los dos idiomas estén completos y en regla; corre en `yarn lint`.                                                               |
 
 ## Contenido
 
-Se edita en `src/data/resumeData.json`:
+Se edita sin tocar código: los hechos en `src/data/resume.json` y el texto en
+`src/i18n/{es,en}/content.json` (ver "Idiomas"):
 
 - Los iconos son nombres de iconify (`simple-icons:docker`, `fa6-brands:github`),
   no URLs. Se inlinean como SVG en el build vía `astro-icon`. **No volver a
   enlazar logos remotos**: las URLs anteriores (Wikimedia, S3) se rompieron tres
   veces. Colecciones instaladas: `simple-icons`, `fa6-brands`, `fa6-solid`.
-- El `bio` lleva el token `{{years}}`, que `About.astro` sustituye por los años
-  de experiencia. No escribir el número a mano.
-- `main.phones` es una lista; el número con `"whatsapp": true` se muestra con
+- El `bio` lleva la variable `{years}`, que se sustituye por los años de
+  experiencia. No escribir el número a mano.
+- Las fechas van en ISO (`"start": "2025-04"`, `"end": null` para el empleo
+  actual) y se formatean por idioma con `Intl` («Abril 2025 - Actual»). No
+  escribirlas como texto.
+- `contact.phones` es una lista; el número con `"whatsapp": true` se muestra con
   ese icono y abre `wa.me`, los demás marcan con `tel:`. Van con lada
   internacional (`+52 …`), que es como se leen en el PDF en inglés.
-- `main.quote`, `resume.spokenLanguages` y la `license` (cédula profesional) de
-  cada entrada de educación salen tanto en el sitio como en el PDF.
+- `quote`, `languages` y la `license` (cédula profesional) de cada entrada de
+  educación salen tanto en el sitio como en el PDF.
+- En `portfolio`, `stack` es la tecnología y `"retired": true` marca una app
+  retirada de las tiendas (sin `url`); el texto «Retirada de las tiendas» sale
+  de las traducciones, no se escribe en cada app.
 - Los logos de empleos y educación (`logo`) **sí** son URLs remotas, por
   decisión explícita del dueño del repo. Hay tres orígenes válidos:
   1. `https://www.google.com/s2/favicons?domain=X&sz=128`. Si el dominio no
@@ -98,17 +107,36 @@ Se edita en `src/data/resumeData.json`:
 
 ## Idiomas
 
-Hay dos fuentes de texto, y **todo texto visible nuevo necesita ambas versiones**:
+Los datos y el texto van separados. **Todo texto visible nuevo necesita su
+versión en ambos idiomas.**
 
-- **Contenido** (`resumeData.json`): los campos traducibles son objetos
-  `{ "es": "…", "en": "…" }` — bio, estado, títulos de grado, fechas,
-  descripciones, mensajes de habilidades y categorías del portafolio. Lo que no
-  cambia entre idiomas (nombres de empresas, escuelas y apps, URLs, logos,
-  iconos) se queda como valor plano y no se duplica. `localized(valor, locale)`
-  acepta las dos formas, así que un campo plano puede pasar a bilingüe sin tocar
-  código. `resumedownload` es bilingüe: cada idioma apunta a su propio PDF.
-- **Plantilla** (`src/i18n/ui.js`): encabezados, nav, botones y `aria-label`.
-  Se usan con `useTranslations(locale)`; admite variables (`{years}`, `{name}`).
+- **Datos** (`src/data/resume.json`): lo que no cambia entre idiomas —nombres
+  de empresas, escuelas y apps, puestos, fechas ISO, URLs, logos, iconos— más
+  un `id` estable por entrada de `work`, `education`, `portfolio` y
+  `languages`.
+- **Texto** (`src/i18n/<locale>/`), tres archivos por idioma:
+  - `ui.json`: la plantilla del sitio (nav, encabezados, botones, `aria-label`).
+  - `content.json`: el CV, indexado por esos `id` (`work.reserhub`,
+    `education.utfv.degree`, `portfolio.vanda`…).
+  - `cv.json`: las etiquetas de la maqueta del PDF.
+
+  Se separan para que el workflow del PDF sepa qué le afecta: `ui.json` no
+  está en sus `paths`.
+
+`useTranslations(locale, namespace)` de `src/i18n/index.js` devuelve
+`t(clave, variables)` con claves por puntos y variables `{nombre}`; si falta
+una clave en inglés cae al español. Para que eso no pase en silencio,
+**`scripts/check-i18n.mjs` corre dentro de `yarn lint`** (y por tanto en CI) y
+falla si:
+
+- los idiomas no tienen exactamente las mismas claves o las mismas variables;
+- una entrada de `resume.json` no tiene su texto, o queda texto huérfano;
+- el `bio` pierde `{years}`;
+- aparece «marca blanca» / «white label» en cualquier archivo.
+
+Para añadir un empleo: una entrada en `resume.work` con su `id`, y
+`work.<id>` en los dos `content.json`. No se usa ninguna librería de i18n: en un
+sitio estático no aportan nada que este helper no haga.
 
 Cada componente recibe `locale` como prop desde `ResumePage`. Los años de
 experiencia se deletrean por idioma (`diecisiete` / `seventeen`). El `<html
@@ -140,19 +168,20 @@ publica como HTML (ver abajo).
 
 ## PDF del CV
 
-Un PDF por idioma, generado a partir de `resumeData.json`, publicado como
-archivos del release `cv` de GitHub. Los botones «Descargar currículum» apuntan
-a `releases/download/cv/<archivo>` (en `resumedownload`), así que la URL nunca
-cambia y no queda ningún PDF en el historial de git. El nombre de cada archivo
-sale de esa misma URL, no se repite en el script.
+Un PDF por idioma, generado a partir de `resume.json` y las traducciones,
+publicado como archivos del release `cv` de GitHub. Los botones «Descargar
+currículum» apuntan a `resume.cv.release` + `resume.cv.files[locale]`, así que
+la URL nunca cambia y no queda ningún PDF en el historial de git. El script
+toma los nombres de archivo de ese mismo lugar.
 
 - **Workflow propio** (`.github/workflows/cv-pdf.yml`), separado del deploy:
-  corre solo cuando cambian los datos, la maqueta del PDF, `experience.js`, las
-  imágenes de `public/` o el propio script. Un cambio de estilo del sitio no lo
+  corre solo cuando cambian `resume.json`, `content.json` o `cv.json`, la
+  maqueta del PDF, `src/i18n/index.js`, `experience.js`, las imágenes de
+  `public/` o el propio script. Un cambio de estilo del sitio no lo
   dispara. También corre el 1 de septiembre, cuando cambian los años de
   experiencia, y a mano con `workflow_dispatch`.
 - **Estilos desacoplados**: `src/pages/cv/print-[lang].astro` tiene su propio CSS y
-  sus propios textos; no usa Tailwind, `global.css` ni `ui.js`. Así nada del
+  sus propias etiquetas (`cv.json`); no usa Tailwind, `global.css` ni `ui.json`. Así nada del
   sitio afecta al PDF sin regenerarlo. Por eso tiene una excepción a
   `better-tailwindcss/no-unknown-classes` en `eslint.config.js`. Si se le añade
   una dependencia nueva, agregarla también a los `paths` del workflow.
@@ -178,7 +207,8 @@ sale de esa misma URL, no se repite en el script.
 
 ## Años de experiencia
 
-`src/utils/experience.js` cuenta años completos desde el 1 de septiembre de 2009
+`src/utils/experience.js` cuenta años completos desde el día 1 del mes en que
+empieza el empleo más antiguo de `resume.json` (hoy, septiembre de 2009)
 y los deletrea en el idioma de la página: en español con la apócope correcta
 ante sustantivo masculino ("veintiún años"), en inglés con guion en los
 compuestos ("twenty-one years"). Se usa en el perfil, en habilidades y en la

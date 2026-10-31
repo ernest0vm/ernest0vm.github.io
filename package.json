@@ -11,7 +11,7 @@
     "build": "astro build",
     "preview": "astro preview",
     "cv:pdf": "node scripts/build-cv.mjs",
-    "lint": "eslint .",
+    "lint": "eslint . && node scripts/check-i18n.mjs",
     "format": "prettier --write .",
     "format:check": "prettier --check ."
   },

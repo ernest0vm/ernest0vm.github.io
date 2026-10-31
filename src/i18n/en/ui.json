@@ -1,0 +1,55 @@
+{
+  "skip": "Skip to content",
+  "nav": {
+    "label": "Main",
+    "home": "Home",
+    "about": "About",
+    "work": "Experience",
+    "education": "Education",
+    "skills": "Skills",
+    "portfolio": "Portfolio"
+  },
+  "lang": {
+    "switch": "Ver en español"
+  },
+  "hero": {
+    "next": "Go to next section"
+  },
+  "about": {
+    "eyebrow": "About me",
+    "title": "Profile",
+    "photo": "Photo of {name}",
+    "showPhone": "Show phone",
+    "showWhatsapp": "Show WhatsApp",
+    "showEmail": "Show email",
+    "download": "Download resume"
+  },
+  "work": {
+    "eyebrow": "Career",
+    "title": "Experience"
+  },
+  "education": {
+    "eyebrow": "Background",
+    "title": "Education",
+    "license": "Professional license {number}"
+  },
+  "skills": {
+    "eyebrow": "Skills",
+    "title": "What I build with",
+    "lead": "{years} years of experience across mobile, backend, cloud and electronics.",
+    "languages": "Languages & frameworks",
+    "tools": "Tools"
+  },
+  "portfolio": {
+    "eyebrow": "Portfolio",
+    "title": "Apps I've built",
+    "lead": "Apps published on Google Play and the App Store, built with Expo, Flutter, React Native and Xamarin.",
+    "retired": "Removed from the stores"
+  },
+  "footer": {
+    "top": "Back to top"
+  },
+  "date": {
+    "present": "Present"
+  }
+}
