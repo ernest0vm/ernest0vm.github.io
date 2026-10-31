@@ -1,5 +1,5 @@
 {
-  "bio": "Tech lead and mobile architect with a full-stack background and {years} years of experience building products end to end. I design and evolve the mobile platform Reserhub uses to ship more than 20 ticketing apps for bus lines across Mexico, Colombia, Brazil, Peru and the United States: a Turborepo and Expo monorepo, a hybrid architecture that embeds the web checkout funnel, and a delivery process built on OTA updates, feature flags and staged rollouts. I lead a squad of five engineers and move between architecture decisions and production code across mobile, backend and web, with AI-assisted development behind quality gates. Before mobile I worked on IoT, SMD electronics and embedded firmware, which gives me a full view of the product, from device to cloud.",
+  "bio": "Tech lead and mobile architect with a full-stack background and {years} years of experience building products end to end. I design and evolve the mobile platform Reserhub uses to ship some 20 ticketing apps for bus lines across Mexico, Colombia, Brazil, Peru and the United States: a Turborepo and Expo monorepo, a hybrid architecture that embeds the web checkout funnel, and a delivery process built on OTA updates, feature flags and staged rollouts. I lead a squad of five engineers and move between architecture decisions and production code across mobile, backend and web, with AI-assisted development behind quality gates. Before mobile I worked on IoT, SMD electronics and embedded firmware, which gives me a full view of the product, from device to cloud.",
   "quote": "Innovation distinguishes between a leader and a follower.",
   "state": "State of Mexico",
   "skillsLead": "These are some of the languages, frameworks and libraries I use in my projects:",
@@ -32,7 +32,7 @@
   },
   "work": {
     "reserhub": {
-      "summary": "I lead the mobile platform squad for the B2B vertical: the architecture, shared code and delivery process Reserhub uses to ship the ticketing apps of more than 20 bus lines.",
+      "summary": "I lead the mobile platform squad for the B2B vertical: the architecture, shared code and delivery process Reserhub uses to ship the ticketing apps of some 20 bus lines.",
       "highlights": [
         "Designed and led the consolidation of the apps into a Turborepo and Expo monorepo: 11 branded apps, shared packages and per-tenant configuration.",
         "Moved the enterprise apps’ checkout funnel to a hybrid architecture — a native shell embedding the web funnel, with native bridges for session, payments and deep links — validated with an A/B test and rolled out brand by brand.",
@@ -96,7 +96,6 @@
     "etn": "Luxury buses in Mexico",
     "autovias": "Bus tickets in Mexico",
     "rapi2s": "Bus tickets in Mexico",
-    "rapidos-de-colima": "Bus tickets in Mexico",
     "sur-de-jalisco": "Bus tickets in Mexico",
     "berlinas-del-fonce": "Bus tickets in Colombia",
     "flota-magdalena": "Bus tickets in Colombia",

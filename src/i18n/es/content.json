@@ -1,5 +1,5 @@
 {
-  "bio": "Tech lead y arquitecto móvil con perfil full stack y {years} años de experiencia construyendo productos de punta a punta. Hoy diseño y evoluciono la plataforma móvil con la que Reserhub publica más de 20 apps de venta de boletos para líneas de autobús de México, Colombia, Brasil, Perú y Estados Unidos: un monorepo con Turborepo y Expo, una arquitectura híbrida con el funnel de compra web embebido y un proceso de entrega con actualizaciones OTA, feature flags y despliegues graduales. Lidero un squad de cinco ingenieros y alterno entre decisiones de arquitectura y código de producción en móvil, backend y web, con desarrollo asistido por IA bajo compuertas de calidad. Antes de móvil trabajé en IoT, electrónica SMD y firmware embebido, lo que me da una visión completa del producto, del dispositivo a la nube.",
+  "bio": "Tech lead y arquitecto móvil con perfil full stack y {years} años de experiencia construyendo productos de punta a punta. Hoy diseño y evoluciono la plataforma móvil con la que Reserhub publica una veintena de apps de venta de boletos para líneas de autobús de México, Colombia, Brasil, Perú y Estados Unidos: un monorepo con Turborepo y Expo, una arquitectura híbrida con el funnel de compra web embebido y un proceso de entrega con actualizaciones OTA, feature flags y despliegues graduales. Lidero un squad de cinco ingenieros y alterno entre decisiones de arquitectura y código de producción en móvil, backend y web, con desarrollo asistido por IA bajo compuertas de calidad. Antes de móvil trabajé en IoT, electrónica SMD y firmware embebido, lo que me da una visión completa del producto, del dispositivo a la nube.",
   "quote": "La innovación es lo que distingue a un líder de un seguidor.",
   "state": "Estado de México",
   "skillsLead": "Estos son algunos de los lenguajes, frameworks y librerías que utilizo en mis proyectos:",
@@ -32,7 +32,7 @@
   },
   "work": {
     "reserhub": {
-      "summary": "Lidero el squad de plataforma móvil de la vertical B2B: la arquitectura, el código compartido y el proceso de entrega con los que Reserhub publica las apps de venta de boletos de más de 20 líneas de autobús.",
+      "summary": "Lidero el squad de plataforma móvil de la vertical B2B: la arquitectura, el código compartido y el proceso de entrega con los que Reserhub publica las apps de venta de boletos de una veintena de líneas de autobús.",
       "highlights": [
         "Diseñé y lideré la unificación de las apps en un monorepo con Turborepo y Expo: 11 apps de marca, paquetes compartidos y configuración por tenant.",
         "Llevé el funnel de compra de las apps enterprise a una arquitectura híbrida —shell nativo con el funnel web embebido y puentes nativos para sesión, pagos y deep links—, validada con prueba A/B y desplegada marca por marca.",
@@ -96,7 +96,6 @@
     "etn": "Autobuses de lujo en México",
     "autovias": "Boletos de autobús en México",
     "rapi2s": "Boletos de autobús en México",
-    "rapidos-de-colima": "Boletos de autobús en México",
     "sur-de-jalisco": "Boletos de autobús en México",
     "berlinas-del-fonce": "Pasajes de autobús en Colombia",
     "flota-magdalena": "Pasajes de autobús en Colombia",
