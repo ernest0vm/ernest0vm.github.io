@@ -2,20 +2,25 @@
 import { Icon } from 'astro-icon/components';
 import Section from './Section.astro';
 import { experienceInWords } from '../utils/experience.js';
+import { localized, useTranslations } from '../i18n/ui.js';
 
-const { data } = Astro.props;
+const { data, locale = 'es' } = Astro.props;
+const t = useTranslations(locale);
 const base = import.meta.env.BASE_URL.replace(/\/+$/, '');
 
 const name = data?.name;
 const profilepic = `${base}/images/${data?.image}`;
 // The bio keeps a {{years}} token so the copy stays editable in the data file
 // while the count itself is derived from the start date.
-const bio = (data?.bio ?? '').replaceAll('{{years}}', experienceInWords());
+const bio = (localized(data?.bio, locale) ?? '').replaceAll(
+  '{{years}}',
+  experienceInWords(locale),
+);
 const city = data?.address?.city;
-const state = data?.address?.state;
+const state = localized(data?.address?.state, locale);
 const phone = data?.phone;
 const email = data?.email;
-const resumeDownload = data?.resumedownload;
+const resumeDownload = localized(data?.resumedownload, locale);
 
 // Phone and email ship base64-encoded and are assembled on click. This is not
 // encryption — a determined scraper can decode it — but it does keep the plain
@@ -30,27 +35,27 @@ const details = [
   },
   {
     icon: 'fa6-solid:phone',
-    reveal: 'Ver teléfono',
+    reveal: t('about.showPhone'),
     value: encode(phone),
     scheme: 'tel',
   },
   {
     icon: 'fa6-solid:envelope',
-    reveal: 'Ver correo',
+    reveal: t('about.showEmail'),
     value: encode(email),
     scheme: 'mailto',
   },
 ];
 ---
 
-<Section id="about" eyebrow="Acerca de mí" title="Perfil">
+<Section id="about" eyebrow={t('about.eyebrow')} title={t('about.title')}>
   <div class="grid gap-10 md:grid-cols-[auto_1fr] md:gap-12">
     <div class="mx-auto md:mx-0">
       <div class="glass rounded-glass p-2">
         <img
           class="size-40 rounded-[calc(var(--radius-glass)-0.25rem)] object-cover sm:size-48"
           src={profilepic}
-          alt={`Foto de ${name}`}
+          alt={t('about.photo', { name })}
           width="192"
           height="192"
           loading="lazy"
@@ -98,14 +103,14 @@ const details = [
         class="glass-strong mt-8 inline-flex items-center gap-2.5 rounded-full px-6 py-3 text-sm font-semibold text-white transition hover:-translate-y-0.5 hover:text-accent-300"
       >
         <Icon name="fa6-solid:download" class="size-4" />
-        Descargar currículum
+        {t('about.download')}
       </a>
     </div>
   </div>
 </Section>
 
 <script>
-  // Swap the "Ver teléfono/correo" button for the real value on click. The
+  // Swap the "Ver teléfono" / "Show phone" button for the real value on click. The
   // value only exists decoded once the visitor asks for it.
   document.querySelectorAll('[data-reveal]').forEach((button) => {
     button.addEventListener(

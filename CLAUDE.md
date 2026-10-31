@@ -3,9 +3,10 @@
 CV / portafolio personal de Ernesto Valdez. Sitio estático en Astro, desplegado
 en GitHub Pages bajo `https://ernest0vm.github.io/resume/`.
 
-**Idioma**: el texto visible al usuario va en español; el código, los comentarios
-y los mensajes de commit en inglés. En el texto visible, preferir el término en
-español antes que el anglicismo cuando exista uno de uso corriente.
+**Idioma**: el sitio es bilingüe — español en `/resume/` (idioma por defecto,
+sin prefijo) e inglés en `/resume/en/`. El código, los comentarios y los
+mensajes de commit van en inglés. En el texto visible en español, preferir el
+término en español antes que el anglicismo cuando exista uno de uso corriente.
 
 ## Comandos
 
@@ -24,14 +25,16 @@ herramientas del navegador.
 
 ## Estructura
 
-| Ruta                       | Qué es                                                                                                                                     |
-| -------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------ |
-| `src/pages/index.astro`    | Única página. Normaliza los datos y compone las secciones.                                                                                 |
-| `src/layouts/Layout.astro` | Shell HTML + capa de fondo fija + init de partículas.                                                                                      |
-| `src/components/`          | `Nav`, `Hero`, `About`, `Timeline` (reusado para educación y empleos), `Skills`, `Portfolio`, `Footer`, y `Section` como envoltorio común. |
-| `src/data/resumeData.json` | Todo el contenido. Editarlo no requiere tocar código.                                                                                      |
-| `src/styles/global.css`    | Tailwind + tokens `@theme` + utilidades `glass`.                                                                                           |
-| `src/utils/experience.js`  | Años de experiencia calculados y deletreados.                                                                                              |
+| Ruta                                                | Qué es                                                                                                                                     |
+| --------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------ |
+| `src/pages/index.astro`, `src/pages/en/index.astro` | Rutas de cada idioma; solo montan `ResumePage` con su `locale`.                                                                            |
+| `src/components/ResumePage.astro`                   | La página real: resuelve los textos del idioma y compone las secciones.                                                                    |
+| `src/i18n/ui.js`                                    | Textos de la plantilla (nav, encabezados, botones) en ambos idiomas, más `localized()`.                                                    |
+| `src/layouts/Layout.astro`                          | Shell HTML + capa de fondo fija + init de partículas.                                                                                      |
+| `src/components/`                                   | `Nav`, `Hero`, `About`, `Timeline` (reusado para educación y empleos), `Skills`, `Portfolio`, `Footer`, y `Section` como envoltorio común. |
+| `src/data/resumeData.json`                          | Todo el contenido. Editarlo no requiere tocar código.                                                                                      |
+| `src/styles/global.css`                             | Tailwind + tokens `@theme` + utilidades `glass`.                                                                                           |
+| `src/utils/experience.js`                           | Años de experiencia calculados y deletreados.                                                                                              |
 
 ## Contenido
 
@@ -84,20 +87,49 @@ Se edita en `src/data/resumeData.json`:
   de usarlo; ya hubo dos casos (`cant.mx`, `smsolutions.com.mx`) que resultaron
   ser negocios ajenos con nombre parecido.
 
+## Idiomas
+
+Hay dos fuentes de texto, y **todo texto visible nuevo necesita ambas versiones**:
+
+- **Contenido** (`resumeData.json`): los campos traducibles son objetos
+  `{ "es": "…", "en": "…" }` — bio, estado, títulos de grado, fechas,
+  descripciones, mensajes de habilidades y categorías del portafolio. Lo que no
+  cambia entre idiomas (nombres de empresas, escuelas y apps, URLs, logos,
+  iconos) se queda como valor plano y no se duplica. `localized(valor, locale)`
+  acepta las dos formas, así que un campo plano puede pasar a bilingüe sin tocar
+  código. `resumedownload` admite lo mismo si algún día hay un PDF en inglés.
+- **Plantilla** (`src/i18n/ui.js`): encabezados, nav, botones y `aria-label`.
+  Se usan con `useTranslations(locale)`; admite variables (`{years}`, `{name}`).
+
+Cada componente recibe `locale` como prop desde `ResumePage`. Los años de
+experiencia se deletrean por idioma (`diecisiete` / `seventeen`). El `<html
+lang>`, los `hreflang` alternos y el selector ES/EN de la nav salen del mismo
+`locale`; el selector conserva la sección actual al cambiar de idioma.
+
+Las reglas de contenido de arriba —nada de «marca blanca», verificar dominios—
+aplican igual en inglés.
+
+Para verificar que no se cuele un idioma en el otro, buscar en `dist/index.html`
+y `dist/en/index.html` palabras de interfaz del idioma contrario (p. ej.
+«Empleos», «Ver correo» en la versión en inglés; «Experience», «Show email» en
+la española).
+
 ## Datos de contacto
 
 `phone` y `email` **no deben aparecer en claro en el HTML**. `About.astro` los
 emite en base64 y los arma como enlaces `tel:`/`mailto:` al hacer clic en «Ver
-teléfono» / «Ver correo». No es cifrado —quien quiera puede decodificarlo—, pero
+teléfono» / «Ver correo» («Show phone» / «Show email» en inglés). No es cifrado —quien quiera puede decodificarlo—, pero
 mantiene los valores fuera del alcance de los recolectores de direcciones, que
-leen el HTML plano. Al tocar esa sección, verificar con
-`grep` sobre `dist/index.html` que los valores siguen sin aparecer.
+leen el HTML plano. Al tocar esa sección, verificar con `grep` sobre
+`dist/index.html` **y** `dist/en/index.html` que los valores siguen sin aparecer.
 
 ## Años de experiencia
 
 `src/utils/experience.js` cuenta años completos desde el 1 de septiembre de 2009
-y los deletrea en español, con la apócope correcta ante sustantivo masculino
-("veintiún años"). Se usa en el perfil y en habilidades; **siempre con letra**.
+y los deletrea en el idioma de la página: en español con la apócope correcta
+ante sustantivo masculino ("veintiún años"), en inglés con guion en los
+compuestos ("twenty-one years"). Se usa en el perfil, en habilidades y en la
+meta description; **siempre con letra**.
 
 Se calcula en el build, así que `deploy.yml` corre también el día 1 de cada mes
 para que el aniversario cambie sin necesidad de un push. GitHub desactiva los

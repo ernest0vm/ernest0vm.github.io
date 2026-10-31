@@ -1,7 +1,9 @@
 ---
 import { Icon } from 'astro-icon/components';
+import { useTranslations } from '../i18n/ui.js';
 
-const { data } = Astro.props;
+const { data, locale = 'es' } = Astro.props;
+const t = useTranslations(locale);
 const networks = data?.social ?? [];
 const year = new Date().getFullYear();
 
@@ -49,7 +51,7 @@ const iconFor = (className = '') =>
 
     <a
       href="#home"
-      aria-label="Volver arriba"
+      aria-label={t('footer.top')}
       class="order-3 flex size-9 items-center justify-center rounded-full text-white/50 transition hover:bg-white/10 hover:text-accent-300 sm:justify-self-end"
     >
       <Icon name="fa6-solid:chevron-up" class="size-4" />

@@ -1,12 +1,26 @@
 ---
+import { getAbsoluteLocaleUrl } from 'astro:i18n';
 import '../styles/global.css';
+import { LOCALES, DEFAULT_LOCALE, useTranslations } from '../i18n/ui.js';
 
 const base = import.meta.env.BASE_URL.replace(/\/+$/, '');
-const { title = 'Ernesto Valdez', description = '' } = Astro.props;
+const {
+  locale = DEFAULT_LOCALE,
+  title = 'Ernesto Valdez',
+  description = '',
+} = Astro.props;
+const t = useTranslations(locale);
+
+// Tell search engines the two pages are translations of each other, so each
+// language ranks for its own audience instead of competing as duplicates.
+const alternates = LOCALES.map((code) => ({
+  code,
+  href: getAbsoluteLocaleUrl(code),
+}));
 ---
 
 <!doctype html>
-<html lang="es">
+<html lang={locale}>
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -15,6 +29,16 @@ const { title = 'Ernesto Valdez', description = '' } = Astro.props;
     <link rel="manifest" href={`${base}/manifest.json`} />
     <link rel="shortcut icon" href={`${base}/favicon.ico`} />
     <title>{title}</title>
+    {
+      alternates.map(({ code, href }) => (
+        <link rel="alternate" hreflang={code} href={href} />
+      ))
+    }
+    <link
+      rel="alternate"
+      hreflang="x-default"
+      href={getAbsoluteLocaleUrl(DEFAULT_LOCALE)}
+    />
   </head>
 
   <body class="overflow-x-hidden">
@@ -22,7 +46,7 @@ const { title = 'Ernesto Valdez', description = '' } = Astro.props;
       href="#about"
       class="sr-only rounded-full px-4 py-2 focus:not-sr-only focus:absolute focus:top-4 focus:left-4 focus:z-999 focus:bg-white focus:text-ink-950"
     >
-      Saltar al contenido
+      {t('skip')}
     </a>
 
     <!-- Site-wide backdrop. Fixed, so it stays put while the page scrolls and

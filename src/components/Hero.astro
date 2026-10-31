@@ -1,7 +1,9 @@
 ---
 import { Icon } from 'astro-icon/components';
+import { useTranslations } from '../i18n/ui.js';
 
-const { data } = Astro.props;
+const { data, locale = 'es' } = Astro.props;
+const t = useTranslations(locale);
 const name = data?.name;
 const description = data?.description;
 const networks = data?.social ?? [];
@@ -58,7 +60,7 @@ const iconFor = (className = '') =>
 
   <a
     href="#about"
-    aria-label="Ir a la siguiente sección"
+    aria-label={t('hero.next')}
     class="glass absolute bottom-10 left-1/2 flex size-11 -translate-x-1/2 animate-bounce items-center justify-center rounded-full text-white/80 hover:text-accent-300"
   >
     <Icon name="fa6-solid:chevron-down" class="size-4" />

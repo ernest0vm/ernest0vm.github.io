@@ -120,6 +120,14 @@
     0 12px 40px -8px oklch(0 0 0 / 0.7);
 }
 
+/* Fades an element out towards its end edge. The nav uses it so links that
+   scroll past the language switcher read as "scroll for more" instead of as
+   clipped text. Declared here, not in a component <style>, so the Tailwind
+   ESLint plugin recognises it through its entryPoint. */
+@utility fade-end {
+  mask-image: linear-gradient(to right, #000 calc(100% - 1.5rem), transparent);
+}
+
 /* Safari below 18 only implements the prefixed property. Separate rule, so
    the minifier cannot collapse it into the standard one above. */
 @supports (-webkit-backdrop-filter: blur(1px)) and

@@ -1,0 +1,71 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Nav from './Nav.astro';
+import Hero from './Hero.astro';
+import About from './About.astro';
+import Timeline from './Timeline.astro';
+import Skills from './Skills.astro';
+import Portfolio from './Portfolio.astro';
+import Footer from './Footer.astro';
+import resumeData from '../data/resumeData.json';
+import { localized, useTranslations } from '../i18n/ui.js';
+import { experienceInWords } from '../utils/experience.js';
+
+const { locale = 'es' } = Astro.props;
+const t = useTranslations(locale);
+const l = (value) => localized(value, locale);
+
+const { main, resume, portfolio } = resumeData;
+
+const education = (resume?.education ?? []).map((item) => ({
+  heading: item.school,
+  subheading: l(item.degree),
+  meta: l(item.graduated),
+  description: l(item.description),
+  logo: item.logo,
+}));
+
+const work = (resume?.work ?? []).map((item) => ({
+  heading: item.company,
+  subheading: item.title,
+  meta: l(item.years),
+  description: l(item.description),
+  logo: item.logo,
+}));
+
+// The bio carries a {{years}} token; resolve it here too so the meta
+// description never ships the raw placeholder.
+const metaDescription = l(main.bio).replaceAll(
+  '{{years}}',
+  experienceInWords(locale),
+);
+---
+
+<Layout
+  locale={locale}
+  title={`${main.name} — ${main.description}`}
+  description={metaDescription}
+>
+  <Nav locale={locale} />
+
+  <main>
+    <Hero data={main} locale={locale} />
+    <About data={main} locale={locale} />
+    <Timeline
+      id="work"
+      eyebrow={t('work.eyebrow')}
+      title={t('work.title')}
+      items={work}
+    />
+    <Timeline
+      id="education"
+      eyebrow={t('education.eyebrow')}
+      title={t('education.title')}
+      items={education}
+    />
+    <Skills data={resume} locale={locale} />
+    <Portfolio data={portfolio} locale={locale} />
+  </main>
+
+  <Footer data={main} locale={locale} />
+</Layout>

@@ -2,24 +2,26 @@
 import { Icon } from 'astro-icon/components';
 import Section from './Section.astro';
 import { experienceInWordsCapitalized } from '../utils/experience.js';
+import { localized, useTranslations } from '../i18n/ui.js';
 
-const { data } = Astro.props;
+const { data, locale = 'es' } = Astro.props;
+const t = useTranslations(locale);
 const skills = data?.skills ?? [];
 const tools = data?.tools ?? [];
-const skillsMessage = data?.skillsMessage;
-const toolsMessage = data?.toolsMessage;
+const skillsMessage = localized(data?.skillsMessage, locale);
+const toolsMessage = localized(data?.toolsMessage, locale);
 
 const groups = [
-  { title: 'Lenguajes y frameworks', lead: skillsMessage, items: skills },
-  { title: 'Herramientas', lead: toolsMessage, items: tools },
+  { title: t('skills.languages'), lead: skillsMessage, items: skills },
+  { title: t('skills.tools'), lead: toolsMessage, items: tools },
 ];
 ---
 
 <Section
   id="skills"
-  eyebrow="Habilidades"
-  title="Con qué construyo"
-  lead={`${experienceInWordsCapitalized()} años de experiencia repartidos entre móvil, backend, nube y electrónica.`}
+  eyebrow={t('skills.eyebrow')}
+  title={t('skills.title')}
+  lead={t('skills.lead', { years: experienceInWordsCapitalized(locale) })}
 >
   <div class="space-y-12">
     {

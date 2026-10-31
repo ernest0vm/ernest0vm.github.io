@@ -3,7 +3,10 @@
     "name": "Ernesto Valdez",
     "description": "Tech Lead / Sr Mobile & Full Stack Developer",
     "image": "15321975906209479.jpg",
-    "bio": "Cuento con {{years}} años de experiencia en el diseño End-To-End de productos tecnológicos de alto impacto a través de la investigación e implementación de nuevas tecnologías como el internet de las cosas (IoT), aplicaciones moviles, cómputo en la nube, diseño de electrónica SMD, desarrollo de firmware embebido y software fullstack en tecnologías .net y open source.",
+    "bio": {
+      "es": "Cuento con {{years}} años de experiencia en el diseño End-To-End de productos tecnológicos de alto impacto a través de la investigación e implementación de nuevas tecnologías como el internet de las cosas (IoT), aplicaciones móviles, cómputo en la nube, diseño de electrónica SMD, desarrollo de firmware embebido y software fullstack en tecnologías .NET y open source.",
+      "en": "I have {{years}} years of experience designing high-impact technology products end to end, researching and implementing new technologies such as the Internet of Things (IoT), mobile apps, cloud computing, SMD electronics design, embedded firmware development and full-stack software on .NET and open-source stacks."
+    },
     "contactmessage": "Here is where you should write your message to readers to have them get in contact with you.",
     "email": "ernestovm07@gmail.com",
     "phone": "55 1682 3244",
@@ -11,7 +14,10 @@
     "address": {
       "street": "_",
       "city": "Nicolás Romero",
-      "state": "Estado de México",
+      "state": {
+        "es": "Estado de México",
+        "en": "State of Mexico"
+      },
       "zip": "54400"
     },
     "website": "_",
@@ -40,21 +46,45 @@
     ]
   },
   "resume": {
-    "skillsMessage": "Estos son algunos de los lenguajes, frameworks y librerias que utilizo en mis proyectos:",
-    "toolsMessage": "Estas son las herramientas con las que trabajo hoy, incluidas las de IA que uso a diario para acelerar diseño, desarrollo y revisión de código:",
+    "skillsMessage": {
+      "es": "Estos son algunos de los lenguajes, frameworks y librerías que utilizo en mis proyectos:",
+      "en": "These are some of the languages, frameworks and libraries I use in my projects:"
+    },
+    "toolsMessage": {
+      "es": "Estas son las herramientas con las que trabajo hoy, incluidas las de IA que uso a diario para acelerar diseño, desarrollo y revisión de código:",
+      "en": "These are the tools I work with today, including the AI tools I use every day to speed up design, development and code review:"
+    },
     "education": [
       {
         "school": "Universidad Tecnológica Fidel Velázquez",
-        "degree": "T.S.U. Mecatronica",
-        "graduated": "Agosto 2009",
-        "description": "Aprendí la capacidad de aplicar tecnologías especializadas (robots, tornos de control numérico, controladores lógicos programables, computadoras industriales) para la implementación de soluciones de automatización parcial o total en sistemas de manufactura, garantizando su operación segura, así como la  eficacia de sus procesos industriales.",
+        "degree": {
+          "es": "T.S.U. Mecatrónica",
+          "en": "Associate Degree (T.S.U.) in Mechatronics"
+        },
+        "graduated": {
+          "es": "Agosto 2009",
+          "en": "August 2009"
+        },
+        "description": {
+          "es": "Aprendí la capacidad de aplicar tecnologías especializadas (robots, tornos de control numérico, controladores lógicos programables, computadoras industriales) para la implementación de soluciones de automatización parcial o total en sistemas de manufactura, garantizando su operación segura, así como la eficacia de sus procesos industriales.",
+          "en": "I learned to apply specialized technologies (robots, CNC lathes, programmable logic controllers, industrial computers) to implement partial or full automation solutions in manufacturing systems, ensuring their safe operation and the efficiency of their industrial processes."
+        },
         "logo": "https://www.google.com/s2/favicons?domain=dragones.utfv.edu.mx&sz=128"
       },
       {
-        "school": "Colegio de Estudios Cientificos y Tecnologicos del Estado de México",
-        "degree": "Tecnico en Informatica Administrativa",
-        "graduated": "Julio 2006",
-        "description": "Aprendí a proponer soluciones de sistemas de información y bases de datos, así como asimilar la aplicación de nuevos desarrollos tecnológicos en las áreas administrativas, evaluar su implementación en la organización donde se desempeñen, apoyando a la toma de desiciones de los ejecutivos y al desarrollo del sector productivo y social del país.",
+        "school": "Colegio de Estudios Científicos y Tecnológicos del Estado de México",
+        "degree": {
+          "es": "Técnico en Informática Administrativa",
+          "en": "Technician in Business Information Systems"
+        },
+        "graduated": {
+          "es": "Julio 2006",
+          "en": "July 2006"
+        },
+        "description": {
+          "es": "Aprendí a proponer soluciones de sistemas de información y bases de datos, así como asimilar la aplicación de nuevos desarrollos tecnológicos en las áreas administrativas, evaluar su implementación en la organización donde se desempeñen, apoyando a la toma de decisiones de los ejecutivos y al desarrollo del sector productivo y social del país.",
+          "en": "I learned to propose information-system and database solutions, adopt new technology developments in administrative areas and evaluate their implementation within the organization, supporting executive decision-making and the productive and social development of the country."
+        },
         "logo": "https://graph.facebook.com/somoscecytem/picture?type=large"
       }
     ],
@@ -62,57 +92,105 @@
       {
         "company": "Reserhub",
         "title": "Mobile Engineer Tech Lead",
-        "years": "Abril 2025 - Actual",
-        "description": "Lidero el equipo dedicado a la plataforma de apps móviles en la vertical B2B. Diseñamos y mantenemos la base técnica compartida —monorepo con Turborepo, Expo y herramientas de entrega continua— para que los squads publiquen software móvil de forma más rápida, confiable y autónoma, promoviendo la estandarización, reduciendo el trabajo duplicado y facilitando una experiencia de autoservicio entre áreas.",
+        "years": {
+          "es": "Abril 2025 - Actual",
+          "en": "April 2025 - Present"
+        },
+        "description": {
+          "es": "Lidero el equipo dedicado a la plataforma de apps móviles en la vertical B2B. Diseñamos y mantenemos la base técnica compartida —monorepo con Turborepo, Expo y herramientas de entrega continua— para que los squads publiquen software móvil de forma más rápida, confiable y autónoma, promoviendo la estandarización, reduciendo el trabajo duplicado y facilitando una experiencia de autoservicio entre áreas.",
+          "en": "I lead the team dedicated to the mobile app platform for the B2B vertical. We design and maintain the shared technical foundation — a Turborepo monorepo, Expo and continuous delivery tooling — so squads can ship mobile software faster, more reliably and more autonomously, driving standardization, reducing duplicated work and enabling a self-service experience across teams."
+        },
         "logo": "https://www.google.com/s2/favicons?domain=reserhub.com&sz=128"
       },
       {
         "company": "Reservamos",
         "title": "Lead Mobile Engineer",
-        "years": "Mayo 2021 - Abril 2025",
-        "description": "Líder de desarrollo de apps móviles en la vertical B2C. Construí y mantuve las apps de Pasajero para venta de boletos de vans y autobús para Vanda y Roll&Bits, así como apps de operación interna exclusivas para conductores. También implementé nuevas funcionalidades en la app de eCommerce de Reservamos, con tecnologías híbridas como Flutter y React Native.",
+        "years": {
+          "es": "Mayo 2021 - Abril 2025",
+          "en": "May 2021 - April 2025"
+        },
+        "description": {
+          "es": "Líder de desarrollo de apps móviles en la vertical B2C. Construí y mantuve las apps de Pasajero para venta de boletos de vans y autobús para Vanda y Roll&Bits, así como apps de operación interna exclusivas para conductores. También implementé nuevas funcionalidades en la app de eCommerce de Reservamos, con tecnologías híbridas como Flutter y React Native.",
+          "en": "Mobile app development lead for the B2C vertical. I built and maintained the passenger apps for van and bus ticket sales for Vanda and Roll&Bits, as well as internal operations apps for drivers. I also shipped new features for the Reservamos e-commerce app using cross-platform technologies such as Flutter and React Native."
+        },
         "logo": "https://www.google.com/s2/favicons?domain=reservamos.com&sz=128"
       },
       {
         "company": "Chib",
         "title": "Tech Lead",
-        "years": "Julio 2020 - Mayo 2021",
-        "description": "Desarrollo de nuevas aplicaciones para iOS y Android con Flutter de CHIB MX y CHIB USA para envío de remesas de manera instantánea, desarrollo y mantenimiento de landing page y administrador CMS en Angular 11, microservicios basados en NodeJS-ExpressJS y Python-Flask, configuración de API Gateway KongHQ, despliegue de microservicios en AWS a través de Jenkins y Docker, mantenimiento de bot de WhatsApp con Twilio y programación de despliegue de las aplicaciones a Google Play y App Store.",
+        "years": {
+          "es": "Julio 2020 - Mayo 2021",
+          "en": "July 2020 - May 2021"
+        },
+        "description": {
+          "es": "Desarrollo de nuevas aplicaciones para iOS y Android con Flutter de CHIB MX y CHIB USA para envío de remesas de manera instantánea, desarrollo y mantenimiento de landing page y administrador CMS en Angular 11, microservicios basados en NodeJS-ExpressJS y Python-Flask, configuración de API Gateway KongHQ, despliegue de microservicios en AWS a través de Jenkins y Docker, mantenimiento de bot de WhatsApp con Twilio y programación de despliegue de las aplicaciones a Google Play y App Store.",
+          "en": "Built new iOS and Android apps in Flutter for CHIB MX and CHIB USA for instant remittance transfers; developed and maintained the landing page and CMS admin in Angular 11; built microservices on Node.js/Express and Python/Flask; configured the Kong API Gateway; deployed the microservices to AWS with Jenkins and Docker; maintained a WhatsApp bot on Twilio; and handled app releases to Google Play and the App Store."
+        },
         "logo": "https://media.licdn.com/dms/image/v2/C4E0BAQGNfta2w2bezg/company-logo_200_200/company-logo_200_200/0/1641577163643/chibmex_logo?e=2147483647&v=beta&t=lE7ltoFs5tZdm6ILr0vqx5cLCSsiu7qR6X_SqqMy1ws"
       },
       {
         "company": "BUSSI",
         "title": "Flutter Mobile Developer",
-        "years": "Octubre 2019 - Marzo 2020",
-        "description": "Desarrollo y mantenimiento de las apps BUSSI y BUSSI Driver, aplicaciones cross-platform con Flutter. Uso de Dart, Swift, Java y Kotlin; manejo de GraphQL, Redux, Fastlane, Firebase y WebSockets, y despliegue de aplicaciones en Google Play Store y Apple App Store.",
+        "years": {
+          "es": "Octubre 2019 - Marzo 2020",
+          "en": "October 2019 - March 2020"
+        },
+        "description": {
+          "es": "Desarrollo y mantenimiento de las apps BUSSI y BUSSI Driver, aplicaciones cross-platform con Flutter. Uso de Dart, Swift, Java y Kotlin; manejo de GraphQL, Redux, Fastlane, Firebase y WebSockets, y despliegue de aplicaciones en Google Play Store y Apple App Store.",
+          "en": "Developed and maintained the BUSSI and BUSSI Driver apps, cross-platform applications built with Flutter. Worked with Dart, Swift, Java and Kotlin; GraphQL, Redux, Fastlane, Firebase and WebSockets; and released the apps to the Google Play Store and Apple App Store."
+        },
         "logo": "https://media.licdn.com/dms/image/v2/C4E0BAQFpyerMJZZdAg/company-logo_200_200/company-logo_200_200/0/1630595480536/bussi_logo?e=2147483647&v=beta&t=1HtN01B0Ta-iwjQSlYllDPeBaObsTxgO-pXzxSYS5AM"
       },
       {
         "company": "CANTEC",
         "title": "Sr. Mobile App Developer",
-        "years": "Enero 2019 - Septiembre 2019",
-        "description": "Desarrollo de aplicaciones móviles cross-platform con Xamarin Forms y React Native, soporte a las aplicaciones de FamilyCard, MediChat y Multidoctores, diseño de interfaces UI/UX y programación en .NET, JS, Java y Objective-C para iOS, Android y UWP. Despliegue en Google Play Store y Apple App Store, y manejo de Microsoft Azure para la operación de las aplicaciones.",
+        "years": {
+          "es": "Enero 2019 - Septiembre 2019",
+          "en": "January 2019 - September 2019"
+        },
+        "description": {
+          "es": "Desarrollo de aplicaciones móviles cross-platform con Xamarin Forms y React Native, soporte a las aplicaciones de FamilyCard, MediChat y Multidoctores, diseño de interfaces UI/UX y programación en .NET, JS, Java y Objective-C para iOS, Android y UWP. Despliegue en Google Play Store y Apple App Store, y manejo de Microsoft Azure para la operación de las aplicaciones.",
+          "en": "Built cross-platform mobile apps with Xamarin Forms and React Native, supported the FamilyCard, MediChat and Multidoctores apps, designed UI/UX and programmed in .NET, JS, Java and Objective-C for iOS, Android and UWP. Released the apps to the Google Play Store and Apple App Store, and managed Microsoft Azure for app operations."
+        },
         "logo": "https://www.google.com/s2/favicons?domain=grupocantec.com&sz=128"
       },
       {
         "company": "SkyAlert",
         "title": "IoT Hardware Engineer / Production Leader",
-        "years": "Julio 2017 - Enero 2019",
-        "description": "Desarrollo de hardware y software con tecnologías como internet de las cosas (IoT), infraestructuras en la nube y datos analíticos, además de herramientas para el estudio sísmico aplicadas en la Red SkyAlert y en la evolución de los dispositivos de prevención EPICENTER. También lideré los esfuerzos de abastecimiento de dispositivos para clientes comerciales y corporativos, desarrollando herramientas para hacer más eficiente la producción y la planificación de recursos de manufactura.",
+        "years": {
+          "es": "Julio 2017 - Enero 2019",
+          "en": "July 2017 - January 2019"
+        },
+        "description": {
+          "es": "Desarrollo de hardware y software con tecnologías como internet de las cosas (IoT), infraestructuras en la nube y datos analíticos, además de herramientas para el estudio sísmico aplicadas en la Red SkyAlert y en la evolución de los dispositivos de prevención EPICENTER. También lideré los esfuerzos de abastecimiento de dispositivos para clientes comerciales y corporativos, desarrollando herramientas para hacer más eficiente la producción y la planificación de recursos de manufactura.",
+          "en": "Developed hardware and software using technologies such as the Internet of Things (IoT), cloud infrastructure and data analytics, along with seismic-study tools applied to the SkyAlert Network and to the evolution of the EPICENTER early-warning devices. I also led device supply efforts for commercial and corporate customers, building tools to make production and manufacturing resource planning more efficient."
+        },
         "logo": "https://www.google.com/s2/favicons?domain=skyalert.mx&sz=128"
       },
       {
         "company": "Service Management Solutions",
         "title": "Motherboard Engineer Level 3",
-        "years": "Junio 2017 - Julio 2017",
-        "description": "Reparación de motherboards de laptop y All in One de las marcas HP y Asus a nivel componente de montaje superficial BGA, QFN, SOD y SOT, mediante herramientas especializadas. Diagnóstico de fallas y ejecución de soluciones en productos de garantía comercial y empresarial, control de calidad, revisión y testeo de dispositivos electrónicos nuevos y retorno a campo de dispositivos funcionales.",
+        "years": {
+          "es": "Junio 2017 - Julio 2017",
+          "en": "June 2017 - July 2017"
+        },
+        "description": {
+          "es": "Reparación de motherboards de laptop y All in One de las marcas HP y Asus a nivel componente de montaje superficial BGA, QFN, SOD y SOT, mediante herramientas especializadas. Diagnóstico de fallas y ejecución de soluciones en productos de garantía comercial y empresarial, control de calidad, revisión y testeo de dispositivos electrónicos nuevos y retorno a campo de dispositivos funcionales.",
+          "en": "Repaired HP and Asus laptop and all-in-one motherboards at the surface-mount component level (BGA, QFN, SOD and SOT) using specialized equipment. Diagnosed faults and delivered fixes for commercial and enterprise warranty products, and handled quality control, inspection and testing of new electronic devices and the return of working units to the field."
+        },
         "logo": "https://www.google.com/s2/favicons?domain=smsmexico.mx&sz=128"
       },
       {
         "company": "Grupo Avatecsys",
         "title": "Head of Information Technology",
-        "years": "Septiembre 2009 - Marzo 2017",
-        "description": "Jefe de Tecnología en Grupo Avatecsys S.A., diseñando y planeando proyectos que implementan soluciones mediante dispositivos electrónicos automatizados o controlados remotamente en procesos de producción, seguridad, prevención de desastres y protección civil, dando como resultado la patente MX311249B del Sistema de Alerta Temprano Integral Sísmico. Entre otras actividades: manejo de equipos de trabajo, administración de redes de voz y datos, soporte técnico, capacitación de personal, atención a clientes y reparación de dispositivos electrónicos.",
+        "years": {
+          "es": "Septiembre 2009 - Marzo 2017",
+          "en": "September 2009 - March 2017"
+        },
+        "description": {
+          "es": "Jefe de Tecnología en Grupo Avatecsys S.A., diseñando y planeando proyectos que implementan soluciones mediante dispositivos electrónicos automatizados o controlados remotamente en procesos de producción, seguridad, prevención de desastres y protección civil, dando como resultado la patente MX311249B del Sistema de Alerta Temprano Integral Sísmico. Entre otras actividades: manejo de equipos de trabajo, administración de redes de voz y datos, soporte técnico, capacitación de personal, atención a clientes y reparación de dispositivos electrónicos.",
+          "en": "Head of Technology at Grupo Avatecsys S.A., designing and planning projects that deliver solutions built on automated or remotely controlled electronic devices for production, security, disaster prevention and civil protection, which resulted in patent MX311249B for the Integrated Seismic Early Warning System. Other responsibilities included team management, voice and data network administration, technical support, staff training, customer service and electronic device repair."
+        },
         "logo": "https://media.licdn.com/dms/image/v2/C560BAQG4ynsSle8R2g/company-logo_200_200/company-logo_200_200/0/1630633348513?e=2147483647&v=beta&t=Kjt8QHxSvDWe6K3TSqszib2dwWL3ey30v8rlFX9qxio"
       }
     ],
@@ -250,67 +328,103 @@
     "projects": [
       {
         "title": "Reservamos",
-        "category": "App de eCommerce de viajes · Expo",
+        "category": {
+          "es": "App de eCommerce de viajes · Expo",
+          "en": "Travel e-commerce app · Expo"
+        },
         "image": "https://play-lh.googleusercontent.com/BZ48Ayob4TFct1qiiyxSixE-7jCsIoZcOjYG_7o571BvCIe07OdINjExn1MAf8FwyYw-xuziQft0aeV0zwlnmg",
         "url": "https://play.google.com/store/apps/details?id=com.reservamos.viajes"
       },
       {
         "title": "Roll&Bits",
-        "category": "App de pasajeros · Expo",
+        "category": {
+          "es": "App de pasajeros · Expo",
+          "en": "Passenger app · Expo"
+        },
         "image": "https://play-lh.googleusercontent.com/bi4ldDvLNc9L42pny8-4wY2ccudW5qZnWxiPUyE6wzU1yKgbSmGs85JhFoBdvOQ-gEp0ZGWOP2fTF-ypjjXfSw",
         "url": "https://play.google.com/store/apps/details?id=com.web_view_rnb"
       },
       {
         "title": "Roll&Bits Conductor",
-        "category": "App de operación para conductores · Flutter",
+        "category": {
+          "es": "App de operación para conductores · Flutter",
+          "en": "Driver operations app · Flutter"
+        },
         "image": "https://play-lh.googleusercontent.com/cr02VB6g-6p7m3TK9tnswzwNYQ2Rkx2UFLQ9zCCpD55o6y5y9M2gHhIYKYqeekQUZ8cHGfo7Xi6B17LHS99I",
         "url": "https://play.google.com/store/apps/details?id=com.gfa.rollandbits.driver"
       },
       {
         "title": "Primera Plus",
-        "category": "Venta de boletos · Expo",
+        "category": {
+          "es": "Venta de boletos · Expo",
+          "en": "Bus ticket sales · Expo"
+        },
         "image": "https://play-lh.googleusercontent.com/ojLPbmwLsU11NIbt51jYTDHGHL3DqDGITOzKK0zjUnqdFi7lHbndR_h9VoeSihkj3t7VvpXF_jWcSZFhflOz",
         "url": "https://play.google.com/store/apps/details?id=com.gfa.PrimeraPlus"
       },
       {
         "title": "Expreso Brasilia",
-        "category": "Venta de pasajes en Colombia · Expo",
+        "category": {
+          "es": "Venta de pasajes en Colombia · Expo",
+          "en": "Bus ticket sales in Colombia · Expo"
+        },
         "image": "https://play-lh.googleusercontent.com/FiIj1N8IMS8R3uDmr3DbomYdDrGzEGzlsDyYmU8WIW9IzUVgI1wIuA7tvBOfRvRO1DmKgpmTBfsbpL1SLGS6Aw",
         "url": "https://play.google.com/store/apps/details?id=com.expresobrasilia.viajes"
       },
       {
         "title": "Smilebus",
-        "category": "Venta de boletos · Expo",
+        "category": {
+          "es": "Venta de boletos · Expo",
+          "en": "Bus ticket sales · Expo"
+        },
         "image": "https://play-lh.googleusercontent.com/CoyjfrKZ6U6B5jf79IOFzBVmaq0EMWebuzXVtlrxJBlfQztsH-Un6Dp0i85Zsqv3Tf20KNghkGQ3LBZ-PahoSQ",
         "url": "https://play.google.com/store/apps/details?id=com.smilebus.viajes"
       },
       {
         "title": "Conecta GFA",
-        "category": "Transporte interurbano de Grupo Flecha Amarilla · Expo",
+        "category": {
+          "es": "Transporte interurbano de Grupo Flecha Amarilla · Expo",
+          "en": "Grupo Flecha Amarilla intercity transport · Expo"
+        },
         "image": "https://play-lh.googleusercontent.com/I8wSLlWcGxj2LmEzbisgY7-4lJVHOEgBKajdY3OLMF3erk32X1uCxrvnjqOa98PZgPSxERzGoYVrrp99eYV-_Q",
         "url": "https://play.google.com/store/apps/details?id=com.web_view_conecta"
       },
       {
         "title": "Vanda",
-        "category": "Reserva de viajes en van, interurbano · Flutter · Retirada de las tiendas"
+        "category": {
+          "es": "Reserva de viajes en van, interurbano · Flutter · Retirada de las tiendas",
+          "en": "Intercity van trip booking · Flutter · Removed from the stores"
+        }
       },
       {
         "title": "Bussi",
-        "category": "Vanpooling interurbano · Flutter · Retirada de las tiendas"
+        "category": {
+          "es": "Vanpooling interurbano · Flutter · Retirada de las tiendas",
+          "en": "Intercity vanpooling · Flutter · Removed from the stores"
+        }
       },
       {
         "title": "Chib",
-        "category": "Envío de remesas de EE. UU. a México · Flutter · Retirada de las tiendas"
+        "category": {
+          "es": "Envío de remesas de EE. UU. a México · Flutter · Retirada de las tiendas",
+          "en": "US-to-Mexico remittances · Flutter · Removed from the stores"
+        }
       },
       {
         "title": "FamilyCard Health",
-        "category": "Telemedicina · Xamarin Forms",
+        "category": {
+          "es": "Telemedicina · Xamarin Forms",
+          "en": "Telemedicine · Xamarin Forms"
+        },
         "image": "https://play-lh.googleusercontent.com/uF_IByFrXp6EVIxqsKdxfG3DDKIjcgVeuu7c29NxK34k391SxKtsFAiFc74dqVU6u4p8dGcncJ022vEeFA6w0g",
         "url": "https://play.google.com/store/apps/details?id=familycard.familycard"
       },
       {
         "title": "SkyAlert",
-        "category": "Alerta sísmica · React Native",
+        "category": {
+          "es": "Alerta sísmica · React Native",
+          "en": "Earthquake early warning · React Native"
+        },
         "image": "https://play-lh.googleusercontent.com/jrwYlicGyj5N28m-6AGqw95qvLYQ7uzEGSHUa5huKiwQ5jmLquU-eBMD3N458yC_TK7OyuwFGifP7OVXV9Vvxw",
         "url": "https://play.google.com/store/apps/details?id=com.disappster.skyalert"
       }

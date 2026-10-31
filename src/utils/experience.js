@@ -88,13 +88,68 @@ export function spellNumber(value, { apocope = false } = {}) {
   return `${tens} y ${UNITS[unit]}`;
 }
 
-/** e.g. "dieciséis" — ready to drop in front of "años". */
-export function experienceInWords(reference = new Date()) {
-  return spellNumber(yearsOfExperience(reference), { apocope: true });
+const EN_UNITS = [
+  'zero',
+  'one',
+  'two',
+  'three',
+  'four',
+  'five',
+  'six',
+  'seven',
+  'eight',
+  'nine',
+  'ten',
+  'eleven',
+  'twelve',
+  'thirteen',
+  'fourteen',
+  'fifteen',
+  'sixteen',
+  'seventeen',
+  'eighteen',
+  'nineteen',
+];
+
+const EN_TENS = [
+  '',
+  '',
+  'twenty',
+  'thirty',
+  'forty',
+  'fifty',
+  'sixty',
+  'seventy',
+  'eighty',
+  'ninety',
+];
+
+/** Spells a number 0-99 in English, hyphenating compounds ("twenty-one"). */
+export function spellNumberEn(value) {
+  const n = Math.trunc(value);
+  if (n < 0 || n > 99) return String(n);
+  if (n < 20) return EN_UNITS[n];
+  const unit = n % 10;
+  const tens = EN_TENS[Math.floor(n / 10)];
+  return unit === 0 ? tens : `${tens}-${EN_UNITS[unit]}`;
+}
+
+/**
+ * Years of experience spelled out for the given locale, ready to drop in front
+ * of "años" / "years" — e.g. "diecisiete" or "seventeen".
+ */
+export function experienceInWords(locale = 'es', reference = new Date()) {
+  const years = yearsOfExperience(reference);
+  return locale === 'en'
+    ? spellNumberEn(years)
+    : spellNumber(years, { apocope: true });
 }
 
 /** Same, capitalised for the start of a sentence. */
-export function experienceInWordsCapitalized(reference = new Date()) {
-  const words = experienceInWords(reference);
+export function experienceInWordsCapitalized(
+  locale = 'es',
+  reference = new Date(),
+) {
+  const words = experienceInWords(locale, reference);
   return words.charAt(0).toUpperCase() + words.slice(1);
 }

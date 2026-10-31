@@ -1,8 +1,10 @@
 ---
 import { Icon } from 'astro-icon/components';
 import Section from './Section.astro';
+import { localized, useTranslations } from '../i18n/ui.js';
 
-const { data } = Astro.props;
+const { data, locale = 'es' } = Astro.props;
+const t = useTranslations(locale);
 const projects = data?.projects ?? [];
 
 /** Fallback for apps with no store listing left, same idea as the timeline. */
@@ -17,9 +19,9 @@ const initials = (text = '') =>
 
 <Section
   id="portfolio"
-  eyebrow="Portafolio"
-  title="Apps que he construido"
-  lead="Aplicaciones publicadas en Google Play y App Store, construidas con Expo, Flutter, React Native y Xamarin."
+  eyebrow={t('portfolio.eyebrow')}
+  title={t('portfolio.title')}
+  lead={t('portfolio.lead')}
 >
   <ul class="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
     {
@@ -51,7 +53,9 @@ const initials = (text = '') =>
               <h3 class="text-sm font-semibold text-white group-hover:text-accent-300">
                 {project.title}
               </h3>
-              <p class="mt-1 text-xs/5 text-white/50">{project.category}</p>
+              <p class="mt-1 text-xs/5 text-white/50">
+                {localized(project.category, locale)}
+              </p>
             </div>
 
             {project.url && (
