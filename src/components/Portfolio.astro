@@ -35,66 +35,64 @@ const initials = (text = '') =>
   lead={t('portfolio.lead')}
 >
   <ul class="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-    {
-      resume.portfolio.map((project) => {
-        const card = (
-          <>
-            {/* Monogram under the icon, so a store image that stops resolving
+    {resume.portfolio.map((project) => {
+      const card = (
+        <>
+          {/* Monogram under the icon, so a store image that stops resolving
                 degrades to initials instead of a broken image. */}
-            <span
-              class="relative flex size-14 shrink-0 items-center justify-center overflow-hidden rounded-2xl bg-white/8 ring-1 ring-white/10"
-              aria-hidden="true"
-            >
-              <span class="text-sm font-bold tracking-tight text-white/45">
-                {initials(project.title)}
-              </span>
-              {project.image && (
-                <img
-                  src={project.image}
-                  alt=""
-                  width="56"
-                  height="56"
-                  class="absolute inset-0 size-full object-cover"
-                  referrerpolicy="no-referrer"
-                />
-              )}
+          <span
+            class="relative flex size-14 shrink-0 items-center justify-center overflow-hidden rounded-2xl bg-white/8 ring-1 ring-white/10"
+            aria-hidden="true"
+          >
+            <span class="text-sm font-bold tracking-tight text-white/45">
+              {initials(project.title)}
             </span>
-
-            <div class="min-w-0 flex-1">
-              <h3 class="text-sm font-semibold text-white group-hover:text-accent-300">
-                {project.title}
-              </h3>
-              <p class="mt-1 text-xs/5 text-white/50">{caption(project)}</p>
-            </div>
-
-            {project.url && (
-              <Icon
-                name="fa6-solid:arrow-up-right-from-square"
-                class="mt-1 size-3.5 shrink-0 self-start text-white/25 transition group-hover:text-accent-300"
+            {project.image && (
+              <img
+                src={project.image}
+                alt=""
+                width="56"
+                height="56"
+                class="absolute inset-0 size-full object-cover"
+                referrerpolicy="no-referrer"
               />
             )}
-          </>
-        );
+          </span>
 
-        return (
-          <li>
-            {project.url ? (
-              <a
-                href={project.url}
-                target="_blank"
-                rel="noopener noreferrer"
-                class="group glass flex h-full items-center gap-4 rounded-glass p-5 transition hover:-translate-y-1"
-              >
-                {card}
-              </a>
-            ) : (
-              <div class="glass flex h-full items-center gap-4 rounded-glass p-5 opacity-70">
-                {card}
-              </div>
-            )}
-          </li>
-        );
-      })
-    }
+          <div class="min-w-0 flex-1">
+            <h3 class="text-sm font-semibold text-white group-hover:text-accent-300">
+              {project.title}
+            </h3>
+            <p class="mt-1 text-xs/5 text-white/50">{caption(project)}</p>
+          </div>
+
+          {project.url && (
+            <Icon
+              name="fa6-solid:arrow-up-right-from-square"
+              class="mt-1 size-3.5 shrink-0 self-start text-white/25 transition group-hover:text-accent-300"
+            />
+          )}
+        </>
+      );
+
+      return (
+        <li>
+          {project.url ? (
+            <a
+              href={project.url}
+              target="_blank"
+              rel="noopener noreferrer"
+              class="group glass flex h-full items-center gap-4 rounded-glass p-5 transition hover:-translate-y-1"
+            >
+              {card}
+            </a>
+          ) : (
+            <div class="glass flex h-full items-center gap-4 rounded-glass p-5 opacity-70">
+              {card}
+            </div>
+          )}
+        </li>
+      );
+    })}
   </ul>
 </Section>

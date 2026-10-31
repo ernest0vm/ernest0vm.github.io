@@ -76,47 +76,43 @@ const details = [
     <div>
       <p class="text-base/8 text-white/75">{bio}</p>
 
-      {
-        resume.quote && (
-          <figure class="mt-6 border-l-2 border-accent-400/60 pl-4">
-            <blockquote class="text-sm/7 text-white/70 italic">
-              “{c('quote')}”
-            </blockquote>
-            <figcaption class="mt-1 text-xs text-white/45">
-              — {resume.quote.author}
-            </figcaption>
-          </figure>
-        )
-      }
+      {resume.quote && (
+        <figure class="mt-6 border-l-2 border-accent-400/60 pl-4">
+          <blockquote class="text-sm/7 text-white/70 italic">
+            “{c('quote')}”
+          </blockquote>
+          <figcaption class="mt-1 text-xs text-white/45">
+            — {resume.quote.author}
+          </figcaption>
+        </figure>
+      )}
 
       <ul class="mt-8 grid gap-3 sm:grid-cols-2">
-        {
-          details.map((detail) => (
-            <li>
-              <div class="glass flex items-center gap-3 rounded-2xl px-4 py-3">
-                <Icon
-                  name={detail.icon}
-                  class="size-4 shrink-0 text-accent-400"
-                />
-                {detail.value ? (
-                  <button
-                    type="button"
-                    data-reveal
-                    data-value={detail.value}
-                    data-scheme={detail.scheme}
-                    class="cursor-pointer truncate text-sm text-white/60 underline decoration-dotted underline-offset-4 hover:text-accent-300"
-                  >
-                    {detail.reveal}
-                  </button>
-                ) : (
-                  <span class="truncate text-sm text-white/80">
-                    {detail.label}
-                  </span>
-                )}
-              </div>
-            </li>
-          ))
-        }
+        {details.map((detail) => (
+          <li>
+            <div class="glass flex items-center gap-3 rounded-2xl px-4 py-3">
+              <Icon
+                name={detail.icon}
+                class="size-4 shrink-0 text-accent-400"
+              />
+              {detail.value ? (
+                <button
+                  type="button"
+                  data-reveal
+                  data-value={detail.value}
+                  data-scheme={detail.scheme}
+                  class="cursor-pointer truncate text-sm text-white/60 underline decoration-dotted underline-offset-4 hover:text-accent-300"
+                >
+                  {detail.reveal}
+                </button>
+              ) : (
+                <span class="truncate text-sm text-white/80">
+                  {detail.label}
+                </span>
+              )}
+            </div>
+          </li>
+        ))}
       </ul>
 
       <a
