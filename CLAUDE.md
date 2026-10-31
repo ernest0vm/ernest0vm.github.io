@@ -143,6 +143,15 @@ vive en el bloque `@theme` de `src/styles/global.css`. Ese archivo es el
 que actualizar ambos.
 
 El lenguaje visual es glass: `glass` y `glass-strong`, declaradas con `@utility`.
+También vive ahí `fade-end`, que desvanece la lista de la nav antes del selector
+de idioma para que los enlaces que desbordan se lean como deslizables.
+
+**Una clase propia que se use en el markup va como `@utility` en `global.css`,
+no en el `<style>` del componente.** El plugin de Tailwind para ESLint solo
+conoce lo que ve a través del `entryPoint`, así que una clase definida en un
+`<style>` local falla con `no-unknown-classes` aunque el sitio se vea bien.
+(`scrollbar-none` no es excepción: es una utilidad nativa de Tailwind v4. El
+`<style>` de `Nav.astro` solo le añade `::-webkit-scrollbar` para Safari < 18.2.)
 
 ### Trampa: `backdrop-filter` y el minificador
 
