@@ -163,7 +163,7 @@
       "school": "Universidad Tecnológica Fidel Velázquez",
       "graduated": "2009-08",
       "license": "7133679",
-      "logo": "https://www.google.com/s2/favicons?domain=dragones.utfv.edu.mx&sz=128"
+      "logo": "https://media.licdn.com/dms/image/v2/D4E0BAQHbW0lazOx4IA/company-logo_200_200/company-logo_200_200/0/1704482254971/utfidelvelazquez_logo?e=2147483647&v=beta&t=QUxKsfHcrUU7bFTKNcLxXx3RA7dNMuz094fxi2dwFps"
     },
     {
       "id": "cecytem",
@@ -200,6 +200,14 @@
     {
       "name": "React",
       "icon": "simple-icons:react"
+    },
+    {
+      "name": "React Native",
+      "icon": "simple-icons:react"
+    },
+    {
+      "name": "Expo",
+      "icon": "simple-icons:expo"
     },
     {
       "name": "Angular",
@@ -258,10 +266,6 @@
     {
       "name": "Codex",
       "icon": "simple-icons:openai"
-    },
-    {
-      "name": "Expo",
-      "icon": "simple-icons:expo"
     },
     {
       "name": "Turborepo",

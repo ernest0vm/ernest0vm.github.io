@@ -222,6 +222,11 @@ toma los nombres de archivo de ese mismo lugar.
   El script solo falla si fijar la cita cambia el conteo; si el contenido
   crece, el PDF gana una página casi vacía con la cita sola. Generar con
   `yarn cv:pdf` y ajustar (interlineado, textos) antes del push.
+- **Legible para ATS.** Sin ligaduras (`font-variant-ligatures: none`: «ﬁ»
+  se extrae como un solo carácter y «firmware» deja de encontrarse) y sin
+  `letter-spacing` en los títulos de sección (se extraen como «E X P E R I E N
+  C E»). Tras cambiar la tipografía del PDF, extraer el texto (p. ej. con
+  `pdfminer.six`) y revisar títulos y palabras con «fi»/«fl».
 - La foto de `public/images/` trae marco circular y un pie con el nombre; la
   maqueta la recorta con `object-view-box`. Si se cambia la foto, revisar ese
   recorte.
