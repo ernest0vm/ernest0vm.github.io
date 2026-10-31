@@ -57,7 +57,7 @@ try {
   const page = await browser.newPage();
 
   for (const { lang, file } of targets) {
-    const url = `http://localhost:${PORT}/resume/cv/print-${lang}/`;
+    const url = `http://localhost:${PORT}/cv/print-${lang}/`;
     const response = await page.goto(url, { waitUntil: 'networkidle' });
     // goto() does not throw on 404, and an error page prints just fine.
     if (!response?.ok()) {

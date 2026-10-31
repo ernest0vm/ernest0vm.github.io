@@ -1,10 +1,11 @@
 # CLAUDE.md
 
 CV / portafolio personal de Ernesto Valdez. Sitio estático en Astro, desplegado
-en GitHub Pages bajo `https://ernest0vm.github.io/resume/`.
+en GitHub Pages como sitio de usuario: repo `ernest0vm/ernest0vm.github.io`,
+servido en la raíz de `https://ernest0vm.github.io/`.
 
-**Idioma**: el sitio es bilingüe — español en `/resume/` (idioma por defecto,
-sin prefijo) e inglés en `/resume/en/`. El código, los comentarios y los
+**Idioma**: el sitio es bilingüe — español en `/` (idioma por defecto,
+sin prefijo) e inglés en `/en/`. El código, los comentarios y los
 mensajes de commit van en inglés. En el texto visible en español, preferir el
 término en español antes que el anglicismo cuando exista uno de uso corriente.
 
@@ -13,7 +14,7 @@ término en español antes que el anglicismo cuando exista uno de uso corriente.
 ```bash
 corepack enable   # una vez: activa el yarn fijado en package.json
 yarn install
-yarn dev          # http://localhost:4321/resume/
+yarn dev          # http://localhost:4321/
 yarn build        # -> dist/
 yarn preview      # sirve dist/ (ver "Verificación" abajo)
 yarn cv:pdf       # -> cv-pdf/*.pdf (ver "PDF del CV" abajo)
@@ -162,7 +163,7 @@ sale de esa misma URL, no se repite en el script.
   runner de GitHub ya trae uno; `CHROME_PATH` para otro binario). No descarga
   navegadores.
 - Para iterar sobre la maqueta: `CV_PDF=1 yarn dev` y abrir
-  `http://localhost:4321/resume/cv/print-es/` (no `/cv/es/`: el enrutado de idiomas toma un segmento `/es/` como prefijo del idioma por defecto y responde 404). Para revisar el resultado final,
+  `http://localhost:4321/cv/print-es/` (no `/cv/es/`: el enrutado de idiomas toma un segmento `/es/` como prefijo del idioma por defecto y responde 404). Para revisar el resultado final,
   `yarn cv:pdf` y abrir `cv-pdf/`.
 - Al verificar el sitio, comprobar que `dist/` no tenga carpeta `cv/`.
 - **La cita va abajo a la derecha de la última página** (decisión del dueño).
@@ -313,8 +314,21 @@ cancelled`. La salida es empujar un commit nuevo. Antes de asumir cuota,
 comprobar: el límite de Pages son 10 despliegues por hora y se consulta con
 `gh api repos/<owner>/<repo>/deployments`.
 
-## Base path
+## URLs y la mudanza desde `/resume/`
 
-`base: '/resume'`. Las URLs de `public/` deben incluirlo (`/resume/favicon.ico`).
-En dev, la petición automática del navegador a `/favicon.ico` en la raíz devuelve
-500; es un artefacto del `base` en Astro, no un bug del sitio.
+El sitio vivió hasta octubre de 2026 en el repo `ernest0vm/resume`, como página
+de proyecto bajo `/resume/`. Se mudó aquí, con su historial, para servirse en la
+raíz; ya no hay `base` en `astro.config.mjs`.
+
+Las URLs viejas siguen en LinkedIn, en el README del perfil y en PDFs ya
+enviados, así que `public/resume/index.html` y `public/resume/en/index.html`
+redirigen a `/` y `/en/` conservando el ancla de la sección. **No borrarlos.**
+Solo funcionan si el repo `ernest0vm/resume` no tiene Pages activo: una página
+de proyecto le gana a la ruta del sitio de usuario con el mismo nombre.
+
+Los PDFs se publican en el release `cv` de **este** repo. El del repo viejo
+quedó congelado con la última versión anterior a la mudanza.
+
+Si algún día se vuelve a usar un `base`, las rutas fijas a revisar son las
+fuentes en `global.css` y en la maqueta del PDF, y la URL que abre
+`scripts/build-cv.mjs`.

@@ -12,7 +12,7 @@ yarn install
 yarn dev
 ```
 
-El sitio corre en `http://localhost:4321/resume/`. El contenido (educación, empleos, habilidades, portafolio) se edita en [src/data/resumeData.json](src/data/resumeData.json) sin tocar código.
+El sitio corre en `http://localhost:4321/`. El contenido (educación, empleos, habilidades, portafolio) se edita en [src/data/resumeData.json](src/data/resumeData.json) sin tocar código.
 
 ## Estilos
 
