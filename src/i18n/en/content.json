@@ -1,0 +1,47 @@
+{
+  "bio": "I have {years} years of experience designing high-impact technology products end to end, researching and implementing new technologies such as the Internet of Things (IoT), mobile apps, cloud computing, SMD electronics design, embedded firmware development and full-stack software on .NET and open-source stacks.",
+  "quote": "Innovation distinguishes between a leader and a follower.",
+  "state": "State of Mexico",
+  "skillsLead": "These are some of the languages, frameworks and libraries I use in my projects:",
+  "toolsLead": "These are the tools I work with today, including the AI tools I use every day to speed up design, development and code review:",
+  "work": {
+    "reserhub": "I lead the team dedicated to the mobile app platform for the B2B vertical. We design and maintain the shared technical foundation — a Turborepo monorepo, Expo and continuous delivery tooling — so squads can ship mobile software faster, more reliably and more autonomously, driving standardization, reducing duplicated work and enabling a self-service experience across teams.",
+    "reservamos": "Mobile app development lead for the B2C vertical. I built and maintained the passenger apps for van and bus ticket sales for Vanda and Roll&Bits, as well as internal operations apps for drivers. I also shipped new features for the Reservamos e-commerce app using cross-platform technologies such as Flutter and React Native.",
+    "chib": "Built new iOS and Android apps in Flutter for CHIB MX and CHIB USA for instant remittance transfers; developed and maintained the landing page and CMS admin in Angular 11; built microservices on Node.js/Express and Python/Flask; configured the Kong API Gateway; deployed the microservices to AWS with Jenkins and Docker; maintained a WhatsApp bot on Twilio; and handled app releases to Google Play and the App Store.",
+    "bussi": "Developed and maintained the BUSSI and BUSSI Driver apps, cross-platform applications built with Flutter. Worked with Dart, Swift, Java and Kotlin; GraphQL, Redux, Fastlane, Firebase and WebSockets; and released the apps to the Google Play Store and Apple App Store.",
+    "cantec": "Built cross-platform mobile apps with Xamarin Forms and React Native, supported the FamilyCard, MediChat and Multidoctores apps, designed UI/UX and programmed in .NET, JS, Java and Objective-C for iOS, Android and UWP. Released the apps to the Google Play Store and Apple App Store, and managed Microsoft Azure for app operations.",
+    "skyalert": "Developed hardware and software using technologies such as the Internet of Things (IoT), cloud infrastructure and data analytics, along with seismic-study tools applied to the SkyAlert Network and to the evolution of the EPICENTER early-warning devices. I also led device supply efforts for commercial and corporate customers, building tools to make production and manufacturing resource planning more efficient.",
+    "sms": "Repaired HP and Asus laptop and all-in-one motherboards at the surface-mount component level (BGA, QFN, SOD and SOT) using specialized equipment. Diagnosed faults and delivered fixes for commercial and enterprise warranty products, and handled quality control, inspection and testing of new electronic devices and the return of working units to the field.",
+    "avatecsys": "Head of Technology at Grupo Avatecsys S.A., designing and planning projects that deliver solutions built on automated or remotely controlled electronic devices for production, security, disaster prevention and civil protection, which resulted in patent MX311249B for the Integrated Seismic Early Warning System. Other responsibilities included team management, voice and data network administration, technical support, staff training, customer service and electronic device repair."
+  },
+  "education": {
+    "utfv": {
+      "degree": "Associate Degree (T.S.U.) in Mechatronics",
+      "description": "I learned to apply specialized technologies (robots, CNC lathes, programmable logic controllers, industrial computers) to implement partial or full automation solutions in manufacturing systems, ensuring their safe operation and the efficiency of their industrial processes."
+    },
+    "cecytem": {
+      "degree": "Technician in Business Information Systems",
+      "description": "I learned to propose information-system and database solutions, adopt new technology developments in administrative areas and evaluate their implementation within the organization, supporting executive decision-making and the productive and social development of the country."
+    }
+  },
+  "portfolio": {
+    "reservamos": "Travel e-commerce app",
+    "rollbits": "Passenger app",
+    "rollbits-conductor": "Driver operations app",
+    "primera-plus": "Bus ticket sales",
+    "expreso-brasilia": "Bus ticket sales in Colombia",
+    "smilebus": "Bus ticket sales",
+    "conecta-gfa": "Grupo Flecha Amarilla intercity transport",
+    "vanda": "Intercity van trip booking",
+    "bussi": "Intercity vanpooling",
+    "chib": "US-to-Mexico remittances",
+    "familycard-health": "Telemedicine",
+    "skyalert": "Earthquake early warning"
+  },
+  "languages": {
+    "english": {
+      "name": "English",
+      "level": "Intermediate"
+    }
+  }
+}

@@ -12,7 +12,7 @@ yarn install
 yarn dev
 ```
 
-El sitio corre en `http://localhost:4321/`. El contenido (educación, empleos, habilidades, portafolio) se edita en [src/data/resumeData.json](src/data/resumeData.json) sin tocar código.
+El sitio corre en `http://localhost:4321/`. El contenido se edita sin tocar código: los datos (empresas, fechas, URLs, logos) en [src/data/resume.json](src/data/resume.json) y los textos de cada idioma en [src/i18n/es/](src/i18n/es/) y [src/i18n/en/](src/i18n/en/). `yarn lint` verifica que ambos idiomas estén completos.
 
 ## Estilos
 

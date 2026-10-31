@@ -2,14 +2,15 @@
 import { Icon } from 'astro-icon/components';
 import Section from './Section.astro';
 import { experienceInWordsCapitalized } from '../utils/experience.js';
-import { localized, useTranslations } from '../i18n/ui.js';
+import resume from '../data/resume.json';
+import { useTranslations } from '../i18n/index.js';
 
-const { data, locale = 'es' } = Astro.props;
+const { locale = 'es' } = Astro.props;
 const t = useTranslations(locale);
-const skills = data?.skills ?? [];
-const tools = data?.tools ?? [];
-const skillsMessage = localized(data?.skillsMessage, locale);
-const toolsMessage = localized(data?.toolsMessage, locale);
+const c = useTranslations(locale, 'content');
+const { skills, tools } = resume;
+const skillsMessage = c('skillsLead');
+const toolsMessage = c('toolsLead');
 
 const groups = [
   { title: t('skills.languages'), lead: skillsMessage, items: skills },

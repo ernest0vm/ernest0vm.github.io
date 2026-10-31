@@ -1,22 +1,11 @@
 ---
 import { Icon } from 'astro-icon/components';
-import { useTranslations } from '../i18n/ui.js';
+import resume from '../data/resume.json';
+import { useTranslations } from '../i18n/index.js';
 
-const { data, locale = 'es' } = Astro.props;
+const { locale = 'es' } = Astro.props;
 const t = useTranslations(locale);
-const name = data?.name;
-const description = data?.description;
-const networks = data?.social ?? [];
-
-const brandIcons = {
-  linkedin: 'fa6-brands:linkedin-in',
-  behance: 'fa6-brands:behance',
-  github: 'fa6-brands:github',
-  whatsapp: 'fa6-brands:whatsapp',
-};
-
-const iconFor = (className = '') =>
-  brandIcons[className.replace(/^fab fa-/, '')] ?? 'fa6-solid:link';
+const { name, role, social } = resume;
 ---
 
 <!-- No `isolate` here: it would make this section the backdrop root and stop
@@ -33,24 +22,21 @@ const iconFor = (className = '') =>
     </h1>
 
     <p class="mt-6 max-w-xl text-lg text-balance text-white/70 sm:text-xl">
-      {description}
+      {role}
     </p>
 
     <ul class="mt-10 flex items-center justify-center gap-2 sm:gap-3">
       {
-        networks.map((network) => (
+        social.map((network) => (
           <li>
             <a
               href={network.url}
               target="_blank"
               rel="noopener noreferrer"
-              aria-label={network.name}
+              aria-label={network.label}
               class="group glass flex size-11 items-center justify-center rounded-full text-white/70 transition hover:-translate-y-0.5 hover:text-accent-300 sm:size-12"
             >
-              <Icon
-                name={iconFor(network.className)}
-                class="size-4.5 sm:size-5"
-              />
+              <Icon name={network.icon} class="size-4.5 sm:size-5" />
             </a>
           </li>
         ))
