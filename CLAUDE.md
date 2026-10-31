@@ -206,6 +206,10 @@ toma los nombres de archivo de ese mismo lugar.
   estira el contenido hasta el final de la última página y saca la cita del
   flujo a esa esquina. Si la segunda pasada da otro número de páginas, el
   script falla en vez de publicar un PDF descuadrado.
+- **Revisar el número de páginas antes de subir cambios de texto.** Hoy son 3.
+  El script solo falla si fijar la cita cambia el conteo; si el contenido
+  crece, el PDF gana una página casi vacía con la cita sola. Generar con
+  `yarn cv:pdf` y ajustar (interlineado, textos) antes del push.
 - La foto de `public/images/` trae marco circular y un pie con el nombre; la
   maqueta la recorta con `object-view-box`. Si se cambia la foto, revisar ese
   recorte.
