@@ -35,10 +35,7 @@ export async function GET({ params }) {
     readFile(join(publicDir, 'images', resume.photo)),
   ]);
 
-  // The source photo carries a round frame and a name caption from 84% of its
-  // height down, so show only its top 80%, centred.
   const size = 300;
-  const zoomed = Math.round(size / 0.8);
 
   const card = h(
     'div',
@@ -92,13 +89,10 @@ export async function GET({ params }) {
           t('meta.tagline', { years: experienceInWordsCapitalized(lang) }),
         ),
       ]),
-      // satori ignores background-size, so the zoom is an <img> placed
-      // larger than its round, clipping frame.
       h(
         'div',
         {
           display: 'flex',
-          position: 'relative',
           flexShrink: 0,
           width: size,
           height: size,
@@ -110,15 +104,9 @@ export async function GET({ params }) {
           type: 'img',
           props: {
             src: `data:image/jpeg;base64,${photo.toString('base64')}`,
-            width: zoomed,
-            height: zoomed,
-            style: {
-              position: 'absolute',
-              top: 0,
-              left: -Math.round((zoomed - size) / 2),
-              width: zoomed,
-              height: zoomed,
-            },
+            width: size,
+            height: size,
+            style: { width: '100%', height: '100%', objectFit: 'cover' },
           },
         },
       ),

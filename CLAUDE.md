@@ -227,9 +227,10 @@ toma los nombres de archivo de ese mismo lugar.
   `letter-spacing` en los títulos de sección (se extraen como «E X P E R I E N
   C E»). Tras cambiar la tipografía del PDF, extraer el texto (p. ej. con
   `pdfminer.six`) y revisar títulos y palabras con «fi»/«fl».
-- La foto de `public/images/` trae marco circular y un pie con el nombre; la
-  maqueta la recorta con `object-view-box`. Si se cambia la foto, revisar ese
-  recorte.
+- La foto (`resume.photo`, en `public/images/`) es un retrato cuadrado sin
+  marco ni texto, de 800 px: el sitio, el PDF y la imagen de vista previa la
+  recortan en círculo con `object-fit: cover`, sin ajustes por foto. Una foto
+  nueva debe llegar igual, cuadrada y con la cara centrada.
 
 ## Años de experiencia
 
@@ -374,9 +375,8 @@ del contenido visible.
   LinkedIn/GitHub/Behance, Open Graph (`og:type=profile`) y Twitter Card.
 - **Imagen de vista previa** (`/og/es.png`, `/og/en.png`, 1200×630): la arma
   `satori` como SVG y `@resvg/resvg-js` la pasa a PNG, porque LinkedIn,
-  WhatsApp y compañía no aceptan SVG. Satori ignora `background-size`: el zoom
-  de la foto es un `<img>` más grande dentro de un círculo con
-  `overflow: hidden`. La columna de texto lleva ancho fijo; como item flexible
+  WhatsApp y compañía no aceptan SVG. La foto es un `<img>` dentro de un
+  círculo con `overflow: hidden`. La columna de texto lleva ancho fijo; como item flexible
   crecería hasta su línea más larga y empujaría la foto fuera del lienzo.
 - **JSON-LD** (`src/utils/seo.js`): `ProfilePage` con un `Person` (puesto,
   empresa actual, formación, idiomas, perfiles y `knowsAbout`). **Sin teléfono
