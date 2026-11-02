@@ -62,7 +62,9 @@ Se edita sin tocar código: los hechos en `src/data/resume.json` y el texto en
   ese icono y abre `wa.me`, los demás marcan con `tel:`. Van con lada
   internacional (`+52 …`), que es como se leen en el PDF en inglés.
 - `quote`, `languages` y la `license` (cédula profesional) de cada entrada de
-  educación salen tanto en el sitio como en el PDF.
+  educación salen tanto en el sitio como en el PDF. Un idioma con
+  `certificate` (`name`, `url`) muestra el nombre del examen y enlaza al
+  certificado; el nivel `cefr` debe ser el que dice el certificado.
 - En `portfolio`, `stack` es la tecnología y `"retired": true` marca una app
   retirada de las tiendas (sin `url`); el texto «Retirada de las tiendas» sale
   de las traducciones, no se escribe en cada app.

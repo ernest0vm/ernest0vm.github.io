@@ -67,10 +67,10 @@ const links = [
     .map((network) => ({ icon: network.icon, href: network.url })),
 ];
 
-const spoken = resume.languages.map(
-  (item) =>
-    `${c(`languages.${item.id}.name`)} ${item.cefr} · ${c(`languages.${item.id}.level`)}`,
-);
+const spoken = resume.languages.map((item) => ({
+  label: `${c(`languages.${item.id}.name`)} ${item.cefr} · ${c(`languages.${item.id}.level`)}`,
+  certificate: item.certificate,
+}));
 const caption = (project) =>
   [
     c(`portfolio.${project.id}`),
@@ -204,7 +204,23 @@ const caption = (project) =>
           {spoken.length > 0 && (
             <>
               <dt>{label('spoken')}</dt>
-              <dd>{spoken.join(' · ')}</dd>
+              <dd>
+                {spoken.map((item, i) => (
+                  <>
+                    {i > 0 && ' · '}
+                    {item.label}
+                    {item.certificate && (
+                      <>
+                        {' ('}
+                        <a href={item.certificate.url}>
+                          {item.certificate.name}: {bare(item.certificate.url)}
+                        </a>
+                        )
+                      </>
+                    )}
+                  </>
+                ))}
+              </dd>
             </>
           )}
         </dl>

@@ -16,10 +16,10 @@ const profilepic = `${base}/images/${resume.photo}`;
 // count itself is derived from the first job's start date.
 const bio = c('bio', { years: experienceInWords(locale) });
 const resumeDownload = `${resume.cv.release}${resume.cv.files[locale]}`;
-const languages = resume.languages.map(
-  (item) =>
-    `${c(`languages.${item.id}.name`)} ${item.cefr} · ${c(`languages.${item.id}.level`)}`,
-);
+const languages = resume.languages.map((item) => ({
+  label: `${c(`languages.${item.id}.name`)} ${item.cefr} · ${c(`languages.${item.id}.level`)}${item.certificate ? ` (${item.certificate.name})` : ''}`,
+  href: item.certificate?.url,
+}));
 
 // Phone and email ship base64-encoded and are assembled on click. This is not
 // encryption — a determined scraper can decode it — but it does keep the plain
@@ -54,7 +54,7 @@ const details = [
     value: encode(contact.email),
     scheme: 'mailto',
   },
-  ...languages.map((label) => ({ icon: 'fa6-solid:language', label })),
+  ...languages.map((item) => ({ icon: 'fa6-solid:language', ...item })),
 ];
 ---
 
@@ -105,6 +105,15 @@ const details = [
                 >
                   {detail.reveal}
                 </button>
+              ) : detail.href ? (
+                <a
+                  href={detail.href}
+                  target="_blank"
+                  rel="noopener"
+                  class="truncate text-sm text-white/80 underline decoration-white/30 underline-offset-4 hover:text-accent-300"
+                >
+                  {detail.label}
+                </a>
               ) : (
                 <span class="truncate text-sm text-white/80">
                   {detail.label}

@@ -176,7 +176,11 @@
   "languages": [
     {
       "id": "english",
-      "cefr": "B2"
+      "cefr": "B1",
+      "certificate": {
+        "name": "EF SET",
+        "url": "https://cert.efset.org/en/FXMtRT"
+      }
     }
   ],
   "skills": [

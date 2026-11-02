@@ -70,7 +70,7 @@ export function GET() {
     `- ${label('spoken')}: ${resume.languages
       .map(
         (item) =>
-          `${c(`languages.${item.id}.name`)} ${item.cefr} (${c(`languages.${item.id}.level`)})`,
+          `${c(`languages.${item.id}.name`)} ${item.cefr} (${c(`languages.${item.id}.level`)})${item.certificate ? `, [${item.certificate.name} certificate](${item.certificate.url})` : ''}`,
       )
       .join(', ')}`,
     '',
