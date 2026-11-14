@@ -20,7 +20,7 @@
     "@tailwindcss/vite": "^4.3.3",
     "@tsparticles/engine": "^4.4.0",
     "@tsparticles/slim": "^4.4.0",
-    "astro": "^7.3.3",
+    "astro": "^7.4.7",
     "tailwindcss": "^4.3.3"
   },
   "devDependencies": {
